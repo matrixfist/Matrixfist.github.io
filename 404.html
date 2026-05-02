@@ -5,10 +5,16 @@
 <title>Matrix Fist</title>
 <script>
 var path = window.location.pathname;
+// Redirect /tradecard/handle to /tradecard/?h=handle
 if (path.indexOf('/tradecard/') === 0 && path.length > 11) {
-    var handle = path.slice(11).replace('.html','');
-    window.location.replace('/tradecard/?h=' + handle);
+    var handle = path.slice(11).replace('.html', '');
+    if (handle && handle !== 'tradecard') {
+        window.location.replace('/tradecard/?h=' + handle);
+    } else {
+        window.location.replace('/tradecard/');
+    }
 } else {
+    // All other 404s go home
     window.location.replace('/');
 }
 </script>
