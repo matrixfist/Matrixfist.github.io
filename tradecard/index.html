@@ -45,7 +45,8 @@ html,body{background:#F0EDE8;font-family:"Barlow Condensed",sans-serif;color:#0A
   background: #1a1a1a;
 }
 .tc-photo-wrap-inner {
-  position: relative; width: 100%; height: 100%;
+  position: absolute; inset: 0;
+  overflow: hidden;
 }
 .tc-photo {
   position: absolute; top: 0; left: 0;
@@ -53,16 +54,20 @@ html,body{background:#F0EDE8;font-family:"Barlow Condensed",sans-serif;color:#0A
   object-fit: cover; object-position: center top;
   display: block;
 }
-.tc-ghost-left  { opacity: 0.45; left: -22%; right: 22%; width: 122%; }
-.tc-ghost-right { opacity: 0.45; left: 22%;  right: -22%; width: 122%; }
-.tc-base        { opacity: 1; left: 0; right: 0; width: 100%; position: relative; }
+/* Ghost double: translate left/right by 22% of card width */
+.tc-ghost-left  { opacity: 0.45; transform: translateX(-22%); }
+.tc-ghost-right { opacity: 0.45; transform: translateX(22%); }
+.tc-base        { opacity: 1; transform: none; }
+/* Inkwash overlays */
 .tc-inkwash-dark  {
   position: absolute; inset: 0;
-  background: #000; opacity: 0.35; pointer-events: none;
+  background: #000; opacity: 0.45; pointer-events: none;
+  z-index: 2;
 }
 .tc-inkwash-light {
   position: absolute; inset: 0;
   background: #fff; opacity: 0.08; pointer-events: none;
+  z-index: 3;
 }
 .tc-photo-placeholder {
   width: 100%; height: 100%;
