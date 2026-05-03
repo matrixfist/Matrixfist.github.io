@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Matrix Fist Trade Card</title>
+<meta id="og-title"  property="og:title"       content="Matrix Fist Trade Card">
+<meta id="og-desc"   property="og:description"  content="A Matrix Fist player trade card">
+<meta id="og-image"  property="og:image"        content="">
+<meta id="og-url"    property="og:url"          content="">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html,body{background:#F0EDE8;font-family:"Barlow Condensed",sans-serif;color:#0A0A0A;min-height:100vh;}
+
+/* ── TRADE CARD — WHITE INKY THEME ──────────────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap');
+
+.trade-card {
+  width: 100%;
+  max-width: 420px;
+  background: #F8F6F2;
+  border-radius: 18px;
+  border: 5px solid #0A0A0A;
+  overflow: hidden;
+  font-family: "Barlow Condensed", sans-serif;
+  box-shadow: 6px 8px 0 #0A0A0A, 0 20px 60px rgba(0,0,0,0.25);
+  position: relative;
+  /* Subtle paper texture via repeating gradient */
+  background-image: repeating-linear-gradient(
+    0deg, transparent, transparent 2px,
+    rgba(0,0,0,0.012) 2px, rgba(0,0,0,0.012) 3px
+  );
+}
+
+/* ── PHOTO SECTION ── */
+.tc-photo-wrap {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4/5;
+  overflow: hidden;
+  border-bottom: 4px solid #0A0A0A;
+  background: #1a1a1a;
+}
+.tc-photo-wrap-inner {
+  position: absolute; inset: 0;
+  overflow: hidden;
+}
+.tc-photo {
+  position: absolute; top: 0; left: 0;
+  width: 100%; height: 100%;
+  object-fit: cover; object-position: center top;
+  display: block;
+}
+/* Ghost double: translate left/right by 22% of card width */
+.tc-ghost-left  { opacity: 0.45; transform: translateX(-22%); }
+.tc-ghost-right { opacity: 0.45; transform: translateX(22%); }
+.tc-base        { opacity: 1; transform: none; }
+/* Inkwash overlays */
+.tc-inkwash-dark  {
+  position: absolute; inset: 0;
+  background: #000; opacity: 0.45; pointer-events: none;
+  z-index: 2;
+}
+.tc-inkwash-light {
+  position: absolute; inset: 0;
+  background: #fff; opacity: 0.08; pointer-events: none;
+  z-index: 3;
+}
+.tc-photo-placeholder {
+  width: 100%; height: 100%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 80px;
+  background: repeating-linear-gradient(
+    -45deg, #111 0px, #111 8px, #1a1a1a 8px, #1a1a1a 16px
+  );
+}
+/* White fade at bottom of photo into body */
+.tc-photo-fade {
+  position: absolute; inset: 0;
+  background: linear-gradient(to bottom,
+    transparent 40%,
+    rgba(248,246,242,0.6) 75%,
+    rgba(248,246,242,1) 100%
+  );
+}
+/* Floating overlays — NO boxes, just text over photo */
+.tc-float-flag {
+  position: absolute; top: 14px; left: 16px;
+  font-size: 32px; line-height: 1;
+  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.6));
+}
+.tc-float-logo {
+  position: absolute; top: 16px; left: 50%; transform: translateX(-50%);
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10px; font-weight: 700; letter-spacing: 0.28em;
+  color: rgba(255,255,255,0.55);
+  text-transform: uppercase; white-space: nowrap;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+.tc-float-rank {
+  position: absolute; top: 12px; right: 14px;
+  text-align: center;
+  filter: drop-shadow(0 1px 4px rgba(0,0,0,0.6));
+}
+.tc-float-rank-emoji { font-size: 26px; display: block; }
+.tc-float-rank-name {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 8px; color: rgba(255,255,255,0.5);
+  letter-spacing: 0.16em; text-transform: uppercase;
+  display: block; margin-top: 2px;
+  text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+}
+/* Hero name block — floats over the fade */
+.tc-hero {
+  position: absolute; bottom: 0; left: 0; right: 0;
+  padding: 14px 16px 10px;
+}
+.tc-name {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: clamp(28px, 7vw, 40px);
+  letter-spacing: 0.04em; color: #0A0A0A;
+  line-height: 0.95; margin-bottom: 3px;
+  text-shadow: none;
+}
+.tc-handle {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 13px; font-weight: 700;
+  color: #0A0A0A; letter-spacing: 0.06em;
+  margin-bottom: 3px;
+}
+.tc-location {
+  font-size: 12px; color: #555; letter-spacing: 0.04em;
+}
+
+/* ── BODY ── */
+.tc-body { padding: 14px 16px 16px; }
+
+/* Stats strip */
+.tc-stats {
+  display: grid; grid-template-columns: repeat(3,1fr);
+  gap: 8px; margin-bottom: 12px;
+}
+.tc-stat {
+  background: #fff;
+  border: 3px solid #0A0A0A;
+  border-radius: 8px;
+  padding: 10px 6px; text-align: center;
+}
+.tc-stat-num {
+  font-family: "Bebas Neue", sans-serif;
+  font-size: 32px; color: #0A0A0A; line-height: 1;
+}
+.tc-stat-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 8px; color: #888;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  margin-top: 2px;
+}
+
+/* Progress */
+.tc-progress { margin-bottom: 12px; }
+.tc-progress-meta {
+  display: flex; justify-content: space-between;
+  align-items: center; margin-bottom: 5px;
+}
+.tc-progress-meta .lbl {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 8px; color: #aaa; letter-spacing: 0.14em; text-transform: uppercase;
+}
+.tc-progress-meta .val {
+  font-size: 11px; font-weight: 700; color: #555;
+}
+.tc-progress-track {
+  height: 6px; background: #e0e0e0;
+  border: 2px solid #0A0A0A; border-radius: 3px; overflow: hidden;
+}
+.tc-progress-fill { height: 100%; }
+
+/* Detail grid */
+.tc-details {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 8px; margin-bottom: 12px;
+}
+.tc-detail {
+  background: #fff;
+  border: 2px solid #0A0A0A;
+  border-radius: 8px; padding: 9px 11px;
+}
+.tc-detail-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 8px; color: #aaa;
+  letter-spacing: 0.14em; text-transform: uppercase; margin-bottom: 4px;
+}
+.tc-detail-value {
+  font-size: 14px; font-weight: 800; color: #0A0A0A; line-height: 1.25;
+}
+.tc-detail-value.empty { color: #ccc; font-weight: 500; font-style: italic; }
+
+/* Signature move — solid black block */
+.tc-sig {
+  background: #0A0A0A;
+  border: 2px solid #0A0A0A;
+  border-radius: 8px; padding: 11px 12px; margin-bottom: 12px;
+}
+.tc-sig-label {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 8px; color: #555;
+  letter-spacing: 0.16em; text-transform: uppercase; margin-bottom: 5px;
+}
+.tc-sig-value { font-size: 16px; font-weight: 800; color: #FFC800; }
+.tc-sig-value.empty { color: #333; }
+
+/* Action buttons — solid black */
+.tc-actions {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 8px; margin-bottom: 12px;
+}
+.tc-btn {
+  display: block; padding: 12px 8px;
+  background: #0A0A0A; color: #fff;
+  border: 2px solid #0A0A0A;
+  border-radius: 8px;
+  font-family: "Barlow Condensed", sans-serif;
+  font-size: 14px; font-weight: 900;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  text-align: center; text-decoration: none;
+  transition: background 0.12s, color 0.12s;
+}
+.tc-btn:hover { background: #fff; color: #0A0A0A; }
+
+/* Footer */
+.tc-foot {
+  display: flex; align-items: center; justify-content: space-between;
+  padding-top: 10px; border-top: 1px solid #e0e0e0;
+}
+.tc-foot-left { font-size: 10px; color: #bbb; }
+.tc-foot-right {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9px; color: #ccc;
+}
+
+.page{max-width:500px;margin:0 auto;padding:90px 20px 0;}
+.state-screen{padding:80px 32px;text-align:center;}
+.state-icon{font-size:64px;margin-bottom:16px;}
+.state-title{font-family:"Bebas Neue",sans-serif;font-size:40px;letter-spacing:.04em;color:#0A0A0A;margin-bottom:8px;}
+.state-sub{font-size:16px;color:#888;}
+.below-card{margin-top:20px;}
+.share-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:14px;}
+.share-btn{padding:13px;border-radius:8px;font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;border:2px solid #0A0A0A;cursor:pointer;transition:all .12s;}
+.share-btn.dark{background:#0A0A0A;color:#fff;}
+.share-btn.dark:hover{background:#fff;color:#0A0A0A;}
+.share-btn.light{background:#fff;color:#0A0A0A;}
+.share-btn.light:hover{background:#0A0A0A;color:#fff;}
+.create-cta{background:#fff;border:2px solid #0A0A0A;border-radius:10px;padding:20px;text-align:center;margin-bottom:32px;}
+.create-cta p{font-size:14px;color:#888;margin-bottom:10px;}
+.create-cta a{display:inline-block;background:#0A0A0A;color:#fff;font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:10px 24px;border-radius:6px;text-decoration:none;}
+</style>
+</head>
+<body>
+<nav style="background:#fff;border-bottom:3px solid #0A0A0A;padding:14px 32px;display:flex;align-items:center;justify-content:space-between;position:fixed;top:0;left:0;right:0;z-index:100;">
+  <a href="/"><img src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-BLACKLETTERS.png" alt="Matrix Fist" style="height:34px;width:auto;"></a>
+  <a href="/#app" style="background:#0A0A0A;color:#fff;font-family:'Barlow Condensed',sans-serif;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:8px 18px;border-radius:6px;text-decoration:none;">&#128241; Get the App</a>
+</nav>
+<div class="page">
+  <div id="root">
+    <div class="state-screen">
+      <div class="state-icon">&#9203;</div>
+      <div class="state-title">Loading</div>
+      <p class="state-sub">Fetching player data&hellip;</p>
+    </div>
+  </div>
+</div>
+<footer style="background:#f5f5f5;border-top:3px solid #0A0A0A;padding:32px;text-align:center;margin-top:48px;">
+  <div style="display:flex;gap:20px;justify-content:center;flex-wrap:wrap;margin-bottom:10px;">
+    <a href="/" style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#888;text-decoration:none;letter-spacing:.1em;text-transform:uppercase;">Home</a>
+    <a href="/legend" style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#888;text-decoration:none;letter-spacing:.1em;text-transform:uppercase;">Legend</a>
+    <a href="/tradecard" style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#888;text-decoration:none;letter-spacing:.1em;text-transform:uppercase;">Trade Cards</a>
+    <a href="/live" style="font-family:'JetBrains Mono',monospace;font-size:11px;color:#888;text-decoration:none;letter-spacing:.1em;text-transform:uppercase;">Live Feed</a>
+  </div>
+  <div style="font-family:'JetBrains Mono',monospace;font-size:10px;color:#ccc;">&copy; 2026 Creative Dissonance &middot; Matrix Fist &middot; TM Pending</div>
+</footer>
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.js"></script>
+<script>
+const sb = supabase.createClient(
+  'https://aneqybvksubgxbflwofb.supabase.co',
+  'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFuZXF5YnZrc3ViZ3hiZmx3b2ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY2MjUwNzgsImV4cCI6MjA5MjIwMTA3OH0.0o89k7HN9hr4e-7NTKQ00eSLF-sVG71r1uQtmDuZe88'
+);</script>
+<script>
+
+const COUNTRY_FLAGS = {"Afghanistan": "🇦🇫", "Albania": "🇦🇱", "Algeria": "🇩🇿", "Argentina": "🇦🇷", "Australia": "🇦🇺", "Austria": "🇦🇹", "Bangladesh": "🇧🇩", "Belgium": "🇧🇪", "Bolivia": "🇧🇴", "Brazil": "🇧🇷", "Cambodia": "🇰🇭", "Cameroon": "🇨🇲", "Canada": "🇨🇦", "Chile": "🇨🇱", "China": "🇨🇳", "Colombia": "🇨🇴", "Congo": "🇨🇬", "Croatia": "🇭🇷", "Cuba": "🇨🇺", "Czech Republic": "🇨🇿", "Denmark": "🇩🇰", "Ecuador": "🇪🇨", "Egypt": "🇪🇬", "Ethiopia": "🇪🇹", "Finland": "🇫🇮", "France": "🇫🇷", "Germany": "🇩🇪", "Ghana": "🇬🇭", "Greece": "🇬🇷", "Guatemala": "🇬🇹", "Haiti": "🇭🇹", "Honduras": "🇭🇳", "Hungary": "🇭🇺", "India": "🇮🇳", "Indonesia": "🇮🇩", "Iran": "🇮🇷", "Iraq": "🇮🇶", "Ireland": "🇮🇪", "Israel": "🇮🇱", "Italy": "🇮🇹", "Jamaica": "🇯🇲", "Japan": "🇯🇵", "Jordan": "🇯🇴", "Kazakhstan": "🇰🇿", "Kenya": "🇰🇪", "Lebanon": "🇱🇧", "Malaysia": "🇲🇾", "Mexico": "🇲🇽", "Morocco": "🇲🇦", "Mozambique": "🇲🇿", "Netherlands": "🇳🇱", "New Zealand": "🇳🇿", "Nicaragua": "🇳🇮", "Nigeria": "🇳🇬", "Norway": "🇳🇴", "Pakistan": "🇵🇰", "Peru": "🇵🇪", "Philippines": "🇵🇭", "Poland": "🇵🇱", "Portugal": "🇵🇹", "Romania": "🇷🇴", "Russia": "🇷🇺", "Saudi Arabia": "🇸🇦", "Senegal": "🇸🇳", "Serbia": "🇷🇸", "Singapore": "🇸🇬", "Somalia": "🇸🇴", "South Africa": "🇿🇦", "South Korea": "🇰🇷", "Spain": "🇪🇸", "Sri Lanka": "🇱🇰", "Sudan": "🇸🇩", "Sweden": "🇸🇪", "Switzerland": "🇨🇭", "Syria": "🇸🇾", "Taiwan": "🇹🇼", "Tanzania": "🇹🇿", "Thailand": "🇹🇭", "Trinidad and Tobago": "🇹🇹", "Tunisia": "🇹🇳", "Turkey": "🇹🇷", "Uganda": "🇺🇬", "Ukraine": "🇺🇦", "United Kingdom": "🇬🇧", "United States": "🇺🇸", "Uruguay": "🇺🇾", "Venezuela": "🇻🇪", "Vietnam": "🇻🇳", "Yemen": "🇾🇪", "Zimbabwe": "🇿🇼"};
+const RANK_DATA = {"1": {"name": "Initiate", "emoji": "\u2b1c", "color": "#888888", "next_wins": 10}, "2": {"name": "Contender", "emoji": "\ud83d\udd35", "color": "#1A50CC", "next_wins": 50}, "3": {"name": "Fighter", "emoji": "\ud83d\udfe2", "color": "#22AA44", "next_wins": 150}, "4": {"name": "Warrior", "emoji": "\ud83d\udfe3", "color": "#9B30CC", "next_wins": 300}, "5": {"name": "Pro", "emoji": "\ud83d\udfe4", "color": "#AA6600", "next_wins": 600}, "6": {"name": "Elite", "emoji": "\ud83d\udd34", "color": "#CC0000", "next_wins": 1000}, "7": {"name": "Master", "emoji": "\u2b50", "color": "#FFC800", "next_wins": 2500}, "8": {"name": "Grand Master", "emoji": "\ud83d\udc51", "color": "#000000", "next_wins": null}};
+
+function renderTradeCard(p, photoSrc, arena, rival, cardUrl) {
+  const rank = p.rank_id || 1;
+  const rd = RANK_DATA[rank] || RANK_DATA[1];
+  const flag = COUNTRY_FLAGS[p.country] || '🌍';
+  const wins = p.wins || 0;
+  const losses = p.losses || 0;
+  const streak = p.best_streak || p.current_streak || 0;
+  const ageGroup = p.age ? (p.age <= 17 ? '10–17' : '18+') : '—';
+  const sigs = [p.signature_move_1, p.signature_move_2, p.signature_move_3].filter(Boolean);
+  const loc = [p.city, p.country].filter(Boolean).join(', ') || '—';
+  const appUrl = 'https://apps.apple.com/app/matrix-fist/id6763809916';
+  const shareUrl = cardUrl || `https://matrixfist.com/tradecard/${p.handle}`;
+
+  // Progress
+  let pct = 100, distLabel = 'Max Rank';
+  if (rd.next_wins) {
+    const prev = rank === 1 ? 0 : (RANK_DATA[rank-1]?.next_wins || 0);
+    pct = Math.min(100, Math.round(((wins - prev) / (rd.next_wins - prev)) * 100));
+    const rem = rd.next_wins - wins;
+    distLabel = rem > 0 ? `${rem} to ${RANK_DATA[rank+1]?.name || 'next'}` : '🎉 Ready to rank up!';
+  }
+
+  const photoHtml = photoSrc
+    ? `<div class="tc-photo-wrap-inner">
+        <img class="tc-photo tc-base"        src="${photoSrc}" alt="${p.display_name || p.handle}">
+        <img class="tc-photo tc-ghost-left"  src="${photoSrc}" alt="">
+        <img class="tc-photo tc-ghost-right" src="${photoSrc}" alt="">
+        <div class="tc-inkwash-dark"></div>
+        <div class="tc-inkwash-light"></div>
+      </div>`
+    : `<div class="tc-photo-placeholder">👤</div>`;
+
+  return `<div class="trade-card">
+    <div class="tc-photo-wrap">
+      ${photoHtml}
+      <div class="tc-photo-fade"></div>
+      <div class="tc-float-flag">${flag}</div>
+      <div class="tc-float-logo">MATRIX FIST</div>
+      <div class="tc-float-rank">
+        <span class="tc-float-rank-emoji">${rd.emoji}</span>
+        <span class="tc-float-rank-name">${rd.name}</span>
+      </div>
+      <div class="tc-hero">
+        <div class="tc-name">${p.display_name || p.handle}</div>
+        <div class="tc-handle">@${p.handle}</div>
+        <div class="tc-location">${loc}</div>
+      </div>
+    </div>
+    <div class="tc-body">
+      <div class="tc-stats">
+        <div class="tc-stat"><div class="tc-stat-num">${wins}</div><div class="tc-stat-label">Wins</div></div>
+        <div class="tc-stat"><div class="tc-stat-num">${losses}</div><div class="tc-stat-label">Losses</div></div>
+        <div class="tc-stat"><div class="tc-stat-num">${streak}🔥</div><div class="tc-stat-label">Streak</div></div>
+      </div>
+      <div class="tc-progress">
+        <div class="tc-progress-meta">
+          <span class="lbl">Rank Progress</span>
+          <span class="val">${distLabel}</span>
+        </div>
+        <div class="tc-progress-track">
+          <div class="tc-progress-fill" style="width:${pct}%;background:${rd.color};"></div>
+        </div>
+      </div>
+      <div class="tc-details">
+        <div class="tc-detail">
+          <div class="tc-detail-label">&#127967; Arena</div>
+          <div class="tc-detail-value ${arena ? '' : 'empty'}">${arena || 'Not set'}</div>
+        </div>
+        <div class="tc-detail">
+          <div class="tc-detail-label">&#9876;&#65039; Rival</div>
+          <div class="tc-detail-value ${rival ? '' : 'empty'}">${rival ? '@'+rival.replace('@','') : 'None yet'}</div>
+        </div>
+        <div class="tc-detail">
+          <div class="tc-detail-label">&#128100; Age Group</div>
+          <div class="tc-detail-value">${ageGroup}</div>
+        </div>
+        <div class="tc-detail">
+          <div class="tc-detail-label">&#128205; Location</div>
+          <div class="tc-detail-value ${p.city ? '' : 'empty'}">${p.city || p.country || '—'}</div>
+        </div>
+      </div>
+      <div class="tc-sig">
+        <div class="tc-sig-label">&#9997;&#65039; Signature Move${sigs.length > 1 ? 's' : ''}</div>
+        <div class="tc-sig-value ${sigs.length ? '' : 'empty'}">${sigs.length ? sigs.join(' &middot; ') : 'Not yet unlocked &mdash; reach Fighter rank'}</div>
+      </div>
+      <div class="tc-actions">
+        <a class="tc-btn" href="${appUrl}">&#9876;&#65039; Challenge</a>
+        <a class="tc-btn" href="${appUrl}">&#127942; Log a Win</a>
+      </div>
+      <div class="tc-foot">
+        <span class="tc-foot-left">Ages ${ageGroup} &middot; Matrix Fist</span>
+        <span class="tc-foot-right">matrixfist.com</span>
+      </div>
+    </div>
+  </div>`;
+}
+
+
+// Support both /tradecard/handle (path) and /tradecard/?h=handle (query param)
+const queryHandle = new URLSearchParams(window.location.search).get('h');
+const pathParts = window.location.pathname.split('/').filter(Boolean);
+const pathHandle = pathParts[pathParts.length-1]?.replace('.html','')?.toLowerCase();
+const handle = queryHandle || (pathHandle && pathHandle !== 'tradecard' ? pathHandle : null);
+
+async function load() {
+  const root = document.getElementById('root');
+  if (!handle || handle === 'tradecard') {
+    root.innerHTML = `<div class="state-screen">
+      <div class="state-icon">&#128100;</div>
+      <div class="state-title">No Player</div>
+      <p class="state-sub">Try matrixfist.com/tradecard/yourhandle</p></div>`;
+    return;
+  }
+  const {data:p, error} = await sb.from('profiles').select('*').eq('handle',handle).single();
+  if (error||!p) {
+    root.innerHTML = `<div class="state-screen">
+      <div class="state-icon">&#128100;</div>
+      <div class="state-title">@${handle}</div>
+      <p class="state-sub">Player not found.<br><a href="/#app" style="color:#0A0A0A;font-weight:700;">Download Matrix Fist &rarr;</a></p></div>`;
+    return;
+  }
+  const cardUrl = `https://matrixfist.com/tradecard/?h=${p.handle}`;
+  const rd = RANK_DATA[p.rank_id||1]||RANK_DATA[1];
+  const wins = p.wins||0; const losses = p.losses||0;
+  const loc = [p.city,p.country].filter(Boolean).join(', ')||'—';
+
+  // OG tags
+  document.title = `Matrix Fist — ${p.display_name||p.handle} Trade Card`;
+  document.getElementById('og-title').content  = `${p.display_name||p.handle} — Matrix Fist Trade Card`;
+  document.getElementById('og-desc').content   = `${rd.emoji} ${rd.name} · ${wins} Wins · ${losses} Losses · ${loc}`;
+  document.getElementById('og-image').content  = p.avatar_url||'';
+  document.getElementById('og-url').content    = cardUrl;
+
+  root.innerHTML = `
+    <div id="card-mount">${renderTradeCard(p, p.avatar_url||null, p.favorite_arena, p.rival_handle, cardUrl)}</div>
+    <div class="below-card">
+      <div class="share-row">
+        <button class="share-btn dark" onclick="doShare('${cardUrl}','${p.display_name||p.handle}','${rd.emoji} ${rd.name} · ${wins} Wins')">&#128279; Share Card</button>
+        <button class="share-btn light" onclick="copyLink('${cardUrl}')">&#128203; Copy Link</button>
+      </div>
+      <div class="create-cta">
+        <p>Create your own Matrix Fist trade card</p>
+        <a href="/tradecard">Make My Card &rarr;</a>
+      </div>
+    </div>
+  `;
+}
+
+function doShare(url, name, desc) {
+  if (navigator.share) navigator.share({title:`${name} — Matrix Fist Trade Card`,text:`${desc}`,url});
+  else copyLink(url);
+}
+function copyLink(url) {
+  navigator.clipboard.writeText(url).then(()=>{
+    const btn = event.target;
+    btn.textContent='✅ Copied!';
+    setTimeout(()=>btn.textContent='📋 Copy Link',2000);
+  }).catch(()=>alert(url));
+}
+
+load();
+</script>
+</body>
+</html>
