@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matrix Fist — Warrior Rank Merch</title>
+<meta name="description" content="Matrix Fist Warrior rank merch. Exclusive to players who've earned this rank. Enter your code to unlock.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0a0a0a;--white:#fff;--cream:#f5f2ed;--gold:#ffc800;--rank:#9B30CC;}
+*{margin:0;padding:0;box-sizing:border-box;}
+body{background:var(--black);color:var(--white);font-family:"Barlow Condensed",sans-serif;min-height:100vh;}
+a{color:inherit;text-decoration:none;}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:12px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,242,237,0.97);backdrop-filter:blur(12px);border-bottom:2px solid var(--black);}
+.nav-logo img{height:40px;width:auto;}
+.nav-links{display:flex;gap:24px;}
+.nav-links a{font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#777;}
+.nav-links a:hover,.nav-links a.active{color:var(--black);}
+.nav-cta{background:var(--black);color:var(--white);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:9px 22px;border-radius:3px;border:2px solid var(--black);}
+.nav-cta:hover{background:transparent;color:var(--black);}
+
+nav{background:rgba(10,10,10,0.97);border-bottom-color:rgba(255,255,255,0.1);}
+.nav-links a{color:rgba(255,255,255,0.4);}
+.nav-links a:hover{color:#fff;}
+.nav-cta{background:var(--white);color:var(--black);border-color:var(--white);}
+.nav-cta:hover{background:transparent;color:var(--white);}
+
+.hero{margin-top:66px;min-height:calc(100vh - 66px);display:flex;flex-direction:column;align-items:center;justify-content:center;padding:60px 40px;text-align:center;position:relative;overflow:hidden;}
+.hero::before{content:'WARRIOR';position:absolute;font-family:"Bebas Neue",sans-serif;font-size:clamp(100px,18vw,240px);color:rgba(255,255,255,0.03);pointer-events:none;line-height:1;white-space:nowrap;}
+.rank-icon{width:120px;height:120px;object-fit:contain;margin-bottom:24px;filter:drop-shadow(0 0 40px #9B30CC66);animation:pulse 3s ease-in-out infinite;}
+@keyframes pulse{0%,100%{filter:drop-shadow(0 0 40px #9B30CC44);} 50%{filter:drop-shadow(0 0 60px #9B30CC88);} }
+.eyebrow{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.28em;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:16px;}
+.rank-name{font-family:"Bebas Neue",sans-serif;font-size:clamp(60px,10vw,120px);line-height:.92;color:var(--rank);margin-bottom:8px;}
+.rank-name span{color:rgba(255,255,255,0.6);font-size:0.6em;}
+.subtitle{font-size:18px;color:rgba(255,255,255,0.5);max-width:440px;margin:0 auto 48px;line-height:1.5;}
+
+.unlock-box{background:rgba(255,255,255,0.04);border:2px solid rgba(255,255,255,0.1);border-radius:6px;padding:40px;max-width:480px;width:100%;margin:0 auto;}
+.unlock-label{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.24em;color:rgba(255,255,255,0.4);text-transform:uppercase;margin-bottom:12px;}
+.unlock-form{display:flex;gap:0;border:2px solid rgba(255,255,255,0.15);border-radius:4px;overflow:hidden;margin-bottom:12px;}
+.unlock-input{flex:1;background:transparent;border:none;padding:14px 18px;font-family:"Barlow Condensed",sans-serif;font-size:16px;color:var(--white);outline:none;letter-spacing:.05em;}
+.unlock-input::placeholder{color:rgba(255,255,255,0.2);}
+.unlock-btn{background:var(--rank);color:var(--black);border:none;padding:14px 22px;font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;transition:opacity .15s;}
+.unlock-btn:hover{opacity:.85;}
+.unlock-note{font-family:"JetBrains Mono",monospace;font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:.06em;}
+.unlock-error{color:#ff4444;font-size:13px;margin-top:8px;display:none;}
+
+/* Products (hidden until unlocked) */
+.products-section{display:none;padding:60px 40px;max-width:1200px;margin:0 auto;width:100%;}
+.products-section.visible{display:block;}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:36px;padding-bottom:16px;border-bottom:2px solid rgba(255,255,255,0.1);}
+.section-head h2{font-family:"Bebas Neue",sans-serif;font-size:42px;}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2px;}
+.product-card{background:rgba(255,255,255,0.04);border:2px solid rgba(255,255,255,0.1);display:flex;flex-direction:column;cursor:pointer;transition:all .18s;}
+.product-card:hover{background:rgba(255,255,255,0.07);border-color:var(--rank);transform:translate(-2px,-4px);}
+.product-img{aspect-ratio:1;background:rgba(255,255,255,0.03);border-bottom:2px solid rgba(255,255,255,0.08);display:flex;align-items:center;justify-content:center;}
+.product-img img{width:60%;height:60%;object-fit:contain;filter:drop-shadow(0 6px 20px rgba(0,0,0,0.5));}
+.product-body{padding:16px 18px;flex:1;display:flex;flex-direction:column;}
+.product-type{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.16em;color:rgba(255,255,255,0.3);text-transform:uppercase;margin-bottom:4px;}
+.product-name{font-family:"Bebas Neue",sans-serif;font-size:24px;margin-bottom:6px;}
+.product-desc{font-size:13px;color:rgba(255,255,255,0.5);line-height:1.4;flex:1;margin-bottom:12px;}
+.product-foot{display:flex;align-items:flex-end;justify-content:space-between;}
+.product-price{font-family:"Bebas Neue",sans-serif;font-size:26px;color:var(--rank);}
+.btn-buy{background:var(--rank);color:var(--black);border:none;border-radius:3px;font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:9px 16px;cursor:pointer;}
+
+.back-link{margin-top:24px;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.12em;color:rgba(255,255,255,0.3);text-transform:uppercase;text-decoration:none;display:inline-block;}
+.back-link:hover{color:#fff;}
+
+
+footer{background:var(--black);color:rgba(255,255,255,0.4);padding:28px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;}
+footer a{color:rgba(255,255,255,0.3);}footer a:hover{color:#fff;}
+.footer-links{display:flex;gap:20px;}
+
+footer{background:rgba(255,255,255,0.03);border-top:1px solid rgba(255,255,255,0.08);}
+</style>
+</head>
+<body>
+<nav>
+  <a class="nav-logo" href="/"><img src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-BLACKLETTERS.png" alt="Matrix Fist"></a>
+  <div class="nav-links">
+    <a href="/legend">Legend</a><a href="/ranking">Rank</a><a href="/player-card">Rules</a><a href="/health">Health</a><a href="/store" class="active">Store</a>
+  </div>
+  <a class="nav-cta" href="/#app">Get the App</a>
+</nav>
+
+<section class="hero" id="lockScreen">
+  <img class="rank-icon" src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-WARRIOR.png" alt="Warrior">
+  <div class="eyebrow">Rank-Exclusive Merch · Locked</div>
+  <div class="rank-name">Warrior</div>
+  <div class="rank-name"><span>Rank Collection</span></div>
+  <p class="subtitle">This collection is exclusive to Warrior rank players. 150+ confirmed wins in Matrix Fist unlocks this page and sends you a private link.</p>
+  
+  <div class="unlock-box">
+    <div class="unlock-label">Enter your rank code to unlock</div>
+    <form class="unlock-form" onsubmit="unlock(event)">
+      <input class="unlock-input" id="codeInput" type="text" placeholder="XXXX-XXXX-XXXX" autocomplete="off" spellcheck="false">
+      <button class="unlock-btn" type="submit">Unlock</button>
+    </form>
+    <div class="unlock-note">Code sent automatically when you reach Warrior rank in the app</div>
+    <div class="unlock-error" id="unlockError">Invalid or expired code. Check your rank notification email.</div>
+  </div>
+  
+  <a class="back-link" href="/store">← Back to Store</a>
+</section>
+
+<!-- Products — shown after unlock -->
+<div class="products-section" id="productsSection">
+  <div class="section-head">
+    <h2>Warrior Rank Collection</h2>
+    <span style="font-family:'JetBrains Mono',monospace;font-size:10px;color:rgba(255,255,255,0.3);letter-spacing:.14em;text-transform:uppercase;">Unlocked ✓</span>
+  </div>
+  <div class="product-grid" id="productGrid"></div>
+  <a class="back-link" href="/store">← Back to Store</a>
+</div>
+
+<footer>
+  <span>© 2026 Creative Dissonance · Matrix Fist</span>
+  <div class="footer-links"><a href="/">Home</a><a href="/store">Store</a><a href="/legend">Legend</a><a href="/#app">Get the App</a></div>
+</footer>
+
+<script>
+const RANK = 'Warrior';
+const RANK_ID = 4;
+const ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFuZXF5YnZrc3ViZ3hiZmx3b2ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY2MjUwNzgsImV4cCI6MjA5MjIwMTA3OH0.0o89k7HN9hr4e-7NTKQ00eSLF-sVG71r1uQtmDuZe88';
+const BASE = 'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets';
+const PRINTFUL = 'https://www.printful.com/ca/dashboard/sync?store=18124436';
+
+// Products for this rank (placeholder — update with real Printful URLs when created)
+const PRODUCTS = [
+  {name:'Warrior Tee',type:'T-Shirt',price:34,icon:'MF-WARRIOR.png' ,desc:'Premium ring-spun cotton tee with embroidered Warrior rank icon. Proof you put in the work.'},
+  {name:'Warrior Hoodie',type:'Pullover Hoodie',price:55,icon:'MF-WARRIOR.png',desc:'Heavyweight 8oz fleece hoodie. Warrior rank icon on the chest. The flex piece for serious players.'},
+  {name:'Warrior Mug',type:'Ceramic Mug',price:22,icon:'MF-WARRIOR.png',desc:'11oz ceramic mug with Warrior rank icon. For those who start every day with purpose.'},
+  {name:'Warrior Snapback',type:'Trucker Hat',price:42,icon:'MF-WARRIOR.png',desc:'Structured snapback with embroidered Warrior icon. Wear your rank, always.'},
+];
+
+// Check URL for code param or session storage
+function checkAccess() {
+  const urlCode = new URLSearchParams(window.location.search).get('code');
+  const stored = sessionStorage.getItem('mf_rank_' + RANK_ID);
+  if (urlCode) validateCode(urlCode);
+  else if (stored === 'unlocked') showProducts();
+}
+
+async function unlock(e) {
+  e.preventDefault();
+  const code = document.getElementById('codeInput').value.trim().toUpperCase();
+  await validateCode(code);
+}
+
+async function validateCode(code) {
+  // Validate against Supabase rank_codes table
+  const res = await fetch(
+    `https://aneqybvksubgxbflwofb.supabase.co/rest/v1/rank_codes?code=eq.${encodeURIComponent(code)}&rank_id=eq.${RANK_ID}&used=eq.false&select=id,code,rank_id`,
+    {headers: {'apikey': ANON, 'Authorization': 'Bearer ' + ANON}}
+  ).then(r => r.json()).catch(() => []);
+  
+  if (res && res.length > 0) {
+    // Mark code as used
+    await fetch(`https://aneqybvksubgxbflwofb.supabase.co/rest/v1/rank_codes?id=eq.${res[0].id}`, {
+      method:'PATCH',
+      headers: {'apikey': ANON, 'Authorization': 'Bearer ' + ANON, 'Content-Type': 'application/json'},
+      body: JSON.stringify({used: true})
+    }).catch(() => {});
+    sessionStorage.setItem('mf_rank_' + RANK_ID, 'unlocked');
+    showProducts();
+  } else {
+    document.getElementById('unlockError').style.display = 'block';
+  }
+}
+
+function showProducts() {
+  document.getElementById('lockScreen').style.display = 'none';
+  const section = document.getElementById('productsSection');
+  section.classList.add('visible');
+  
+  const grid = document.getElementById('productGrid');
+  grid.innerHTML = PRODUCTS.map(p => `
+    <div class="product-card" onclick="window.open(PRINTFUL,'_blank')">
+      <div class="product-img"><img src="${BASE}/${p.icon}" alt="${p.name}" loading="lazy" onerror="this.src='${BASE}/MF-GRANDMASTER.png'"></div>
+      <div class="product-body">
+        <div class="product-type">${p.type}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-desc">${p.desc}</div>
+        <div class="product-foot">
+          <div class="product-price">$${p.price} CAD</div>
+          <button class="btn-buy">Buy Now</button>
+        </div>
+      </div>
+    </div>`).join('');
+}
+
+checkAccess();
+</script>
+</body>
+</html>

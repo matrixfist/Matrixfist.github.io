@@ -3,273 +3,100 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Matrix Fist Store — Wear Your Rank</title>
-<meta name="description" content="Official Matrix Fist merchandise. Rank-exclusive streetwear, accessories, and collectibles. Every piece tied to wins you've actually earned.">
+<title>Matrix Fist Store — Official Merch</title>
+<meta name="description" content="Official Matrix Fist merchandise. General collection available to all. Rank merch unlocks as you earn your place in the ladder.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
-:root {
-  --black: #0a0a0a;
-  --white: #ffffff;
-  --cream: #f5f2ed;
-  --gold: #ffc800;
-  --red: #cc0000;
-  --ink: rgba(10,10,10,0.06);
-}
+:root{--black:#0a0a0a;--white:#fff;--cream:#f5f2ed;--gold:#ffc800;--mid:#e8e5e0;}
 *{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;}
 body{background:var(--cream);color:var(--black);font-family:"Barlow Condensed",sans-serif;overflow-x:hidden;}
 a{color:inherit;text-decoration:none;}
 
-/* ── NOISE TEXTURE OVERLAY ── */
-body::before{
-  content:'';position:fixed;inset:0;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
-  pointer-events:none;z-index:1000;opacity:.4;
-}
-
-/* ── NAV ── */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:200;
-  padding:12px 40px;display:flex;align-items:center;justify-content:space-between;
-  background:rgba(245,242,237,0.95);backdrop-filter:blur(12px);
-  border-bottom:2px solid var(--black);
-}
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:12px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,242,237,0.97);backdrop-filter:blur(12px);border-bottom:2px solid var(--black);}
 .nav-logo img{height:40px;width:auto;}
 .nav-links{display:flex;gap:24px;}
-.nav-links a{font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#777;transition:color .15s;}
+.nav-links a{font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#777;}
 .nav-links a:hover,.nav-links a.active{color:var(--black);}
-.nav-cta{background:var(--black);color:var(--white);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:9px 22px;border-radius:3px;border:2px solid var(--black);transition:all .15s;}
+.nav-cta{background:var(--black);color:var(--white);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:9px 22px;border-radius:3px;border:2px solid var(--black);}
 .nav-cta:hover{background:transparent;color:var(--black);}
 
-/* ── HERO ── */
-.hero{
-  margin-top:66px;
-  min-height:72vh;
-  display:grid;grid-template-columns:1fr 1fr;
-  border-bottom:4px solid var(--black);
-  overflow:hidden;
-}
-.hero-left{
-  padding:80px 60px;
-  border-right:4px solid var(--black);
-  display:flex;flex-direction:column;justify-content:center;
-  position:relative;
-}
-.hero-left::after{
-  content:'MERCH';
-  position:absolute;bottom:-30px;left:-10px;
-  font-family:"Bebas Neue",sans-serif;font-size:200px;
-  color:rgba(10,10,10,0.04);line-height:1;pointer-events:none;
-  white-space:nowrap;
-}
-.hero-eyebrow{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.3em;color:#aaa;text-transform:uppercase;margin-bottom:20px;}
-.hero-title{font-family:"Bebas Neue",sans-serif;font-size:clamp(60px,8vw,110px);line-height:.92;letter-spacing:.02em;margin-bottom:28px;}
-.hero-title em{color:var(--gold);font-style:normal;-webkit-text-stroke:2px var(--black);}
-.hero-sub{font-size:17px;color:#555;line-height:1.55;max-width:400px;margin-bottom:36px;}
-.hero-badges{display:flex;gap:12px;flex-wrap:wrap;}
-.badge{font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:700;letter-spacing:.15em;text-transform:uppercase;padding:6px 14px;border:1.5px solid var(--black);border-radius:2px;color:#555;}
-.hero-right{
-  background:var(--black);
-  display:flex;align-items:center;justify-content:center;
-  position:relative;overflow:hidden;
-  min-height:400px;
-}
-.hero-rank-showcase{
-  display:grid;grid-template-columns:1fr 1fr;gap:0;
-  width:100%;height:100%;
-}
-.rank-swatch{
-  display:flex;flex-direction:column;align-items:center;justify-content:center;
-  padding:24px 16px;
-  border:1px solid rgba(255,255,255,0.07);
-  transition:background .2s;cursor:pointer;
-  position:relative;overflow:hidden;
-}
-.rank-swatch:hover{background:rgba(255,255,255,0.06);}
-.rank-swatch img{width:56px;height:56px;object-fit:contain;margin-bottom:10px;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.5));}
-.rank-swatch-name{font-family:"JetBrains Mono",monospace;font-size:8px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,0.4);}
-.rank-swatch-wins{font-size:11px;color:rgba(255,255,255,0.2);margin-top:4px;}
+.hero{margin-top:66px;padding:72px 40px 60px;border-bottom:4px solid var(--black);position:relative;overflow:hidden;}
+.hero::before{content:'STORE';position:absolute;bottom:-40px;right:-20px;font-family:"Bebas Neue",sans-serif;font-size:280px;color:rgba(10,10,10,0.04);pointer-events:none;line-height:1;}
+.hero-eyebrow{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.28em;color:#aaa;text-transform:uppercase;margin-bottom:16px;}
+.hero-title{font-family:"Bebas Neue",sans-serif;font-size:clamp(56px,7vw,100px);line-height:.92;margin-bottom:20px;}
+.hero-title em{color:var(--gold);font-style:normal;}
+.hero-sub{font-size:17px;color:#555;max-width:560px;line-height:1.55;margin-bottom:32px;}
+.hero-split{display:grid;grid-template-columns:1fr 1fr;gap:16px;max-width:560px;}
+.bucket-pill{border:2px solid var(--black);border-radius:4px;padding:14px 20px;cursor:pointer;transition:all .15s;}
+.bucket-pill:hover,.bucket-pill.active{background:var(--black);color:var(--white);}
+.bucket-pill strong{display:block;font-family:"Bebas Neue",sans-serif;font-size:22px;margin-bottom:2px;}
+.bucket-pill span{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.1em;color:inherit;opacity:.6;text-transform:uppercase;}
 
-/* ── FILTER BAR ── */
-.filter-bar{
-  position:sticky;top:66px;z-index:100;
-  background:var(--cream);border-bottom:2px solid var(--black);
-  padding:0 40px;display:flex;align-items:center;gap:0;
-  overflow-x:auto;
-}
-.filter-btn{
-  font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;
-  padding:14px 22px;border:none;background:transparent;cursor:pointer;color:#888;
-  border-right:1px solid rgba(0,0,0,0.1);transition:all .15s;white-space:nowrap;
-}
-.filter-btn:hover,.filter-btn.active{color:var(--black);background:rgba(0,0,0,0.04);}
-.filter-btn.active{border-bottom:3px solid var(--black);}
+.section{padding:56px 40px;max-width:1280px;margin:0 auto;}
+.section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:36px;padding-bottom:16px;border-bottom:2px solid var(--black);}
+.section-head h2{font-family:"Bebas Neue",sans-serif;font-size:42px;line-height:1;}
+.section-label{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.2em;color:#aaa;text-transform:uppercase;}
 
-/* ── PRODUCTS ── */
-.products-section{padding:60px 40px;}
-.products-header{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:40px;}
-.products-header h2{font-family:"Bebas Neue",sans-serif;font-size:48px;line-height:1;}
-.products-count{font-family:"JetBrains Mono",monospace;font-size:11px;color:#aaa;letter-spacing:.1em;}
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(290px,1fr));gap:2px;margin-bottom:60px;}
+.product-card{background:var(--white);border:2px solid var(--black);display:flex;flex-direction:column;transition:transform .18s,box-shadow .18s;cursor:pointer;}
+.product-card:hover{transform:translate(-3px,-5px);box-shadow:5px 7px 0 var(--black);}
+.product-img{aspect-ratio:1;background:var(--cream);border-bottom:2px solid var(--black);display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;}
+.product-img img{width:70%;height:70%;object-fit:contain;transition:transform .22s;filter:drop-shadow(0 6px 18px rgba(0,0,0,0.12));}
+.product-card:hover .product-img img{transform:scale(1.06);}
+.tag{position:absolute;top:10px;right:10px;background:var(--black);color:var(--white);font-family:"JetBrains Mono",monospace;font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border-radius:2px;}
+.tag.general{background:#555;}
+.product-body{padding:16px 18px;flex:1;display:flex;flex-direction:column;}
+.product-type{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.18em;color:#aaa;text-transform:uppercase;margin-bottom:5px;}
+.product-name{font-family:"Bebas Neue",sans-serif;font-size:24px;letter-spacing:.03em;line-height:1;margin-bottom:8px;}
+.product-desc{font-size:13px;color:#666;line-height:1.4;flex:1;margin-bottom:14px;}
+.product-foot{display:flex;align-items:flex-end;justify-content:space-between;}
+.product-price{font-family:"Bebas Neue",sans-serif;font-size:26px;line-height:1;}
+.product-margin{font-family:"JetBrains Mono",monospace;font-size:9px;color:#22aa44;font-weight:700;margin-top:3px;}
+.btn-buy{background:var(--black);color:var(--white);border:2px solid var(--black);border-radius:3px;font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:9px 16px;cursor:pointer;transition:all .15s;}
+.btn-buy:hover{background:transparent;color:var(--black);}
 
-.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2px;}
+/* RANK LADDER SECTION */
+.rank-ladder{background:var(--black);color:var(--white);padding:60px 40px;}
+.rank-ladder h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(40px,5vw,72px);margin-bottom:8px;}
+.rank-ladder-sub{font-size:15px;color:rgba(255,255,255,0.5);margin-bottom:40px;max-width:560px;}
+.rank-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
+.rank-tile{border:1px solid rgba(255,255,255,0.08);padding:20px 16px;display:flex;flex-direction:column;align-items:center;gap:10px;cursor:pointer;transition:background .15s;position:relative;text-align:center;}
+.rank-tile:hover{background:rgba(255,255,255,0.05);}
+.rank-tile img{width:52px;height:52px;object-fit:contain;filter:drop-shadow(0 4px 12px rgba(0,0,0,0.5));}
+.rank-tile-name{font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,0.5);}
+.rank-tile-wins{font-size:12px;color:rgba(255,255,255,0.2);}
+.rank-tile .lock-icon{position:absolute;top:8px;right:8px;font-size:12px;opacity:.4;}
+.rank-tile.unlocked .lock-icon{display:none;}
+.rank-tile.unlocked{border-color:rgba(255,200,0,0.3);}
+.rank-tile-cta{font-family:"JetBrains Mono",monospace;font-size:8px;letter-spacing:.1em;color:var(--gold);text-transform:uppercase;margin-top:4px;}
 
-.product-card{
-  background:var(--white);
-  border:2px solid var(--black);
-  display:flex;flex-direction:column;
-  transition:transform .18s cubic-bezier(.2,.8,.2,1),box-shadow .18s;
-  position:relative;overflow:hidden;
-  cursor:pointer;
-}
-.product-card:hover{transform:translate(-4px,-6px);box-shadow:6px 8px 0 var(--black);}
-.product-card.featured{grid-column:span 2;grid-row:span 1;}
-
-.product-img-wrap{
-  aspect-ratio:1;
-  background:var(--cream);
-  display:flex;align-items:center;justify-content:center;
-  border-bottom:2px solid var(--black);
-  position:relative;overflow:hidden;
-}
-.product-img-wrap img{width:55%;height:55%;object-fit:contain;transition:transform .25s;filter:drop-shadow(0 8px 24px rgba(0,0,0,0.15));}
-.product-card:hover .product-img-wrap img{transform:scale(1.08) rotate(-2deg);}
-
-.product-type-tag{
-  position:absolute;top:12px;right:12px;
-  background:var(--black);color:var(--white);
-  font-family:"JetBrains Mono",monospace;font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;
-  padding:4px 10px;border-radius:2px;
-}
-.exclusive-tag{
-  position:absolute;top:12px;left:12px;
-  background:var(--gold);color:var(--black);
-  font-family:"JetBrains Mono",monospace;font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;
-  padding:4px 10px;border-radius:2px;
-}
-
-.product-info{padding:18px 20px;flex:1;display:flex;flex-direction:column;}
-.product-rank{font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:#aaa;margin-bottom:6px;}
-.product-name{font-family:"Bebas Neue",sans-serif;font-size:26px;letter-spacing:.04em;line-height:1;margin-bottom:6px;}
-.product-desc{font-size:13px;color:#666;line-height:1.4;flex:1;margin-bottom:16px;}
-.product-footer{display:flex;align-items:flex-end;justify-content:space-between;gap:8px;}
-.product-pricing{}
-.product-price{font-family:"Bebas Neue",sans-serif;font-size:28px;color:var(--black);line-height:1;}
-.product-margin{font-family:"JetBrains Mono",monospace;font-size:10px;color:#22aa44;font-weight:700;margin-top:2px;}
-.product-req{font-size:11px;color:#aaa;margin-top:3px;}
-.btn-store{
-  background:var(--black);color:var(--white);
-  border:2px solid var(--black);border-radius:3px;
-  font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
-  padding:10px 18px;cursor:pointer;transition:all .15s;white-space:nowrap;
-}
-.btn-store:hover{background:transparent;color:var(--black);}
-
-/* ── REVENUE TABLE ── */
-.revenue-section{background:var(--black);color:var(--white);padding:60px 40px;}
-.revenue-section h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(40px,5vw,72px);margin-bottom:8px;}
-.revenue-sub{font-size:15px;color:rgba(255,255,255,0.5);margin-bottom:40px;}
-.rev-table{width:100%;border-collapse:collapse;}
-.rev-table th{font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,0.3);text-align:left;padding:12px 16px;border-bottom:1px solid rgba(255,255,255,0.1);}
-.rev-table td{padding:14px 16px;font-size:15px;border-bottom:1px solid rgba(255,255,255,0.06);}
-.rev-table tr:hover td{background:rgba(255,255,255,0.03);}
-.rev-table .rank-cell{display:flex;align-items:center;gap:12px;}
-.rev-table .rank-cell img{width:32px;height:32px;object-fit:contain;}
-.rev-table .profit{color:#22aa44;font-family:"JetBrains Mono",monospace;font-weight:700;}
-.rev-table .price{font-family:"JetBrains Mono",monospace;}
-
-/* ── INTEGRATION SECTION ── */
-.integration-section{padding:60px 40px;border-top:4px solid var(--black);}
-.int-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;max-width:1100px;margin:0 auto;}
-.int-copy h2{font-family:"Bebas Neue",sans-serif;font-size:52px;line-height:.95;margin-bottom:16px;}
-.int-copy p{font-size:15px;color:#555;line-height:1.6;margin-bottom:24px;}
-.steps-list{list-style:none;display:flex;flex-direction:column;gap:0;}
-.step-item{
-  display:flex;align-items:flex-start;gap:16px;
-  padding:16px 0;border-bottom:1px solid rgba(0,0,0,0.08);
-}
-.step-item:last-child{border-bottom:none;}
-.step-num{
-  font-family:"Bebas Neue",sans-serif;font-size:32px;color:rgba(0,0,0,0.12);
-  min-width:36px;line-height:1;margin-top:-2px;
-}
-.step-content strong{display:block;font-size:16px;font-weight:800;letter-spacing:.02em;margin-bottom:4px;}
-.step-content span{font-size:13px;color:#666;line-height:1.4;}
-.int-panel{
-  background:var(--black);color:var(--white);
-  border-radius:4px;padding:36px;
-  display:flex;flex-direction:column;gap:20px;
-}
-.int-panel-title{font-family:"Bebas Neue",sans-serif;font-size:36px;}
-.int-panel-sub{font-size:13px;color:rgba(255,255,255,0.4);letter-spacing:.06em;text-transform:uppercase;font-family:"JetBrains Mono",monospace;}
-.int-features{display:flex;flex-direction:column;gap:10px;margin-top:4px;}
-.int-feature{display:flex;align-items:center;gap:12px;font-size:14px;color:rgba(255,255,255,0.7);}
-.int-feature::before{content:'→';color:var(--gold);font-weight:700;font-family:"JetBrains Mono",monospace;font-size:12px;}
-.int-cta{
-  display:inline-block;margin-top:8px;
-  background:var(--white);color:var(--black);
-  font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;
-  padding:14px 28px;border-radius:3px;text-align:center;
-  transition:all .15s;
-}
-.int-cta:hover{background:var(--gold);}
-
-/* ── NOTIFY STRIP ── */
-.notify-strip{
-  background:var(--gold);border-top:3px solid var(--black);border-bottom:3px solid var(--black);
-  padding:40px;text-align:center;
-}
-.notify-strip h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(36px,5vw,64px);line-height:.95;margin-bottom:8px;}
-.notify-strip p{font-size:15px;color:rgba(0,0,0,0.6);margin-bottom:24px;}
-.notify-form{display:flex;gap:0;max-width:440px;margin:0 auto;border:3px solid var(--black);border-radius:4px;overflow:hidden;}
+/* NOTIFY */
+.notify{background:var(--gold);border-top:3px solid var(--black);border-bottom:3px solid var(--black);padding:48px 40px;text-align:center;}
+.notify h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(36px,5vw,68px);line-height:.95;margin-bottom:8px;}
+.notify p{font-size:15px;color:rgba(0,0,0,0.6);margin-bottom:24px;}
+.notify-form{display:flex;max-width:420px;margin:0 auto;border:3px solid var(--black);border-radius:4px;overflow:hidden;}
 .notify-form input{flex:1;background:var(--white);border:none;padding:14px 18px;font-family:"Barlow Condensed",sans-serif;font-size:16px;color:var(--black);outline:none;}
-.notify-form button{background:var(--black);color:var(--white);border:none;padding:14px 24px;font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:background .15s;}
-.notify-form button:hover{background:#333;}
-.notify-success{margin-top:12px;font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.1em;color:var(--black);display:none;}
+.notify-form button{background:var(--black);color:var(--white);border:none;padding:14px 22px;font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;}
+.notify-form button:hover{background:#222;}
+#notifySuccess{margin-top:12px;font-family:"JetBrains Mono",monospace;font-size:12px;letter-spacing:.1em;color:var(--black);display:none;}
 
-/* ── FOOTER ── */
-footer{
-  background:var(--black);color:rgba(255,255,255,0.4);
-  padding:32px 40px;
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px;
-  font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;
-}
-footer a{color:rgba(255,255,255,0.3);}footer a:hover{color:rgba(255,255,255,0.8);}
+footer{background:var(--black);color:rgba(255,255,255,0.4);padding:28px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;}
+footer a{color:rgba(255,255,255,0.3);}footer a:hover{color:#fff;}
 .footer-links{display:flex;gap:20px;}
 
-/* ── MOBILE ── */
 @media(max-width:768px){
   nav{padding:12px 20px;}
-  .hero{grid-template-columns:1fr;}
-  .hero-right{display:none;}
-  .hero-left{padding:48px 24px;}
-  .filter-bar{padding:0 20px;}
-  .products-section{padding:40px 20px;}
-  .product-grid{grid-template-columns:1fr 1fr;gap:2px;}
-  .product-card.featured{grid-column:span 2;}
-  .revenue-section,.integration-section,.notify-strip{padding:40px 20px;}
-  .int-grid{grid-template-columns:1fr;}
-  footer{flex-direction:column;text-align:center;gap:12px;}
+  .hero,.section,.rank-ladder,.notify{padding-left:20px;padding-right:20px;}
+  .rank-grid{grid-template-columns:repeat(2,1fr);}
+  .hero-split{grid-template-columns:1fr;}
+  footer{flex-direction:column;text-align:center;}
 }
-@media(max-width:480px){
-  .product-grid{grid-template-columns:1fr;}
-  .product-card.featured{grid-column:span 1;}
-}
-
-/* ── ANIMATIONS ── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(20px);}to{opacity:1;transform:translateY(0);}}
-.product-card{animation:fadeUp .4s ease both;}
-.product-card:nth-child(1){animation-delay:.05s;}
-.product-card:nth-child(2){animation-delay:.1s;}
-.product-card:nth-child(3){animation-delay:.15s;}
-.product-card:nth-child(4){animation-delay:.2s;}
-.product-card:nth-child(5){animation-delay:.25s;}
-.product-card:nth-child(6){animation-delay:.3s;}
 </style>
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
   <a class="nav-logo" href="/"><img src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-BLACKLETTERS.png" alt="Matrix Fist"></a>
   <div class="nav-links">
@@ -282,107 +109,56 @@ footer a{color:rgba(255,255,255,0.3);}footer a:hover{color:rgba(255,255,255,0.8)
   <a class="nav-cta" href="/#app">Get the App</a>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow">Creative Dissonance — Official Merch 2026</div>
-    <h1 class="hero-title">Wear Your<br><em>Rank.</em></h1>
-    <p class="hero-sub">Every piece is rank-exclusive. Your wins are permanent in the app. The merch is proof you earned it — not just that you bought it.</p>
-    <div class="hero-badges">
-      <span class="badge">Ships Worldwide</span>
-      <span class="badge">Printful Fulfilled</span>
-      <span class="badge">White Label</span>
-      <span class="badge">2–5 Day Production</span>
+  <div class="hero-eyebrow">Creative Dissonance — Official Merch 2026</div>
+  <h1 class="hero-title">The Merch<br>You <em>Earned.</em></h1>
+  <p class="hero-sub">Two collections. General merch for everyone who knows the game. Rank merch for those who've proven themselves — unlocks with your rank code.</p>
+  <div class="hero-split">
+    <div class="bucket-pill active" onclick="filterBucket('all',this)">
+      <strong>All Products</strong>
+      <span>General + Initiate Rank</span>
     </div>
-  </div>
-  <div class="hero-right">
-    <div class="hero-rank-showcase" id="heroShowcase"></div>
+    <div class="bucket-pill" onclick="filterBucket('general',this)">
+      <strong>General Collection</strong>
+      <span>Available to everyone</span>
+    </div>
   </div>
 </section>
 
-<!-- FILTER BAR -->
-<div class="filter-bar">
-  <button class="filter-btn active" onclick="filterProducts('all',this)">All Products</button>
-  <button class="filter-btn" onclick="filterProducts('apparel',this)">Apparel</button>
-  <button class="filter-btn" onclick="filterProducts('accessories',this)">Accessories</button>
-  <button class="filter-btn" onclick="filterProducts('home',this)">Home &amp; Prints</button>
-  <button class="filter-btn" onclick="filterProducts('collectibles',this)">Collectibles</button>
+<!-- GENERAL MERCH -->
+<div class="section" id="generalSection">
+  <div class="section-head">
+    <h2>General Collection</h2>
+    <span class="section-label">Available to all</span>
+  </div>
+  <div class="product-grid" id="generalGrid"></div>
 </div>
 
-<!-- PRODUCTS -->
-<section class="products-section">
-  <div class="products-header">
-    <h2>The Collection</h2>
-    <span class="products-count" id="productCount">Loading...</span>
+<!-- INITIATE RANK MERCH -->
+<div class="section" id="rankSection">
+  <div class="section-head">
+    <h2>Initiate Rank Collection</h2>
+    <span class="section-label">Open to all — your first rank</span>
   </div>
-  <div class="product-grid" id="productGrid"></div>
-</section>
+  <div class="product-grid" id="rankGrid"></div>
+</div>
 
-<!-- REVENUE TABLE -->
-<section class="revenue-section">
-  <h2>Margin Breakdown</h2>
-  <p class="revenue-sub">Retail prices, Printful base costs, and your profit per sale — updated for 2026 rates.</p>
-  <table class="rev-table">
-    <thead>
-      <tr>
-        <th>Rank</th>
-        <th>Product</th>
-        <th>Base Cost</th>
-        <th>Retail Price</th>
-        <th>Your Profit</th>
-        <th>Margin</th>
-      </tr>
-    </thead>
-    <tbody id="revenueTable"></tbody>
-  </table>
-</section>
-
-<!-- INTEGRATION SECTION -->
-<section class="integration-section">
-  <div class="int-grid">
-    <div class="int-copy">
-      <p style="font-family:'JetBrains Mono',monospace;font-size:10px;letter-spacing:.24em;color:#aaa;text-transform:uppercase;margin-bottom:12px;">Drop Shipping Integration</p>
-      <h2>Powered by Printful.</h2>
-      <p>Your Printful account connects directly to this storefront. When a customer orders, Printful prints and ships under the Matrix Fist brand — you never touch inventory.</p>
-      <ul class="steps-list">
-        <li class="step-item"><span class="step-num">01</span><div class="step-content"><strong>Connect your Printful account</strong><span>Go to printful.com/dashboard → Stores → Add store → Manual order platform (for now) or WooCommerce</span></div></li>
-        <li class="step-item"><span class="step-num">02</span><div class="step-content"><strong>Upload rank icons to each product</strong><span>Use the 8 PNGs from your Supabase assets bucket as the primary design on each piece</span></div></li>
-        <li class="step-item"><span class="step-num">03</span><div class="step-content"><strong>Create product listings</strong><span>Start with the Bella+Canvas 3001 tee, Gildan hoodie, mug, and poster — highest margin items first</span></div></li>
-        <li class="step-item"><span class="step-num">04</span><div class="step-content"><strong>Set retail prices</strong><span>Use the margin table above as your guide. Target 40–55% margins on all items.</span></div></li>
-        <li class="step-item"><span class="step-num">05</span><div class="step-content"><strong>Update product links below</strong><span>Replace the "Pre-order" buttons with your actual Printful store product URLs</span></div></li>
-      </ul>
-    </div>
-    <div class="int-panel">
-      <div>
-        <div class="int-panel-sub">Recommended Integration</div>
-        <div class="int-panel-title">Printful</div>
-      </div>
-      <div class="int-features">
-        <div class="int-feature">No upfront costs — pay per order only</div>
-        <div class="int-feature">Ships to 200+ countries worldwide</div>
-        <div class="int-feature">2–5 day production turnaround</div>
-        <div class="int-feature">100% white-label — your brand, not Printful's</div>
-        <div class="int-feature">Custom neck labels &amp; branded pack-ins</div>
-        <div class="int-feature">DTG, embroidery, all-over-print options</div>
-        <div class="int-feature">Lost shipments covered by Printful</div>
-        <div class="int-feature">20% off sample orders</div>
-      </div>
-      <a class="int-cta" href="https://www.printful.com/dashboard" target="_blank" rel="noopener">
-        Open Printful Dashboard →
-      </a>
-    </div>
-  </div>
+<!-- RANK LADDER -->
+<section class="rank-ladder">
+  <h2>The Full Ladder</h2>
+  <p class="rank-ladder-sub">Each rank above Initiate unlocks exclusive merch. Reach your rank in the app — we'll send you a private link.</p>
+  <div class="rank-grid" id="rankLadder"></div>
 </section>
 
 <!-- NOTIFY -->
-<div class="notify-strip">
-  <h2>Store Goes Live Soon.</h2>
-  <p>We're uploading designs to Printful now. Drop your email to be first when orders open.</p>
+<div class="notify">
+  <h2>Stay in the Fight.</h2>
+  <p>New drops, rank unlocks, and limited editions. Never miss a release.</p>
   <form class="notify-form" onsubmit="handleNotify(event)">
     <input type="email" id="notifyEmail" placeholder="your@email.com" required>
     <button type="submit">Notify Me</button>
   </form>
-  <p class="notify-success" id="notifySuccess">✓ You're on the list.</p>
+  <p id="notifySuccess">✓ You're on the list.</p>
 </div>
 
 <footer>
@@ -398,193 +174,160 @@ footer a{color:rgba(255,255,255,0.3);}footer a:hover{color:rgba(255,255,255,0.8)
 
 <script>
 const BASE = 'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets';
+const ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFuZXF5YnZrc3ViZ3hiZmx3b2ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY2MjUwNzgsImV4cCI6MjA5MjIwMTA3OH0.0o89k7HN9hr4e-7NTKQ00eSLF-sVG71r1uQtmDuZe88';
+
+// ── Product data ──────────────────────────────────────────────
+const GENERAL_PRODUCTS = [
+  {
+    id:'poster',
+    name:'The Ranks Poster',
+    type:'Poster · 18×24"',
+    price:38,
+    base:11,
+    icon:'MF-GRANDMASTER.png',
+    tag:'General',
+    printfulUrl:'https://www.printful.com/ca/dashboard/sync?store=18124436',
+    lore:`The full hierarchy. Every rank from Initiate to Grand Master, rendered in ink on a single sheet. A battlefield map for those who understand what the numbers mean. Hang it. Study it. Earn your way up it.`,
+    desc:'All 8 Matrix Fist ranks on a single 18×24" poster. Matte finish. Ships flat or rolled. The complete ladder — displayed.',
+  },
+];
+
+const RANK_PRODUCTS = [
+  {
+    id:'snapback',
+    name:'Initiate Snapback',
+    type:'Trucker Hat',
+    price:42,
+    base:16,
+    icon:'MF-INITIATE.png',
+    tag:'Rank',
+    printfulUrl:'https://www.printful.com/ca/dashboard/sync?store=18124436',
+    lore:`The Initiate hat marks the beginning. You've downloaded the app, declared yourself a player, and stepped onto the ladder. The road ahead is long. This is how it starts — with a snap of the brim and a willingness to be tested.`,
+    desc:'Structured trucker snapback with embroidered Initiate rank icon. Adjustable snap closure. 4 colour variants.',
+  },
+  {
+    id:'tee',
+    name:'Initiate Tee',
+    type:'T-Shirt',
+    price:34,
+    base:12,
+    icon:'MF-INITIATE.png',
+    tag:'Rank',
+    printfulUrl:'https://www.printful.com/ca/dashboard/sync?store=18124436',
+    lore:`Every legend began here. The Initiate tee isn't a trophy — it's a declaration. It says you're in the game, you know what Matrix Fist is, and you're not afraid to be challenged on the street, in the gym, or at the park. The first step on a long ladder.`,
+    desc:'Premium ring-spun cotton unisex tee. Initiate rank icon on the chest. Soft, preshrunk, 6 variants.',
+  },
+  {
+    id:'mug',
+    name:'Initiate Mug',
+    type:'11oz Ceramic Mug',
+    price:22,
+    base:7,
+    icon:'MF-INITIATE.png',
+    tag:'Rank',
+    printfulUrl:'https://www.printful.com/ca/dashboard/sync?store=18124436',
+    lore:`Even fighters need fuel. The Initiate mug is for those who train in the morning and log wins in the afternoon. Your rank, in ceramic. Dishwasher-safe. Opponent-proof.`,
+    desc:'11oz white glossy ceramic mug. Full-colour Initiate rank icon on both sides. Dishwasher-safe.',
+  },
+  {
+    id:'hoodie',
+    name:'Initiate Hoodie',
+    type:'Pullover Hoodie',
+    price:55,
+    base:22,
+    icon:'MF-INITIATE.png',
+    tag:'Rank',
+    printfulUrl:'https://www.printful.com/ca/dashboard/sync?store=18124436',
+    lore:`The heaviest piece in the collection, for the most committed players. An Initiate doesn't know how far they'll go — but they know they're going. Heavyweight fleece. Embroidered rank. Proof that you started the climb.`,
+    desc:'Heavyweight 8oz pullover hoodie. Embroidered Initiate rank icon. Front pocket, ribbed cuffs. 6 colour variants.',
+  },
+  {
+    id:'sticker',
+    name:'Initiate Sticker',
+    type:'Die-Cut Vinyl Sticker',
+    price:18,
+    base:5,
+    icon:'MF-INITIATE.png',
+    tag:'Rank',
+    printfulUrl:'https://www.printful.com/ca/dashboard/sync?store=18124436',
+    lore:`Small. Permanent. Unmistakable. Slap your rank on anything that holds still long enough. Your laptop, your water bottle, your opponent's car (with permission). The Initiate sticker is the quietest flex — until someone recognises it.`,
+    desc:'Die-cut waterproof vinyl sticker. Initiate rank icon. UV-resistant. Multiple sizes. 3 variants.',
+  },
+];
 
 const RANKS = [
-  {id:1,name:'Initiate',    icon:'MF-INITIATE.png',    wins:'0+'},
-  {id:2,name:'Contender',   icon:'MF-CONTENDER.png',   wins:'10+'},
-  {id:3,name:'Fighter',     icon:'MF-FIGHTER.png',     wins:'50+'},
-  {id:4,name:'Warrior',     icon:'MF-WARRIOR.png',     wins:'150+'},
-  {id:5,name:'Pro',         icon:'MF-PRO.png',         wins:'300+'},
-  {id:6,name:'Elite',       icon:'MF-ELITE.png',       wins:'600+'},
-  {id:7,name:'Master',      icon:'MF-MASTER.png',      wins:'1,000+'},
-  {id:8,name:'Grand Master',icon:'MF-GRANDMASTER.png', wins:'2,500+'},
+  {id:1,name:'Initiate',   icon:'MF-INITIATE.png',   wins:'Any player', locked:false, slug:'initiate'},
+  {id:2,name:'Contender',  icon:'MF-CONTENDER.png',  wins:'10+ wins',   locked:true,  slug:'contender'},
+  {id:3,name:'Fighter',    icon:'MF-FIGHTER.png',    wins:'50+ wins',   locked:true,  slug:'fighter'},
+  {id:4,name:'Warrior',    icon:'MF-WARRIOR.png',    wins:'150+ wins',  locked:true,  slug:'warrior'},
+  {id:5,name:'Pro',        icon:'MF-PRO.png',        wins:'300+ wins',  locked:true,  slug:'pro'},
+  {id:6,name:'Elite',      icon:'MF-ELITE.png',      wins:'600+ wins',  locked:true,  slug:'elite'},
+  {id:7,name:'Master',     icon:'MF-MASTER.png',     wins:'1,000+ wins',locked:true,  slug:'master'},
+  {id:8,name:'Grand Master',icon:'MF-GRANDMASTER.png',wins:'2,500+ wins',locked:true, slug:'grand-master'},
 ];
 
-// Products — curated for maximum margin and brand fit
-// Research-backed selection: tees (30-50% margin), hoodies (35-50%), mugs (40-60%), posters (45-65%), patches (50-70%), phone cases (40-55%)
-const PRODUCTS = [
-  // ── FEATURED ──
-  {
-    id:'hoodie-all',name:'Rank Hoodie',category:'apparel',featured:true,
-    desc:'Pullover hoodie with your rank icon embroidered on the chest. Heavyweight 8oz fleece. Available all ranks.',
-    base:22,retail:54,icon:'MF-GRANDMASTER.png',rank:'All Ranks',exclusive:false,
-    type:'Hoodie',printfulProduct:'Unisex Heavy Blend Hoodie — Gildan 18500',link:'#'
-  },
-  {
-    id:'tee-grandmaster',name:'Grand Master Tee',category:'apparel',featured:false,
-    desc:'Bella+Canvas 3001 unisex tee. Your rank icon on the chest. Soft ring-spun cotton. Preshrunk.',
-    base:12,retail:32,icon:'MF-GRANDMASTER.png',rank:'Grand Master',exclusive:true,
-    type:'T-Shirt',printfulProduct:'Unisex Jersey Short Sleeve Tee — Bella+Canvas 3001',link:'#'
-  },
-  {
-    id:'mug-master',name:'Rank Mug',category:'home',featured:false,
-    desc:'11oz ceramic mug. Your rank icon on both sides. Dishwasher-safe. The only mug that proves you earned your morning.',
-    base:7,retail:22,icon:'MF-MASTER.png',rank:'All Ranks',exclusive:false,
-    type:'Mug',printfulProduct:'White Glossy Mug — 11oz',link:'#'
-  },
-  {
-    id:'poster-legend',name:'Rank Poster',category:'home',featured:false,
-    desc:'All 8 ranks displayed in a single print. Satin finish. 18×24". The full Matrix Fist ladder, framed on your wall.',
-    base:11,retail:38,icon:'MF-ELITE.png',rank:'All Ranks',exclusive:false,
-    type:'Poster',printfulProduct:'Enhanced Matte Paper Poster',link:'#'
-  },
-  {
-    id:'cap-warrior',name:'Rank Snapback',category:'accessories',featured:false,
-    desc:'5-panel structured snapback. Your rank icon embroidered on the front. Adjustable. Ships flat.',
-    base:16,retail:42,icon:'MF-WARRIOR.png',rank:'Warrior+',exclusive:false,
-    type:'Cap',printfulProduct:'Structured Twill Cap — Otto 83-1239',link:'#'
-  },
-  {
-    id:'tote-fighter',name:'Rank Tote',category:'accessories',featured:false,
-    desc:'Heavy canvas tote bag. Your rank icon screen-printed. 100% cotton, reinforced handles. 15L capacity.',
-    base:8,retail:26,icon:'MF-FIGHTER.png',rank:'All Ranks',exclusive:false,
-    type:'Tote',printfulProduct:'Natural canvas tote bag',link:'#'
-  },
-  {
-    id:'phone-elite',name:'Rank Phone Case',category:'accessories',featured:false,
-    desc:'Tough case with your rank icon. Compatible with iPhone and Samsung. Raised bezels protect screen.',
-    base:10,retail:32,icon:'MF-ELITE.png',rank:'Elite+',exclusive:false,
-    type:'Phone Case',printfulProduct:'Tough Phone Case',link:'#'
-  },
-  {
-    id:'sticker-set',name:'Rank Sticker Pack',category:'collectibles',featured:false,
-    desc:'Full set of all 8 rank icons as individual die-cut vinyl stickers. Weatherproof. Perfect for gear, laptops, and water bottles.',
-    base:5,retail:18,icon:'MF-CONTENDER.png',rank:'All Ranks',exclusive:false,
-    type:'Stickers',printfulProduct:'Kiss-cut sticker sheet',link:'#'
-  },
-  {
-    id:'hoodie-elite',name:'Elite Pullover',category:'apparel',featured:false,
-    desc:'Same heavyweight hoodie, Elite rank only. Crimson icon on black fleece. Ships with custom hangtag.',
-    base:22,retail:58,icon:'MF-ELITE.png',rank:'Elite+',exclusive:true,
-    type:'Hoodie',printfulProduct:'Unisex Heavy Blend Hoodie — Gildan 18500',link:'#'
-  },
-  {
-    id:'canvas-pro',name:'Canvas Print',category:'home',featured:false,
-    desc:'Gallery-wrap canvas. Your rank icon on 16×16" stretched canvas. Ships ready to hang. Pro rank and above.',
-    base:16,retail:54,icon:'MF-PRO.png',rank:'Pro+',exclusive:true,
-    type:'Canvas',printfulProduct:'Gallery Canvas Wraps',link:'#'
-  },
-];
-
-// Revenue table data
-const REVENUE_DATA = [
-  {rank:'Initiate',   icon:'MF-INITIATE.png',   product:'Tee + Mug Bundle', base:19, retail:48, margin:60},
-  {rank:'Contender',  icon:'MF-CONTENDER.png',  product:'Tee + Sticker Pack',base:17, retail:44, margin:61},
-  {rank:'Fighter',    icon:'MF-FIGHTER.png',    product:'Tee + Tote',       base:20, retail:52, margin:62},
-  {rank:'Warrior',    icon:'MF-WARRIOR.png',    product:'Hoodie',           base:22, retail:54, margin:59},
-  {rank:'Pro',        icon:'MF-PRO.png',        product:'Hoodie + Canvas',  base:38, retail:88, margin:57},
-  {rank:'Elite',      icon:'MF-ELITE.png',      product:'Elite Hoodie + Case',base:32, retail:80,margin:60},
-  {rank:'Master',     icon:'MF-MASTER.png',     product:'Master Bundle',    base:45, retail:110,margin:59},
-  {rank:'Grand Master',icon:'MF-GRANDMASTER.png',product:'GM Full Set',     base:58, retail:148,margin:61},
-];
-
-let currentFilter = 'all';
-
-function buildHeroShowcase() {
-  const el = document.getElementById('heroShowcase');
-  RANKS.slice(0,8).forEach(r => {
-    el.innerHTML += `
-      <div class="rank-swatch">
-        <img src="${BASE}/${r.icon}" alt="${r.name}" loading="lazy">
-        <div class="rank-swatch-name">${r.name}</div>
-        <div class="rank-swatch-wins">${r.wins} wins</div>
-      </div>`;
-  });
-}
-
-function buildProducts(filter) {
-  const grid = document.getElementById('productGrid');
-  const filtered = filter === 'all' ? PRODUCTS : PRODUCTS.filter(p => p.category === filter);
-  document.getElementById('productCount').textContent = filtered.length + ' products';
-  grid.innerHTML = '';
-  filtered.forEach((p,i) => {
-    const margin = Math.round(((p.retail - p.base) / p.retail) * 100);
-    const profit = p.retail - p.base;
-    const div = document.createElement('div');
-    div.className = 'product-card' + (p.featured ? ' featured' : '');
-    div.style.animationDelay = (i * 0.05) + 's';
-    div.innerHTML = `
-      <div class="product-img-wrap">
+function card(p) {
+  const margin = Math.round((p.price - p.base) / p.price * 100);
+  return `
+    <div class="product-card" onclick="window.open('${p.printfulUrl}','_blank')">
+      <div class="product-img">
         <img src="${BASE}/${p.icon}" alt="${p.name}" loading="lazy">
-        <div class="product-type-tag">${p.type}</div>
-        ${p.exclusive ? '<div class="exclusive-tag">Exclusive</div>' : ''}
+        <div class="tag ${p.tag === 'General' ? 'general' : ''}">${p.tag}</div>
       </div>
-      <div class="product-info">
-        <div class="product-rank">${p.rank}</div>
+      <div class="product-body">
+        <div class="product-type">${p.type}</div>
         <div class="product-name">${p.name}</div>
         <div class="product-desc">${p.desc}</div>
-        <div class="product-footer">
-          <div class="product-pricing">
-            <div class="product-price">$${p.retail}</div>
-            <div class="product-margin">~${margin}% margin ($${profit} profit)</div>
-            <div class="product-req">${p.printfulProduct}</div>
+        <div class="product-foot">
+          <div>
+            <div class="product-price">$${p.price} CAD</div>
+            <div class="product-margin">~${margin}% margin</div>
           </div>
-          <button class="btn-store" onclick="handleBuy('${p.name}','${p.link}')">Pre-order</button>
+          <button class="btn-buy">Buy Now</button>
         </div>
-      </div>`;
-    grid.appendChild(div);
-  });
+      </div>
+    </div>`;
 }
 
-function buildRevenueTable() {
-  const tbody = document.getElementById('revenueTable');
-  REVENUE_DATA.forEach(r => {
-    const profit = r.retail - r.base;
-    const pct = r.margin;
-    tbody.innerHTML += `
-      <tr>
-        <td><div class="rank-cell"><img src="${BASE}/${r.icon}" alt="${r.rank}">${r.rank}</div></td>
-        <td>${r.product}</td>
-        <td class="price">$${r.base}</td>
-        <td class="price">$${r.retail}</td>
-        <td class="profit">$${profit}</td>
-        <td class="profit">${pct}%</td>
-      </tr>`;
-  });
+function buildProducts() {
+  document.getElementById('generalGrid').innerHTML = GENERAL_PRODUCTS.map(card).join('');
+  document.getElementById('rankGrid').innerHTML = RANK_PRODUCTS.map(card).join('');
 }
 
-function filterProducts(cat, btn) {
-  currentFilter = cat;
-  document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
+function buildLadder() {
+  document.getElementById('rankLadder').innerHTML = RANKS.map(r => `
+    <div class="rank-tile ${r.locked ? '' : 'unlocked'}" onclick="${r.locked ? "window.location='/store/"+r.slug+"'" : "window.location='/store/initiate'"}">
+      <span class="lock-icon">${r.locked ? '🔒' : ''}</span>
+      <img src="${BASE}/${r.icon}" alt="${r.name}" loading="lazy">
+      <div class="rank-tile-name">${r.name}</div>
+      <div class="rank-tile-wins">${r.wins}</div>
+      <div class="rank-tile-cta">${r.locked ? 'Earn to unlock →' : 'Shop now →'}</div>
+    </div>`).join('');
+}
+
+function filterBucket(bucket, btn) {
+  document.querySelectorAll('.bucket-pill').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  buildProducts(cat);
-}
-
-function handleBuy(name, link) {
-  if (link && link !== '#') {
-    window.open(link, '_blank');
-  } else {
-    document.querySelector('.notify-strip').scrollIntoView({behavior:'smooth'});
-  }
+  const gs = document.getElementById('generalSection');
+  const rs = document.getElementById('rankSection');
+  if (bucket === 'general') { gs.style.display='block'; rs.style.display='none'; }
+  else { gs.style.display='block'; rs.style.display='block'; }
 }
 
 function handleNotify(e) {
   e.preventDefault();
   const email = document.getElementById('notifyEmail').value;
-  // TODO: POST to Supabase waitlist table
-  const ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFuZXF5YnZrc3ViZ3hiZmx3b2ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY2MjUwNzgsImV4cCI6MjA5MjIwMTA3OH0.0o89k7HN9hr4e-7NTKQ00eSLF-sVG71r1uQtmDuZe88';
   fetch('https://aneqybvksubgxbflwofb.supabase.co/rest/v1/store_waitlist', {
-    method: 'POST',
-    headers: {'apikey': ANON, 'Authorization': 'Bearer '+ANON, 'Content-Type': 'application/json'},
-    body: JSON.stringify({email, created_at: new Date().toISOString()})
-  }).catch(() => {});
+    method:'POST',
+    headers:{'apikey':ANON,'Authorization':'Bearer '+ANON,'Content-Type':'application/json'},
+    body: JSON.stringify({email})
+  }).catch(()=>{});
   document.getElementById('notifySuccess').style.display = 'block';
   document.getElementById('notifyEmail').value = '';
 }
 
-buildHeroShowcase();
-buildProducts('all');
-buildRevenueTable();
+buildProducts();
+buildLadder();
 </script>
 </body>
 </html>
