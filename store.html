@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matrix Fist — Store</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:#fff;color:#0a0a0a;font-family:"Barlow Condensed",sans-serif;}
+a{color:inherit;text-decoration:none;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:14px 40px;display:flex;align-items:center;justify-content:space-between;gap:20px;background:rgba(255,255,255,0.96);backdrop-filter:blur(8px);border-bottom:1px solid rgba(0,0,0,0.08);}
+.nav-logo img{height:40px;width:auto;}
+.nav-links{display:flex;gap:28px;}
+.nav-links a{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#888;}
+.nav-links a:hover{color:#000;}
+.nav-cta{background:#000;color:#fff;font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:8px 20px;border-radius:6px;white-space:nowrap;}
+.nav-cta:hover{background:#222;}
+
+/* HERO */
+.store-hero{margin-top:68px;padding:80px 40px 60px;text-align:center;border-bottom:4px solid #0a0a0a;position:relative;overflow:hidden;}
+.store-hero::before{content:'STORE';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);font-family:"Bebas Neue",sans-serif;font-size:clamp(120px,20vw,280px);color:rgba(0,0,0,0.04);white-space:nowrap;pointer-events:none;line-height:1;}
+.store-eyebrow{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.3em;color:#aaa;text-transform:uppercase;margin-bottom:16px;}
+.store-title{font-family:"Bebas Neue",sans-serif;font-size:clamp(52px,8vw,96px);line-height:.95;letter-spacing:.02em;color:#0a0a0a;margin-bottom:20px;}
+.store-sub{font-size:18px;color:#555;font-weight:500;max-width:540px;margin:0 auto;line-height:1.5;}
+
+/* RANK MERCH SECTION */
+.section{padding:60px 40px;max-width:1200px;margin:0 auto;}
+.section-label{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;letter-spacing:.24em;color:#aaa;text-transform:uppercase;margin-bottom:12px;}
+.section-title{font-family:"Bebas Neue",sans-serif;font-size:clamp(36px,5vw,60px);line-height:.95;color:#0a0a0a;margin-bottom:40px;}
+
+/* PRODUCT GRID */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:24px;}
+.product-card{border:2px solid #0a0a0a;border-radius:4px;overflow:hidden;transition:transform .15s,box-shadow .15s;cursor:pointer;}
+.product-card:hover{transform:translateY(-4px);box-shadow:6px 8px 0 #0a0a0a;}
+.product-img{aspect-ratio:1;background:#f0ede8;display:flex;align-items:center;justify-content:center;position:relative;overflow:hidden;}
+.product-img img{width:70%;height:70%;object-fit:contain;transition:transform .2s;}
+.product-card:hover .product-img img{transform:scale(1.05);}
+.rank-badge-pill{position:absolute;top:12px;left:12px;background:#0a0a0a;color:#fff;font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;padding:4px 10px;border-radius:2px;}
+.product-info{padding:16px 18px;border-top:2px solid #0a0a0a;}
+.product-name{font-family:"Bebas Neue",sans-serif;font-size:22px;letter-spacing:.04em;margin-bottom:4px;}
+.product-desc{font-size:13px;color:#666;line-height:1.4;margin-bottom:12px;}
+.product-footer{display:flex;align-items:center;justify-content:space-between;}
+.product-price{font-family:"JetBrains Mono",monospace;font-size:15px;font-weight:600;color:#0a0a0a;}
+.product-price-note{font-size:11px;color:#aaa;margin-top:2px;}
+.btn-add{background:#0a0a0a;color:#fff;border:none;font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:8px 16px;border-radius:4px;cursor:pointer;transition:background .12s;}
+.btn-add:hover{background:#333;}
+
+/* COMING SOON BANNER */
+.coming-soon{background:#0a0a0a;color:#fff;padding:60px 40px;text-align:center;margin-top:60px;}
+.cs-title{font-family:"Bebas Neue",sans-serif;font-size:clamp(42px,6vw,80px);line-height:.95;margin-bottom:16px;}
+.cs-sub{font-size:16px;color:rgba(255,255,255,0.6);max-width:480px;margin:0 auto 32px;}
+.email-form{display:flex;gap:0;max-width:420px;margin:0 auto;border:2px solid rgba(255,255,255,0.2);border-radius:6px;overflow:hidden;}
+.email-form input{flex:1;background:transparent;border:none;padding:14px 18px;font-family:"Barlow Condensed",sans-serif;font-size:16px;color:#fff;outline:none;}
+.email-form input::placeholder{color:rgba(255,255,255,0.4);}
+.email-form button{background:#fff;color:#0a0a0a;border:none;padding:14px 22px;font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;}
+.email-form button:hover{background:#f0ede8;}
+
+/* POD PARTNER SECTION */
+.partner-section{padding:60px 40px;border-top:1px solid #e8e5e0;border-bottom:1px solid #e8e5e0;}
+.partner-inner{max-width:900px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:60px;align-items:start;}
+.partner-text .eyebrow{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.24em;color:#aaa;text-transform:uppercase;margin-bottom:12px;}
+.partner-text h2{font-family:"Bebas Neue",sans-serif;font-size:40px;line-height:.95;margin-bottom:16px;}
+.partner-text p{font-size:15px;color:#555;line-height:1.6;margin-bottom:24px;}
+.partner-steps{list-style:none;display:flex;flex-direction:column;gap:12px;}
+.partner-steps li{display:flex;align-items:flex-start;gap:12px;font-size:15px;color:#333;}
+.step-num{font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:600;color:#aaa;min-width:20px;padding-top:2px;}
+.partner-badge{background:#f0ede8;border:2px solid #0a0a0a;border-radius:4px;padding:32px;display:flex;flex-direction:column;gap:16px;}
+.partner-badge-name{font-family:"Bebas Neue",sans-serif;font-size:36px;color:#0a0a0a;}
+.partner-badge-tag{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.2em;color:#888;text-transform:uppercase;}
+.partner-badge-features{display:flex;flex-direction:column;gap:8px;margin-top:8px;}
+.partner-badge-features span{font-size:13px;color:#444;display:flex;align-items:center;gap:8px;}
+.partner-badge-features span::before{content:'✓';font-weight:700;color:#0a0a0a;}
+.partner-cta{display:inline-flex;align-items:center;gap:8px;background:#0a0a0a;color:#fff;font-family:"Barlow Condensed",sans-serif;font-size:15px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;padding:12px 24px;border-radius:4px;margin-top:8px;transition:background .12s;}
+.partner-cta:hover{background:#333;}
+
+/* FOOTER */
+footer{background:#0a0a0a;color:rgba(255,255,255,0.5);padding:40px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+footer a{color:rgba(255,255,255,0.4);}
+footer a:hover{color:#fff;}
+
+@media(max-width:768px){
+  nav{padding:12px 20px;}
+  .store-hero,.section,.partner-section,.coming-soon{padding-left:20px;padding-right:20px;}
+  .partner-inner{grid-template-columns:1fr;}
+  footer{flex-direction:column;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/"><img src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-BLACKLETTERS.png" alt="Matrix Fist" style="height:40px;width:auto;"></a>
+  <div class="nav-links">
+    <a href="/legend">Legend</a>
+    <a href="/ranking">Rank</a>
+    <a href="/player-card">Rules</a>
+    <a href="/health">Health</a>
+  </div>
+  <a class="nav-cta" href="/#app">Get the App</a>
+</nav>
+
+<!-- HERO -->
+<section class="store-hero">
+  <div class="store-eyebrow">Creative Dissonance — 2026</div>
+  <h1 class="store-title">Wear Your Rank</h1>
+  <p class="store-sub">Official Matrix Fist merchandise. Every piece tied to a rank you've earned. No rank, no right to wear it.</p>
+</section>
+
+<!-- RANK MERCHANDISE -->
+<div class="section">
+  <div class="section-label">Rank Collection</div>
+  <h2 class="section-title">The Full Ladder</h2>
+
+  <div class="product-grid" id="productGrid">
+    <!-- Products injected by JS -->
+  </div>
+</div>
+
+<!-- COMING SOON / NOTIFY -->
+<div class="coming-soon">
+  <h2 class="cs-title">Store Launching Soon</h2>
+  <p class="cs-sub">Drop shipping through Printful — no inventory, ships worldwide. Be first to know when orders open.</p>
+  <form class="email-form" onsubmit="handleNotify(event)">
+    <input type="email" placeholder="your@email.com" id="notifyEmail" required>
+    <button type="submit">Notify Me</button>
+  </form>
+  <p id="notifyMsg" style="margin-top:16px;font-size:14px;color:rgba(255,255,255,0.5);display:none;">✓ You're on the list.</p>
+</div>
+
+<!-- POD PARTNER SECTION -->
+<section class="partner-section">
+  <div class="partner-inner">
+    <div class="partner-text">
+      <div class="eyebrow">Drop Shipping Partner</div>
+      <h2>Powered by Printful</h2>
+      <p>Every order printed and shipped on demand — no warehouse, no inventory risk. You earn a margin on every piece sold. Orders arrive in 2–5 days from production facilities in North America and Europe.</p>
+      <ul class="partner-steps">
+        <li><span class="step-num">01</span><span>Create a free Printful account at printful.com</span></li>
+        <li><span class="step-num">02</span><span>Connect to WooCommerce, Wix, or a standalone storefront</span></li>
+        <li><span class="step-num">03</span><span>Upload rank icon designs to each product (t-shirts, hoodies, patches, stickers)</span></li>
+        <li><span class="step-num">04</span><span>Set retail price — Printful handles printing, packing, and worldwide shipping</span></li>
+        <li><span class="step-num">05</span><span>Link store to matrixfist.com/store and promote through the app</span></li>
+      </ul>
+      <a class="partner-cta" href="https://www.printful.com" target="_blank" rel="noopener">Visit Printful →</a>
+    </div>
+    <div class="partner-badge">
+      <div>
+        <div class="partner-badge-tag">Recommended Partner</div>
+        <div class="partner-badge-name">Printful</div>
+      </div>
+      <div class="partner-badge-features">
+        <span>No upfront costs — pay per order</span>
+        <span>Ships to 200+ countries</span>
+        <span>2–5 day production turnaround</span>
+        <span>White-label packaging</span>
+        <span>Custom neck labels & pack-ins</span>
+        <span>Direct-to-garment + embroidery</span>
+        <span>Free mockup generator</span>
+        <span>WooCommerce + Wix integration</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Creative Dissonance · Matrix Fist</span>
+  <div style="display:flex;gap:24px;">
+    <a href="/">Home</a>
+    <a href="/legend">Legend</a>
+    <a href="/ranking">Rank</a>
+    <a href="/#app">Get the App</a>
+  </div>
+</footer>
+
+<script>
+const BASE = 'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets';
+
+const RANKS = [
+  {id:1, name:'Initiate',     icon:'MF-INITIATE.png',    req:'Any player',         price:'$28'},
+  {id:2, name:'Contender',    icon:'MF-CONTENDER.png',   req:'10+ confirmed wins', price:'$28'},
+  {id:3, name:'Fighter',      icon:'MF-FIGHTER.png',     req:'50+ confirmed wins', price:'$32'},
+  {id:4, name:'Warrior',      icon:'MF-WARRIOR.png',     req:'150+ confirmed wins',price:'$32'},
+  {id:5, name:'Pro',          icon:'MF-PRO.png',         req:'300+ confirmed wins',price:'$36'},
+  {id:6, name:'Elite',        icon:'MF-ELITE.png',       req:'600+ confirmed wins',price:'$36'},
+  {id:7, name:'Master',       icon:'MF-MASTER.png',      req:'1,000+ confirmed wins',price:'$40'},
+  {id:8, name:'Grand Master', icon:'MF-GRANDMASTER.png', req:'2,500+ confirmed wins',price:'$48'},
+];
+
+const grid = document.getElementById('productGrid');
+
+RANKS.forEach(rank => {
+  const card = document.createElement('div');
+  card.className = 'product-card';
+  card.innerHTML = `
+    <div class="product-img">
+      <img src="${BASE}/${rank.icon}" alt="${rank.name}" loading="lazy">
+      <div class="rank-badge-pill">${rank.name}</div>
+    </div>
+    <div class="product-info">
+      <div class="product-name">${rank.name} Tee</div>
+      <div class="product-desc">Rank-exclusive. Proof you've earned it. Ships worldwide via Printful.</div>
+      <div class="product-footer">
+        <div>
+          <div class="product-price">From ${rank.price}</div>
+          <div class="product-price-note">Req: ${rank.req}</div>
+        </div>
+        <button class="btn-add" onclick="handleAdd('${rank.name}')">Pre-order</button>
+      </div>
+    </div>
+  `;
+  grid.appendChild(card);
+});
+
+function handleAdd(name) {
+  alert('Store launching soon! Get notified below when ' + name + ' merch is available.');
+  document.querySelector('.coming-soon').scrollIntoView({behavior:'smooth'});
+}
+
+function handleNotify(e) {
+  e.preventDefault();
+  const email = document.getElementById('notifyEmail').value;
+  // TODO: connect to Supabase waitlist table
+  document.getElementById('notifyMsg').style.display = 'block';
+  document.getElementById('notifyEmail').value = '';
+  console.log('Notify:', email);
+}
+</script>
+
+</body>
+</html>
