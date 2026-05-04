@@ -288,7 +288,16 @@ const sb = supabase.createClient(
 <script>
 
 const COUNTRY_FLAGS = {"Afghanistan": "🇦🇫", "Albania": "🇦🇱", "Algeria": "🇩🇿", "Argentina": "🇦🇷", "Australia": "🇦🇺", "Austria": "🇦🇹", "Bangladesh": "🇧🇩", "Belgium": "🇧🇪", "Bolivia": "🇧🇴", "Brazil": "🇧🇷", "Cambodia": "🇰🇭", "Cameroon": "🇨🇲", "Canada": "🇨🇦", "Chile": "🇨🇱", "China": "🇨🇳", "Colombia": "🇨🇴", "Congo": "🇨🇬", "Croatia": "🇭🇷", "Cuba": "🇨🇺", "Czech Republic": "🇨🇿", "Denmark": "🇩🇰", "Ecuador": "🇪🇨", "Egypt": "🇪🇬", "Ethiopia": "🇪🇹", "Finland": "🇫🇮", "France": "🇫🇷", "Germany": "🇩🇪", "Ghana": "🇬🇭", "Greece": "🇬🇷", "Guatemala": "🇬🇹", "Haiti": "🇭🇹", "Honduras": "🇭🇳", "Hungary": "🇭🇺", "India": "🇮🇳", "Indonesia": "🇮🇩", "Iran": "🇮🇷", "Iraq": "🇮🇶", "Ireland": "🇮🇪", "Israel": "🇮🇱", "Italy": "🇮🇹", "Jamaica": "🇯🇲", "Japan": "🇯🇵", "Jordan": "🇯🇴", "Kazakhstan": "🇰🇿", "Kenya": "🇰🇪", "Lebanon": "🇱🇧", "Malaysia": "🇲🇾", "Mexico": "🇲🇽", "Morocco": "🇲🇦", "Mozambique": "🇲🇿", "Netherlands": "🇳🇱", "New Zealand": "🇳🇿", "Nicaragua": "🇳🇮", "Nigeria": "🇳🇬", "Norway": "🇳🇴", "Pakistan": "🇵🇰", "Peru": "🇵🇪", "Philippines": "🇵🇭", "Poland": "🇵🇱", "Portugal": "🇵🇹", "Romania": "🇷🇴", "Russia": "🇷🇺", "Saudi Arabia": "🇸🇦", "Senegal": "🇸🇳", "Serbia": "🇷🇸", "Singapore": "🇸🇬", "Somalia": "🇸🇴", "South Africa": "🇿🇦", "South Korea": "🇰🇷", "Spain": "🇪🇸", "Sri Lanka": "🇱🇰", "Sudan": "🇸🇩", "Sweden": "🇸🇪", "Switzerland": "🇨🇭", "Syria": "🇸🇾", "Taiwan": "🇹🇼", "Tanzania": "🇹🇿", "Thailand": "🇹🇭", "Trinidad and Tobago": "🇹🇹", "Tunisia": "🇹🇳", "Turkey": "🇹🇷", "Uganda": "🇺🇬", "Ukraine": "🇺🇦", "United Kingdom": "🇬🇧", "United States": "🇺🇸", "Uruguay": "🇺🇾", "Venezuela": "🇻🇪", "Vietnam": "🇻🇳", "Yemen": "🇾🇪", "Zimbabwe": "🇿🇼"};
-const RANK_DATA = {"1": {"name": "Initiate", "emoji": "\u2b1c", "color": "#888888", "next_wins": 10}, "2": {"name": "Contender", "emoji": "\ud83d\udd35", "color": "#1A50CC", "next_wins": 50}, "3": {"name": "Fighter", "emoji": "\ud83d\udfe2", "color": "#22AA44", "next_wins": 150}, "4": {"name": "Warrior", "emoji": "\ud83d\udfe3", "color": "#9B30CC", "next_wins": 300}, "5": {"name": "Pro", "emoji": "\ud83d\udfe4", "color": "#AA6600", "next_wins": 600}, "6": {"name": "Elite", "emoji": "\ud83d\udd34", "color": "#CC0000", "next_wins": 1000}, "7": {"name": "Master", "emoji": "\u2b50", "color": "#FFC800", "next_wins": 2500}, "8": {"name": "Grand Master", "emoji": "\ud83d\udc51", "color": "#000000", "next_wins": null}};
+const RANK_DATA = {
+  "1": {"name":"Initiate",    "emoji":"⬜", "color":"#888888", "next_wins":10,   "icon":"https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-INITIATE.png"},
+  "2": {"name":"Contender",   "emoji":"🔵", "color":"#1A50CC", "next_wins":50,   "icon":"https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-CONTENDER.png"},
+  "3": {"name":"Fighter",     "emoji":"🟢", "color":"#22AA44", "next_wins":150,  "icon":"https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-FIGHTER.png"},
+  "4": {"name":"Warrior",     "emoji":"🟣", "color":"#9B30CC", "next_wins":300,  "icon":"https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-WARRIOR.png"},
+  "5": {"name":"Pro",         "emoji":"🟤", "color":"#AA6600", "next_wins":600,  "icon":"https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-PRO.png"},
+  "6": {"name":"Elite",       "emoji":"🔴", "color":"#CC0000", "next_wins":1000, "icon":"https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-ELITE.png"},
+  "7": {"name":"Master",      "emoji":"⭐", "color":"#FFC800", "next_wins":2500, "icon":"https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-MASTER.png"},
+  "8": {"name":"Grand Master","emoji":"👑", "color":"#FF8C00", "next_wins":null, "icon":"https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-GRANDMASTER.png"}
+};
 
 function renderTradeCard(p, photoSrc, arena, rival, cardUrl) {
   const rank = p.rank_id || 1;
@@ -329,7 +338,7 @@ function renderTradeCard(p, photoSrc, arena, rival, cardUrl) {
       <div class="tc-float-flag">${flag}</div>
       <div class="tc-float-logo"><img src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-BLACKLETTERS.png" alt="Matrix Fist" style="height:28px;width:auto;filter:invert(1) brightness(2);opacity:0.7;"></div>
       <div class="tc-float-rank">
-        <span class="tc-float-rank-emoji">${rd.emoji}</span>
+        ${rd.icon ? `<img src="${rd.icon}" style="width:40px;height:40px;object-fit:contain;display:block;">` : `<span class="tc-float-rank-emoji">${rd.emoji}</span>`}
         <span class="tc-float-rank-name">${rd.name}</span>
       </div>
       <div class="tc-hero">
