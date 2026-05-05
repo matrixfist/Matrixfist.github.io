@@ -7,7 +7,7 @@
 <meta name="description" content="Matrix Fist is a competitive hand game with a global ranking system. Play anyone, anywhere. Every win is verified. Every record is permanent.">
 <meta property="og:title" content="Matrix Fist — Anyone Can Play. Not Everyone Can Win.">
 <meta property="og:description" content="A competitive hand game with a global ranking system. Earn your rank. Prove it.">
-<meta property="og:image" content="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-BLACKLETTERS.png">
+<meta property="og:image" content="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-BLACKLETTER.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -165,7 +165,7 @@ p{font-size:clamp(14px,1.8vw,17px);font-weight:500;color:#555;line-height:1.72;}
 .gm-strip{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:14px;margin-top:44px;}
 .gm-mini{border-radius:14px;overflow:hidden;display:block;transition:transform .2s;}
 .gm-mini:hover{transform:translateY(-3px);}
-.gm-mini-img-wrap{position:relative;aspect-ratio:3/4;overflow:hidden;background:#111;}
+.gm-mini-img-wrap{position:relative;aspect-ratio:3/4;overflow:hidden;background:#111;min-height:160px;}
 .gm-mini-img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .4s;}
 .gm-mini:hover .gm-mini-img{transform:scale(1.04);}
 .gm-mini-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(0,0,0,0) 30%,rgba(0,0,0,.82));}
@@ -283,13 +283,13 @@ footer{
 
 <!-- FROZEN WORDMARK BACKDROP -->
 <img class="wordmark-backdrop" 
-  src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-BLACKLETTERS.png"
+  src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-BLACKLETTER.png"
   alt="" aria-hidden="true">
 
 <!-- NAV -->
 <nav>
   <a class="nav-logo" href="/">
-    <img src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-BLACKLETTERS.png"
+    <img src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-BLACKLETTER.png"
          alt="Matrix Fist" style="height:60px;width:auto;">
   </a>
   <div class="nav-links">
@@ -395,7 +395,7 @@ footer{
   <div class="gm-strip">
     <a class="gm-mini" href="/legend">
       <div class="gm-mini-img-wrap">
-        <img class="gm-mini-img" src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars/gm-soraya.jpg" alt="Soraya al-Zafar" onerror="this.parentElement.style.background='#1a1a1a'">
+        <img class="gm-mini-img" src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars/gm-soraya.jpg" onerror="this.style.display='none';this.parentElement.style.background='#1a0a00'" alt="Soraya al-Zafar" onerror="this.parentElement.style.background='#1a1a1a'">
         <div class="gm-mini-overlay"></div>
         <div class="gm-mini-info">
           <div class="gm-mini-rank">#1 · Grand Master</div>
@@ -407,7 +407,7 @@ footer{
     </a>
     <a class="gm-mini" href="/legend">
       <div class="gm-mini-img-wrap">
-        <img class="gm-mini-img" src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars/gm-giriama.jpg" alt="Giriama Kenga" onerror="this.parentElement.style.background='#1a1a1a'">
+        <img class="gm-mini-img" src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars/gm-giriama.jpg" onerror="this.style.display='none';this.parentElement.style.background='#001a0a'" alt="Giriama Kenga" onerror="this.parentElement.style.background='#1a1a1a'">
         <div class="gm-mini-overlay"></div>
         <div class="gm-mini-info">
           <div class="gm-mini-rank">#2 · Grand Master</div>
@@ -419,7 +419,7 @@ footer{
     </a>
     <a class="gm-mini" href="/legend">
       <div class="gm-mini-img-wrap">
-        <img class="gm-mini-img" src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars/gm-kofi.jpg" alt="Kofi Diabaté" onerror="this.parentElement.style.background='#1a1a1a'">
+        <img class="gm-mini-img" src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars/gm-kofi.jpg" onerror="this.style.display='none';this.parentElement.style.background='#0a001a'" alt="Kofi Diabaté" onerror="this.parentElement.style.background='#1a1a1a'">
         <div class="gm-mini-overlay"></div>
         <div class="gm-mini-info">
           <div class="gm-mini-rank">#3 · Grand Master</div>
@@ -431,7 +431,7 @@ footer{
     </a>
     <a class="gm-mini" href="/legend">
       <div class="gm-mini-img-wrap">
-        <img class="gm-mini-img" src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars/gm-velu.jpg" alt="Velu Nair" onerror="this.parentElement.style.background='#1a1a1a'">
+        <img class="gm-mini-img" src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars/gm-velu.jpg" onerror="this.style.display='none';this.parentElement.style.background='#1a0a0a'" alt="Velu Nair" onerror="this.parentElement.style.background='#1a1a1a'">
         <div class="gm-mini-overlay"></div>
         <div class="gm-mini-info">
           <div class="gm-mini-rank">#4 · Grand Master</div>
@@ -443,7 +443,7 @@ footer{
     </a>
     <a class="gm-mini" href="/legend">
       <div class="gm-mini-img-wrap">
-        <img class="gm-mini-img" src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars/gm-littlebigben.jpg" alt="Little Big Ben" onerror="this.parentElement.style.background='#1a1a1a'">
+        <img class="gm-mini-img" src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars/gm-littlebigben.jpg" onerror="this.style.display='none';this.parentElement.style.background='#0a0a1a'" alt="Little Big Ben" onerror="this.parentElement.style.background='#1a1a1a'">
         <div class="gm-mini-overlay"></div>
         <div class="gm-mini-info">
           <div class="gm-mini-rank">#5 · Grand Master</div>
@@ -455,7 +455,7 @@ footer{
     </a>
     <a class="gm-mini" href="/legend">
       <div class="gm-mini-img-wrap">
-        <img class="gm-mini-img" src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars/gm-hanako.jpg" alt="Hanako Mori" onerror="this.parentElement.style.background='#1a1a1a'">
+        <img class="gm-mini-img" src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars/gm-hanako.jpg" onerror="this.style.display='none';this.parentElement.style.background='#1a1a00'" alt="Hanako Mori" onerror="this.parentElement.style.background='#1a1a1a'">
         <div class="gm-mini-overlay"></div>
         <div class="gm-mini-info">
           <div class="gm-mini-rank">#6 · Grand Master</div>
@@ -467,7 +467,7 @@ footer{
     </a>
     <a class="gm-mini" href="/legend">
       <div class="gm-mini-img-wrap">
-        <img class="gm-mini-img" src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars/gm-marcus.jpg" alt="Marcus Cole" onerror="this.parentElement.style.background='#1a1a1a'">
+        <img class="gm-mini-img" src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars/gm-marcus.jpg" onerror="this.style.display='none';this.parentElement.style.background='#001a1a'" alt="Marcus Cole" onerror="this.parentElement.style.background='#1a1a1a'">
         <div class="gm-mini-overlay"></div>
         <div class="gm-mini-info">
           <div class="gm-mini-rank">#7 · Grand Master</div>
