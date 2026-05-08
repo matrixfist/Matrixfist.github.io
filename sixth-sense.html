@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matrix Fist — Awaken Your 6th Sense</title>
+<meta name="description" content="Matrix Fist is more than a hand game. It's 6th sense training. Discover the science, the traditions, and how every match builds something extraordinary in your nervous system.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:ital,wght@0,400;0,600;0,700;0,800;0,900;1,700&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --black:#0a0a0a;--white:#fff;--cream:#f5f2ed;
+  --gold:#ffc800;--electric:#00e5ff;--purple:#9b30cc;
+  --mid:#e8e5e0;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:"Barlow Condensed",sans-serif;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+img{display:block;max-width:100%;}
+
+/* ── NAV ── */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:12px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(10,10,10,.97);backdrop-filter:blur(12px);border-bottom:1px solid rgba(255,255,255,.08);}
+.nav-logo img{height:48px;width:auto;}
+.nav-links{display:flex;gap:24px;}
+.nav-links a{font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.4);transition:color .15s;}
+.nav-links a:hover,.nav-links a.active{color:var(--gold);}
+.nav-cta{background:var(--gold);color:var(--black);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:9px 20px;border-radius:3px;}
+.nav-cta:hover{background:#e6b400;}
+@media(max-width:768px){nav{padding:10px 16px;}.nav-logo img{height:38px;}.nav-links{display:none;}}
+
+/* ── HERO ── */
+.hero{
+  min-height:100vh;display:flex;flex-direction:column;
+  align-items:center;justify-content:center;
+  padding:100px 40px 80px;text-align:center;
+  position:relative;overflow:hidden;
+}
+.hero-grid-bg{
+  position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(255,200,0,.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,200,0,.04) 1px, transparent 1px);
+  background-size:60px 60px;
+  animation:gridPulse 8s ease-in-out infinite;
+}
+@keyframes gridPulse{0%,100%{opacity:.4;}50%{opacity:.8;}}
+.hero-glow{
+  position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+  width:600px;height:600px;border-radius:50%;
+  background:radial-gradient(circle, rgba(255,200,0,.12) 0%, transparent 70%);
+  pointer-events:none;animation:glowPulse 4s ease-in-out infinite;
+}
+@keyframes glowPulse{0%,100%{transform:translate(-50%,-50%) scale(1);}50%{transform:translate(-50%,-50%) scale(1.15);}}
+.hero-eyebrow{
+  font-family:"JetBrains Mono",monospace;font-size:11px;font-weight:700;
+  letter-spacing:.3em;color:var(--gold);text-transform:uppercase;
+  margin-bottom:20px;position:relative;z-index:1;
+}
+.hero-title{
+  font-family:"Bebas Neue",sans-serif;
+  font-size:clamp(64px,11vw,140px);line-height:.88;
+  color:var(--white);margin-bottom:8px;position:relative;z-index:1;
+  text-shadow:0 0 60px rgba(255,200,0,.3);
+}
+.hero-title .gold{color:var(--gold);}
+.hero-sub-big{
+  font-family:"Bebas Neue",sans-serif;
+  font-size:clamp(28px,4vw,48px);color:rgba(255,255,255,.35);
+  letter-spacing:.04em;margin-bottom:32px;position:relative;z-index:1;
+}
+.hero-body{
+  font-size:clamp(16px,2vw,20px);color:rgba(255,255,255,.6);
+  max-width:640px;line-height:1.65;margin-bottom:40px;
+  position:relative;z-index:1;font-weight:600;
+}
+.hero-body em{color:var(--gold);font-style:normal;font-weight:800;}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;position:relative;z-index:1;}
+.btn{display:inline-flex;align-items:center;gap:8px;font-family:"Barlow Condensed",sans-serif;font-size:16px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:14px 32px;border-radius:4px;transition:all .18s;}
+.btn-gold{background:var(--gold);color:var(--black);}
+.btn-gold:hover{background:#e6b400;transform:translateY(-2px);}
+.btn-outline{background:transparent;color:var(--white);border:2px solid rgba(255,255,255,.3);}
+.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+.hero-scroll{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.2em;color:rgba(255,255,255,.3);text-transform:uppercase;animation:bounce 2s infinite;}
+@keyframes bounce{0%,100%{transform:translateX(-50%) translateY(0);}50%{transform:translateX(-50%) translateY(6px);}}
+
+/* ── STAT STRIP ── */
+.stat-strip{background:var(--gold);padding:20px 40px;display:flex;justify-content:center;gap:60px;flex-wrap:wrap;border-top:3px solid var(--black);border-bottom:3px solid var(--black);}
+.stat-item{text-align:center;}
+.stat-n{font-family:"Bebas Neue",sans-serif;font-size:36px;color:var(--black);line-height:1;}
+.stat-l{font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:700;letter-spacing:.12em;color:rgba(0,0,0,.6);text-transform:uppercase;margin-top:2px;}
+
+/* ── SECTION SHARED ── */
+.section{padding:80px 40px;position:relative;z-index:1;}
+.section-inner{max-width:1100px;margin:0 auto;}
+.section-eyebrow{font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:700;letter-spacing:.28em;color:var(--gold);text-transform:uppercase;margin-bottom:14px;}
+.section-title{font-family:"Bebas Neue",sans-serif;font-size:clamp(44px,6vw,80px);line-height:.92;color:var(--white);margin-bottom:16px;}
+.section-sub{font-size:clamp(15px,1.8vw,19px);color:rgba(255,255,255,.55);line-height:1.65;max-width:680px;font-weight:600;}
+@media(max-width:768px){.section{padding:56px 20px;}.stat-strip{gap:30px;padding:16px 20px;}}
+
+/* ── WHAT IS THE 6TH SENSE ── */
+.what-section{background:var(--black);border-top:1px solid rgba(255,255,255,.06);}
+.sense-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:2px;margin-top:48px;}
+.sense-card{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);padding:28px 24px;transition:all .2s;}
+.sense-card:hover{background:rgba(255,200,0,.05);border-color:rgba(255,200,0,.25);}
+.sense-card-icon{font-size:40px;margin-bottom:14px;}
+.sense-card-title{font-family:"Bebas Neue",sans-serif;font-size:26px;color:var(--gold);letter-spacing:.04em;margin-bottom:8px;}
+.sense-card-body{font-size:14px;color:rgba(255,255,255,.55);line-height:1.6;font-weight:500;}
+
+/* ── NERVE SCIENCE ── */
+.nerve-section{background:rgba(255,255,255,.015);border-top:1px solid rgba(255,255,255,.06);}
+.nerve-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;margin-top:48px;}
+.nerve-visual{position:relative;display:flex;align-items:center;justify-content:center;}
+.hand-diagram{width:min(340px,90%);aspect-ratio:1;border-radius:50%;background:radial-gradient(circle,rgba(255,200,0,.15) 0%,rgba(255,200,0,.05) 50%,transparent 70%);display:flex;align-items:center;justify-content:center;border:2px solid rgba(255,200,0,.2);position:relative;}
+.hand-diagram-inner{font-size:100px;filter:drop-shadow(0 0 30px rgba(255,200,0,.5));animation:handPulse 3s ease-in-out infinite;}
+@keyframes handPulse{0%,100%{filter:drop-shadow(0 0 20px rgba(255,200,0,.4));}50%{filter:drop-shadow(0 0 50px rgba(255,200,0,.8));}}
+.nerve-dot{position:absolute;width:12px;height:12px;border-radius:50%;background:var(--gold);animation:dotPulse 2s ease-in-out infinite;}
+.nerve-dot:nth-child(2){top:15%;left:50%;transform:translateX(-50%);animation-delay:.3s;}
+.nerve-dot:nth-child(3){top:30%;right:12%;animation-delay:.6s;}
+.nerve-dot:nth-child(4){top:30%;left:12%;animation-delay:.9s;}
+.nerve-dot:nth-child(5){bottom:25%;right:18%;animation-delay:1.2s;}
+.nerve-dot:nth-child(6){bottom:25%;left:18%;animation-delay:1.5s;}
+@keyframes dotPulse{0%,100%{transform:scale(1);opacity:.7;}50%{transform:scale(1.8);opacity:1;}}
+.nerve-content{}
+.nerve-stat{background:rgba(255,200,0,.08);border:1px solid rgba(255,200,0,.2);border-radius:4px;padding:16px 20px;margin-bottom:12px;}
+.nerve-stat-n{font-family:"Bebas Neue",sans-serif;font-size:42px;color:var(--gold);line-height:1;}
+.nerve-stat-l{font-family:"JetBrains Mono",monospace;font-size:10px;color:rgba(255,255,255,.4);letter-spacing:.1em;text-transform:uppercase;margin-top:4px;}
+.nerve-text{font-size:15px;color:rgba(255,255,255,.6);line-height:1.65;margin-top:20px;font-weight:500;}
+@media(max-width:768px){.nerve-grid{grid-template-columns:1fr;}.hand-diagram{width:240px;}}
+
+/* ── RECEPTOR TYPES ── */
+.receptor-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:40px;}
+.receptor-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.07);border-radius:4px;padding:20px 16px;text-align:center;}
+.receptor-card-name{font-family:"Bebas Neue",sans-serif;font-size:18px;color:var(--gold);margin-bottom:4px;letter-spacing:.04em;}
+.receptor-card-freq{font-family:"JetBrains Mono",monospace;font-size:9px;color:rgba(255,200,0,.5);letter-spacing:.1em;text-transform:uppercase;margin-bottom:8px;}
+.receptor-card-role{font-size:12px;color:rgba(255,255,255,.45);line-height:1.5;}
+@media(max-width:768px){.receptor-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:480px){.receptor-grid{grid-template-columns:1fr;}}
+
+/* ── VS TABLE ── */
+.vs-section{background:rgba(0,0,0,.3);border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);}
+.vs-table-wrap{margin-top:44px;overflow-x:auto;}
+.vs-table{width:100%;border-collapse:collapse;min-width:600px;}
+.vs-table th{font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:14px 16px;border-bottom:2px solid rgba(255,255,255,.1);text-align:left;color:rgba(255,255,255,.4);}
+.vs-table th.mf-col{color:var(--gold);}
+.vs-table td{padding:13px 16px;font-size:15px;border-bottom:1px solid rgba(255,255,255,.05);color:rgba(255,255,255,.55);}
+.vs-table td:first-child{font-weight:700;color:rgba(255,255,255,.8);font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.06em;}
+.vs-table td.mf-col{color:var(--white);font-weight:700;}
+.vs-table tr:hover td{background:rgba(255,200,0,.03);}
+.vs-table .check{color:#22aa44;font-weight:700;}
+.vs-table .partial{color:#aa6600;}
+.vs-table .none{color:rgba(255,255,255,.2);}
+
+/* ── WHAT HAPPENS DURING A MATCH ── */
+.match-science{background:var(--black);border-top:1px solid rgba(255,255,255,.06);}
+.timeline{display:flex;flex-direction:column;gap:0;margin-top:44px;}
+.timeline-item{display:grid;grid-template-columns:80px 1fr;gap:0;border-top:1px solid rgba(255,255,255,.06);}
+.timeline-item:last-child{border-bottom:1px solid rgba(255,255,255,.06);}
+.timeline-ms{background:rgba(255,200,0,.08);border-right:1px solid rgba(255,200,0,.15);padding:20px 16px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;}
+.timeline-ms .n{font-family:"Bebas Neue",sans-serif;font-size:28px;color:var(--gold);line-height:1;}
+.timeline-ms .u{font-family:"JetBrains Mono",monospace;font-size:8px;color:rgba(255,200,0,.4);letter-spacing:.1em;text-transform:uppercase;}
+.timeline-body{padding:20px 24px;}
+.timeline-title{font-family:"Bebas Neue",sans-serif;font-size:22px;color:var(--white);letter-spacing:.04em;margin-bottom:4px;}
+.timeline-text{font-size:13px;color:rgba(255,255,255,.5);line-height:1.55;}
+@media(max-width:480px){.timeline-item{grid-template-columns:60px 1fr;}}
+
+/* ── REAL LIFE BENEFITS ── */
+.benefits-section{background:rgba(255,200,0,.04);border-top:3px solid var(--gold);}
+.benefits-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:16px;margin-top:44px;}
+.benefit-item{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.07);padding:20px 18px;border-radius:4px;}
+.benefit-icon{font-size:32px;margin-bottom:10px;}
+.benefit-title{font-family:"Bebas Neue",sans-serif;font-size:20px;color:var(--gold);margin-bottom:6px;}
+.benefit-body{font-size:13px;color:rgba(255,255,255,.5);line-height:1.5;}
+
+/* ── CULTURAL ── */
+.cultures-section{background:var(--black);border-top:1px solid rgba(255,255,255,.06);}
+.culture-cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:2px;margin-top:44px;}
+.culture-card{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);padding:28px 24px;position:relative;overflow:hidden;}
+.culture-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;}
+.culture-card.china::before{background:linear-gradient(90deg,#cc0000,#ff4444);}
+.culture-card.japan::before{background:linear-gradient(90deg,#1a50cc,#6699ff);}
+.culture-card.india::before{background:linear-gradient(90deg,var(--gold),#ff8c00);}
+.culture-card.persia::before{background:linear-gradient(90deg,#9b30cc,#cc44ff);}
+.culture-card.africa::before{background:linear-gradient(90deg,#22aa44,#44ff66);}
+.culture-card.europe::before{background:linear-gradient(90deg,#888888,#cccccc);}
+.culture-card-region{font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.3);margin-bottom:6px;}
+.culture-card-title{font-family:"Bebas Neue",sans-serif;font-size:26px;color:var(--white);letter-spacing:.04em;margin-bottom:4px;}
+.culture-card-tradition{font-family:"JetBrains Mono",monospace;font-size:10px;color:rgba(255,255,255,.3);letter-spacing:.1em;margin-bottom:12px;}
+.culture-card-body{font-size:14px;color:rgba(255,255,255,.55);line-height:1.6;}
+.culture-card-quote{margin-top:14px;padding:10px 14px;background:rgba(255,255,255,.03);border-left:3px solid var(--gold);font-size:13px;color:rgba(255,255,255,.5);font-style:italic;line-height:1.5;}
+
+/* ── CALLOUT BANNER ── */
+.callout-banner{background:var(--gold);padding:56px 40px;text-align:center;border-top:3px solid var(--black);border-bottom:3px solid var(--black);}
+.callout-banner h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(40px,7vw,88px);color:var(--black);line-height:.92;margin-bottom:12px;}
+.callout-banner p{font-size:18px;color:rgba(0,0,0,.65);max-width:560px;margin:0 auto 28px;font-weight:600;line-height:1.55;}
+
+/* ── SOURCES ── */
+.sources-section{background:rgba(255,255,255,.02);border-top:1px solid rgba(255,255,255,.06);padding:60px 40px;}
+.sources-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px;margin-top:32px;}
+.source-item{background:rgba(255,255,255,.02);border:1px solid rgba(255,255,255,.06);padding:14px 16px;border-radius:2px;}
+.source-type{font-family:"JetBrains Mono",monospace;font-size:8px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;margin-bottom:4px;}
+.source-type.science{color:#22aa44;}
+.source-type.health{color:var(--electric);}
+.source-type.tradition{color:var(--purple);}
+.source-type.cultural{color:#cc4444;}
+.source-name{font-size:13px;font-weight:700;color:rgba(255,255,255,.7);line-height:1.3;margin-bottom:3px;}
+.source-rel{font-size:11px;color:rgba(255,255,255,.35);line-height:1.4;}
+
+/* ── FOOTER ── */
+footer{background:var(--black);border-top:1px solid rgba(255,255,255,.06);padding:32px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.25);}
+footer a{color:rgba(255,255,255,.2);}footer a:hover{color:rgba(255,255,255,.7);}
+.footer-links{display:flex;gap:20px;flex-wrap:wrap;}
+@media(max-width:768px){footer{flex-direction:column;text-align:center;padding:24px 20px;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/"><img src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-WHITELETTER.png" alt="Matrix Fist"></a>
+  <div class="nav-links">
+    <a href="/legend">Legend</a>
+    <a href="/ranking">Rank</a>
+    <a href="/sixth-sense" class="active">6th Sense</a>
+    <a href="/practice">Practice</a>
+    <a href="/store">Store</a>
+  </div>
+  <a class="nav-cta" href="/#app">Get the App</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-glow"></div>
+  <div class="hero-eyebrow">⚡ Official Matrix Fist World Federation</div>
+  <h1 class="hero-title">
+    Awaken Your<br><span class="gold">6th Sense.</span>
+  </h1>
+  <div class="hero-sub-big">This Is More Than A Hand Game.</div>
+  <p class="hero-body">
+    Every match you play is <em>6th sense training</em>. Your hands have 
+    more nerve endings than almost any part of your body. Matrix Fist 
+    activates every single one — and builds something in your nervous 
+    system that most people never develop in their entire lifetime.
+  </p>
+  <div class="hero-btns">
+    <a class="btn btn-gold" href="#science">⚡ The Science</a>
+    <a class="btn btn-outline" href="/practice">🥋 Practice Guide</a>
+    <a class="btn btn-outline" href="/#app">📱 Play Now</a>
+  </div>
+  <div class="hero-scroll">↓ Scroll to Awaken ↓</div>
+</section>
+
+<!-- STAT STRIP -->
+<div class="stat-strip">
+  <div class="stat-item"><div class="stat-n">3,000–5,000</div><div class="stat-l">Nerve endings per cm² at your fingertip</div></div>
+  <div class="stat-item"><div class="stat-n">70 m/s</div><div class="stat-l">Speed your hand signals travel to your brain</div></div>
+  <div class="stat-item"><div class="stat-n">50 ms</div><div class="stat-l">How fast a trained player reacts below conscious thought</div></div>
+  <div class="stat-item"><div class="stat-n">2,000+</div><div class="stat-l">Years humans have known about this sense</div></div>
+</div>
+
+<!-- WHAT IS THE 6TH SENSE -->
+<section class="what-section section" id="science">
+  <div class="section-inner">
+    <div class="section-eyebrow">What Is The 6th Sense?</div>
+    <h2 class="section-title">Your Body's<br>Secret Superpower.</h2>
+    <p class="section-sub">You already know 5 senses. Sight. Sound. Smell. Taste. Touch. But there's a 6th one that most people never talk about — and it might be the most important of all.</p>
+    <div class="sense-cards">
+      <div class="sense-card">
+        <div class="sense-card-icon">🧠</div>
+        <div class="sense-card-title">Proprioception</div>
+        <div class="sense-card-body">Your body's ability to know where it is in space — without using your eyes. Close your eyes and touch your nose. That's proprioception. Scientists officially call it the 6th sense. Martial artists have been training it for 2,000 years.</div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-card-icon">⚡</div>
+        <div class="sense-card-title">The Neural Network</div>
+        <div class="sense-card-body">Every muscle, tendon, and joint has tiny sensors called proprioceptors. They fire continuously, sending your brain a real-time map of your entire body. Matrix Fist trains these sensors in your hands and arms — the most nerve-dense parts of your body.</div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-card-icon">🤲</div>
+        <div class="sense-card-title">The Hand Advantage</div>
+        <div class="sense-card-body">The human hand is nature's most advanced sensor. Your fingertips have up to 3,000–5,000 nerve endings per square centimetre. More than anywhere else on your body except your lips. Every Matrix Fist match activates this entire sensor array simultaneously.</div>
+      </div>
+      <div class="sense-card">
+        <div class="sense-card-icon">🏆</div>
+        <div class="sense-card-title">The Training Effect</div>
+        <div class="sense-card-body">Unlike most senses, the 6th sense gets stronger the more you use it. 10 matches = beginner awareness. 100 matches = you start reading opponents before they move. 1,000 matches = something that looks like a superpower to everyone else.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- NERVE SCIENCE DEEP DIVE -->
+<section class="nerve-section section">
+  <div class="section-inner">
+    <div class="section-eyebrow">The Neuroscience</div>
+    <h2 class="section-title">What's Actually<br>Happening In Your Hand.</h2>
+    <div class="nerve-grid">
+      <div class="nerve-visual">
+        <div class="hand-diagram">
+          <div class="nerve-dot"></div>
+          <div class="nerve-dot"></div>
+          <div class="nerve-dot"></div>
+          <div class="nerve-dot"></div>
+          <div class="nerve-dot"></div>
+          <div class="hand-diagram-inner">🤜</div>
+        </div>
+      </div>
+      <div class="nerve-content">
+        <div class="nerve-stat">
+          <div class="nerve-stat-n">50 per mm²</div>
+          <div class="nerve-stat-l">Meissner's Corpuscles at your fingertip — highest density in your entire body</div>
+        </div>
+        <div class="nerve-stat">
+          <div class="nerve-stat-n">141 units/cm²</div>
+          <div class="nerve-stat-l">Touch nerve fibres at the distal fingertip — confirmed by NIH research (2020)</div>
+        </div>
+        <div class="nerve-stat">
+          <div class="nerve-stat-n">70 m/s</div>
+          <div class="nerve-stat-l">Speed of myelinated A-beta fibres carrying hand signals to your brain</div>
+        </div>
+        <p class="nerve-text">
+          When you make contact in Matrix Fist, your Meissner's corpuscles 
+          begin sampling your opponent's skin at <strong>up to 50 impulses per second</strong>. 
+          At the same time, muscle spindles in your forearm monitor force and velocity. 
+          This information reaches your brain in milliseconds — <strong>before you're 
+          consciously aware of the grip.</strong>
+        </p>
+        <p class="nerve-text" style="margin-top:12px;">
+          With enough training, responses begin to short-circuit the brain entirely — 
+          routing through spinal cord reflex arcs. <strong>This is what people call 
+          "instinct." Science calls it proprioceptive training.</strong>
+        </p>
+      </div>
+    </div>
+    <!-- Receptor types -->
+    <h3 style="font-family:'Bebas Neue',sans-serif;font-size:28px;color:rgba(255,255,255,.5);letter-spacing:.04em;margin-top:52px;margin-bottom:0;">Your 4 Hand Sensors</h3>
+    <div class="receptor-grid">
+      <div class="receptor-card">
+        <div class="receptor-name" style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--gold);letter-spacing:.04em;margin-bottom:4px;">Meissner's Corpuscles</div>
+        <div class="receptor-card-freq">10–50 Hz · Fingertips</div>
+        <div class="receptor-card-role">Detect movement, slip, and the first micro-shift of your opponent's grip. The first to know they're about to move.</div>
+      </div>
+      <div class="receptor-card">
+        <div class="receptor-name" style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--gold);letter-spacing:.04em;margin-bottom:4px;">Merkel's Discs</div>
+        <div class="receptor-card-freq">Sustained pressure · Palm</div>
+        <div class="receptor-card-role">Detect sustained pressure and texture. They tell you exactly how hard your opponent is gripping — and if that grip is tightening.</div>
+      </div>
+      <div class="receptor-card">
+        <div class="receptor-name" style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--gold);letter-spacing:.04em;margin-bottom:4px;">Pacinian Corpuscles</div>
+        <div class="receptor-card-freq">250–300 Hz · Deep tissue</div>
+        <div class="receptor-card-role">Detect vibration and sudden pressure changes. They fire when your opponent's arm tenses — a split second before they actually move.</div>
+      </div>
+      <div class="receptor-card">
+        <div class="receptor-name" style="font-family:'Bebas Neue',sans-serif;font-size:16px;color:var(--gold);letter-spacing:.04em;margin-bottom:4px;">Ruffini Endings</div>
+        <div class="receptor-card-freq">Stretch · Wrist/forearm</div>
+        <div class="receptor-card-role">Detect skin stretch and directional force. They read which way your opponent is about to pull before the pull begins.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MATCH TIMELINE -->
+<section class="match-science section" style="padding-top:0;">
+  <div class="section-inner">
+    <div class="section-eyebrow" style="padding-top:80px;">During a Match</div>
+    <h2 class="section-title">What Your Nervous System<br>Does In 300 Milliseconds.</h2>
+    <p class="section-sub" style="margin-bottom:0;">A single Matrix Fist exchange is a sprint through your nervous system. Here's what's happening at the millisecond level:</p>
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-ms"><span class="n">0</span><span class="u">ms</span></div>
+        <div class="timeline-body">
+          <div class="timeline-title">Contact Established</div>
+          <div class="timeline-text">Your Meissner's corpuscles activate instantly. 50 nerve impulses per second begin streaming from both players' fingertips. The conversation has started — faster than your brain knows about it.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-ms"><span class="n">20</span><span class="u">ms</span></div>
+        <div class="timeline-body">
+          <div class="timeline-title">Pre-Intention Signal</div>
+          <div class="timeline-text">Your opponent's muscles pre-activate for their next movement. Their Pacinian corpuscles send a vibration wave through their arm into your hand. A trained player reads this. An untrained player doesn't even know it happened.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-ms"><span class="n">70</span><span class="u">ms</span></div>
+        <div class="timeline-body">
+          <div class="timeline-title">Signal Reaches Brain</div>
+          <div class="timeline-text">Tactile information from both hands arrives at the somatosensory cortex. In trained players, the brain has already built a model of the opponent's likely next move based on pattern recognition from previous matches.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-ms"><span class="n">150</span><span class="u">ms</span></div>
+        <div class="timeline-body">
+          <div class="timeline-title">Reflex Arc (Trained Players)</div>
+          <div class="timeline-text">In players with significant match experience, the spinal cord has learned to handle common responses without waiting for brain confirmation. This is sub-conscious response — faster than the blink reflex. You move before you think.</div>
+        </div>
+      </div>
+      <div class="timeline-item">
+        <div class="timeline-ms"><span class="n">300</span><span class="u">ms</span></div>
+        <div class="timeline-body">
+          <div class="timeline-title">Conscious Decision</div>
+          <div class="timeline-text">This is when an untrained player is just starting to process the grip. By this point, an Elite-rank player has already responded, adjusted, and scored. The gap between 150ms and 300ms is what rank is made of.</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- REAL LIFE BENEFITS -->
+<section class="benefits-section section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Real-Life Benefits</div>
+    <h2 class="section-title">What Happens<br>Outside The Game.</h2>
+    <p class="section-sub">The 6th sense you build in Matrix Fist doesn't stay in the game. Here's what the science says happens in real life:</p>
+    <div class="benefits-grid">
+      <div class="benefit-item">
+        <div class="benefit-icon">⚡</div>
+        <div class="benefit-title">Faster Reactions</div>
+        <div class="benefit-body">Proprioceptive training makes your nervous system process information faster across all situations — sports, driving, catching falling objects.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🎯</div>
+        <div class="benefit-title">Better Decisions</div>
+        <div class="benefit-body">Research links proprioceptive training to improved executive function and decision-making speed — the same brain systems that perform under pressure.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🏄</div>
+        <div class="benefit-title">Perfect Balance</div>
+        <div class="benefit-body">Your body map improves. Balance, coordination, and agility all increase. Athletes who train proprioception perform better in every sport they try.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🛡️</div>
+        <div class="benefit-title">Injury Prevention</div>
+        <div class="benefit-body">Proprioceptive training reduces the risk of ankle, knee, and wrist injuries by improving how your body responds to unexpected forces.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🧬</div>
+        <div class="benefit-title">Anti-Aging</div>
+        <div class="benefit-body">Your nerve density in your fingertips drops 4× between ages 12 and 50. Active hand-contact training is one of the only documented ways to slow this down.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🧘</div>
+        <div class="benefit-title">Pain Reduction</div>
+        <div class="benefit-body">Poor proprioception is now understood as a cause of chronic pain, not just a symptom. Training it is therapy — documented in sports medicine and rehabilitation.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🎵</div>
+        <div class="benefit-title">Feel More</div>
+        <div class="benefit-body">Heightened tactile sensitivity changes how you experience the world. Touch becomes richer. You start reading people — through handshakes, energy, presence.</div>
+      </div>
+      <div class="benefit-item">
+        <div class="benefit-icon">🏆</div>
+        <div class="benefit-title">Competitive Edge</div>
+        <div class="benefit-body">Elite athletes in every sport train proprioception. Matrix Fist is the only game that makes proprioceptive training the game itself — not a warmup for it.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MATRIX FIST vs YOGA vs TAI CHI -->
+<section class="vs-section section">
+  <div class="section-inner">
+    <div class="section-eyebrow">How Does Matrix Fist Compare?</div>
+    <h2 class="section-title">Yoga, Tai Chi,<br>and Matrix Fist.</h2>
+    <p class="section-sub">Three incredible 6th sense training systems. One crucial difference.</p>
+    <div class="vs-table-wrap">
+      <table class="vs-table">
+        <thead>
+          <tr>
+            <th>Factor</th>
+            <th>Yoga</th>
+            <th>Tai Chi / Push Hands</th>
+            <th class="mf-col">⚡ Matrix Fist</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td>Fingertip Activation</td><td class="partial">Low — palms, not fingers</td><td class="partial">Medium — hand contact</td><td class="mf-col check">Maximum — full grip contact</td></tr>
+          <tr><td>Opponent Feedback</td><td class="none">None — solo practice</td><td class="partial">Structured and slow</td><td class="mf-col check">Live, fast, unpredictable</td></tr>
+          <tr><td>Competitive Stakes</td><td class="none">None</td><td class="partial">Competitive at high levels</td><td class="mf-col check">Every match is on record</td></tr>
+          <tr><td>Tactile Nerve Range</td><td class="partial">Limited — mat contact</td><td class="partial">Good — hand contact</td><td class="mf-col check">Maximum — skin to skin grip</td></tr>
+          <tr><td>Stress Response Training</td><td class="partial">Low — meditative</td><td class="partial">Low to medium</td><td class="mf-col check">High — full adrenaline response</td></tr>
+          <tr><td>Can Play Anywhere</td><td class="partial">Needs studio / class</td><td class="partial">Needs a teacher</td><td class="mf-col check">Anywhere. Anyone. Free.</td></tr>
+          <tr><td>Permanent Record</td><td class="none">None</td><td class="none">None</td><td class="mf-col check">Global ranking — every win counts</td></tr>
+          <tr><td>Age Range</td><td class="partial">Mostly adults</td><td class="partial">Mostly adults</td><td class="mf-col check">10 years old to Grand Master</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p style="margin-top:20px;font-size:14px;color:rgba(255,255,255,.35);font-style:italic;">Yoga and Tai Chi are incredible. Centuries of tradition and real science behind them. But neither puts you in live, competitive, skin-to-skin contact with an unpredictable opponent and keeps a permanent record of what happened. Matrix Fist does.</p>
+  </div>
+</section>
+
+<!-- CULTURAL TRADITIONS -->
+<section class="cultures-section section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Part 2 — The World Already Knew</div>
+    <h2 class="section-title">Every Culture<br>Discovered It.</h2>
+    <p class="section-sub">For 2,000 years, warriors, healers, musicians, and philosophers across every continent independently arrived at the same insight: training touch builds something that looks supernatural.</p>
+    <div class="culture-cards">
+      <div class="culture-card china">
+        <div class="culture-card-region">🇨🇳 Ancient China</div>
+        <div class="culture-card-title">Chi / Qi</div>
+        <div class="culture-card-tradition">Tai Chi · Tui Shou · Wing Chun Chi Sao</div>
+        <div class="culture-card-body">The Chinese developed <strong>Tui Shou (Push Hands)</strong> — two people maintaining constant hand contact to learn to "listen" to force, direction, and intention through touch. At least one Tai Chi master called it "sensing hands" — not push hands. The internal arts described the hand as the receiver of qi — life force — flowing between people in contact.</div>
+        <div class="culture-card-quote">"Proprioception is something the Chinese have known for 2,000 years." — Medieval historian, The Guardian, 2024</div>
+      </div>
+      <div class="culture-card japan">
+        <div class="culture-card-region">🇯🇵 Japan</div>
+        <div class="culture-card-title">Dairokkan 第六感</div>
+        <div class="culture-card-tradition">Budo · Aikido · Kendo · Ninjutsu</div>
+        <div class="culture-card-body">The Japanese call it <strong>Dairokkan</strong> — the Sixth Sense. In the budo tradition, it is the culmination of thousands of hours of contact-based training. Morihei Ueshiba, who created Aikido, described the highest level of martial development as knowing the outcome of a conflict before contact was made — through extreme sensitivity to posture and micro-intention.</div>
+        <div class="culture-card-quote">"Through training, the sixth sense becomes linked with reflexes, kinesthesia, and proprioception."</div>
+      </div>
+      <div class="culture-card india">
+        <div class="culture-card-region">🇮🇳 Ancient India</div>
+        <div class="culture-card-title">Prana & Marma</div>
+        <div class="culture-card-tradition">Kalaripayattu · Ayurveda · Yoga</div>
+        <div class="culture-card-body"><strong>Kalaripayattu</strong> — possibly the world's oldest martial art — includes Marma Vidya: the science of vital points. A trained practitioner can read and affect an opponent through precise touch at specific locations. Simultaneously, the Ayurvedic system maps "palmar chakras" — energy receivers in the hand — that correspond exactly to where Meissner's corpuscles are most concentrated.</div>
+        <div class="culture-card-quote">"The hand that grips knows nothing. The hand that listens knows everything."</div>
+      </div>
+      <div class="culture-card persia">
+        <div class="culture-card-region">🌙 Ancient Persia</div>
+        <div class="culture-card-title">Nabz — Pulse Reading</div>
+        <div class="culture-card-tradition">Sufi Healing Arts · Islamic Medicine</div>
+        <div class="culture-card-body">Persian physicians of the Abbasid era practised <strong>Nabz</strong> — pulse diagnosis as a complete sensory art. From a single wrist contact, a trained physician could read breathing rate, emotional state, organ health, and structural tension patterns. The Grand Master Soraya al-Zafar turned this medical practice into a combat system: she could read the entire match that was about to happen from a 3-second wrist contact.</div>
+        <div class="culture-card-quote">"Lamasah al-Ruh — the touch of the soul."</div>
+      </div>
+      <div class="culture-card africa">
+        <div class="culture-card-region">🌍 West Africa / East Africa</div>
+        <div class="culture-card-title">Nyama & Hisi ya Bahari</div>
+        <div class="culture-card-tradition">Griot Tradition · Swahili Coast · Drumming</div>
+        <div class="culture-card-body">West African griot tradition produced master drummers whose hand sensitivity — from decades of drumming — gave them extraordinary tactile intelligence. On the Swahili coast, deep-water fishermen developed <strong>Hisi ya Bahari</strong> ("the ocean sense") — reading the movement of fish, current direction, and approaching storms through a held fishing line. Both traditions produce the same result: hands that read the world through vibration.</div>
+        <div class="culture-card-quote">"Every living body has a frequency. He trained himself to recognise opponents by it."</div>
+      </div>
+      <div class="culture-card europe">
+        <div class="culture-card-region">🏰 Medieval Europe</div>
+        <div class="culture-card-title">The 15th Century Fighter</div>
+        <div class="culture-card-tradition">HEMA · Longsword · Wrestling Manuals</div>
+        <div class="culture-card-body">Medieval combat manuals — confirmed by historians — explicitly document using touch to sense an opponent's strength and intentions in wrestling and longsword combat. In 15th century Germany, Hans Talhoffer's fighting manuals describe training the "sensing hand" for grappling. <strong>The concept of the sixth sense in combat is not modern. It is ancient. It is universal.</strong></div>
+        <div class="culture-card-quote">"There are discussions of using proprioception in wrestling manuals from the 15th century." — Medieval historian, The Guardian</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CALLOUT -->
+<div class="callout-banner">
+  <h2>Ready to Train<br>Your 6th Sense?</h2>
+  <p>Every match counts. Every win is permanent. Every grip makes you sharper. The 6th Sense doesn't care how old you are. It only cares how many times you've played.</p>
+  <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+    <a class="btn btn-gold" style="background:var(--black);color:#fff;" href="/practice">🥋 See the Practice Guide</a>
+    <a class="btn btn-outline" style="border-color:var(--black);color:var(--black);" href="/#app">📱 Get the App</a>
+  </div>
+</div>
+
+<!-- FURTHER READING / SOURCES -->
+<section class="sources-section">
+  <div class="section-inner">
+    <div class="section-eyebrow">Further Reading</div>
+    <h2 class="section-title" style="color:var(--white);">The Research<br>Behind This.</h2>
+    <p class="section-sub">These are real peer-reviewed studies, cultural histories, and scientific sources. Matrix Fist is backed by science.</p>
+    <div class="sources-grid">
+      <div class="source-item"><div class="source-type science">Science</div><div class="source-name">BMC Sports Science & Medicine (2024)</div><div class="source-rel">Proprioceptive training improves athletic performance, balance, injury prevention, and cognitive function across 19 studies.</div></div>
+      <div class="source-item"><div class="source-type science">Science</div><div class="source-name">Journal of Clinical Medicine (2025)</div><div class="source-rel">22 randomised trials confirm hand proprioceptive training improves grip, dexterity, and joint position sense in healthy adults.</div></div>
+      <div class="source-item"><div class="source-type science">Science</div><div class="source-name">NIH / StatPearls (2023)</div><div class="source-rel">Definitive anatomy source on Meissner's corpuscle structure and function in fingertips: up to 50 per mm².</div></div>
+      <div class="source-item"><div class="source-type science">Science</div><div class="source-name">biorxiv.org (2020)</div><div class="source-rel">141 tactile nerve fibres per cm² at the fingertip distal end — the highest innervation density in the human body.</div></div>
+      <div class="source-item"><div class="source-type health">Health</div><div class="source-name">Tai Chi — PMC/NIH (2022)</div><div class="source-rel">Tai Chi improved proprioception, tactile acuity, visuospatial ability, and postural stability compared to controls.</div></div>
+      <div class="source-item"><div class="source-type health">Health</div><div class="source-name">Yoga for Proprioception (2023)</div><div class="source-rel">Yoga Mimamsa Journal systematic review: all 3 qualifying studies confirmed improvement in joint position sense.</div></div>
+      <div class="source-item"><div class="source-type tradition">Tradition</div><div class="source-name">Shizendo Tai Chi Institute</div><div class="source-rel">Tui Shou: "the art of sensing — direct information transmission through contact." The closest public-domain parallel to Matrix Fist.</div></div>
+      <div class="source-item"><div class="source-type tradition">Tradition</div><div class="source-name">Wing Chun Chi Sao</div><div class="source-rel">Sensitivity training system for reflexive response to opponent energy without deliberate conscious thought.</div></div>
+      <div class="source-item"><div class="source-type cultural">Cultural</div><div class="source-name">The Guardian Letters (2024)</div><div class="source-rel">"Proprioception is something the Chinese have known for 2,000 years." Medieval historians confirm 15th-century combat manuals document it.</div></div>
+      <div class="source-item"><div class="source-type cultural">Cultural</div><div class="source-name">Dairokkan — Japanese Martial Tradition</div><div class="source-rel">"Through training, the sixth sense becomes linked with the user's reflexes, kinesthesia, and proprioception."</div></div>
+      <div class="source-item"><div class="source-type science">Science</div><div class="source-name">SimpliFaster (2024)</div><div class="source-rel">"The neural detour eliminates travel time to the brain, trimming reaction time demands — making movements faster than conscious thought."</div></div>
+      <div class="source-item"><div class="source-type cultural">Cultural</div><div class="source-name">Matrix Fist Sixth Sense Compendium (2026)</div><div class="source-rel">Full research document available. Covers science, traditions, practices by rank, and the Grand Master Codex. Download from matrixfist.com.</div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span>© 2026 Creative Dissonance · Matrix Fist World Federation</span>
+  <div class="footer-links">
+    <a href="/">Home</a><a href="/legend">Legend</a><a href="/ranking">Rank</a>
+    <a href="/practice">Practice</a><a href="/store">Store</a><a href="/eula">EULA</a>
+  </div>
+</footer>
+
+</body>
+</html>
