@@ -365,7 +365,9 @@ const gmNav = document.getElementById('gmNav');
 GMs.forEach(gm => {
   gmNav.innerHTML += `
     <div class="gm-nav-item" onclick="document.getElementById('gm-${gm.slug}').scrollIntoView({behavior:'smooth'})">
-      <img src="${gm.rank_icon}" alt="${gm.name}" loading="lazy">
+      <img src="${AVTR}/${gm.photoSlug}" alt="${gm.name}" loading="lazy"
+        style="width:36px;height:36px;object-fit:cover;object-position:center top;border-radius:3px;"
+        onerror="this.src=gm.rank_icon;">
       <div class="gm-nav-name">${gm.name.split(' ')[0]}</div>
     </div>`;
 });

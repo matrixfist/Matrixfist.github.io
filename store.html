@@ -267,6 +267,14 @@ const GENERAL = [
    url:'https://matrixfist.printify.me/product/28415845/the-official-matrix-fist-fight-your-friends-slap-martial-arts-fight-club-sticker',
    img:'https://images-api.printify.com/mockup/69f96712ffbc831dea08e03b/45740/2187/the-official-matrix-fist-fight-your-friends-slap-martial-arts-fight-club-sticker.jpg?camera_label=front&revision=1777954102389',
    useMockup:true,lore:'Issue a standing challenge. Stick it where they\'ll see it. Then back it up.'},
+  {name:'The Official Fight Mat',type:'Exercise Mat · Non-Slip',price:'$58.43',tag:'general',tagLabel:'General',
+   url:'https://matrixfist.printify.me/product/28512812/the-official-matrix-fist-fight-mat-martial-arts-fight-club-mat',
+   img:`https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/matrix-fist-ranks-poster.jpg`,useMockup:true,
+   lore:'Your battlefield. Non-slip, sized for a proper Matrix Fist match. Take it anywhere. Set it down. The game begins.'},
+  {name:'Matrix Fist Tank Top',type:'Tank Top',price:'$14.40',tag:'general',tagLabel:'General',
+   url:'https://matrixfist.printify.me/product/28512982/the-official-matrix-fist-tank-top-martial-arts-fight-club-tank',
+   img:`https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/matrix-fist-initiate-rank-tee.jpg`,useMockup:true,
+   lore:'Train in it. Play in it. Wear it when you win. The Matrix Fist tank — minimal fabric, maximum intent.'},
 ];
 
 const INITIATE = [
@@ -290,28 +298,44 @@ const INITIATE = [
    url:'https://matrixfist.printify.me/product/28412495/the-official-matrix-fist-initiate-rank-slap-martial-arts-fight-club-sticker',
    img:`${BASE}/matrix-fist-initiate-rank-sticker.jpg`,useMockup:true,
    lore:"Small. Permanent. Unmistakable. The quietest flex — until someone recognises it."},
+  {name:'Initiate Rank Badge',type:'Woven Badge / Tag',price:'$14.20',tag:'initiate',tagLabel:'Initiate',
+   url:'https://matrixfist.printify.me/product/28512888/the-official-matrix-fist-initiate-rank-badge-martial-arts-fight-club-tag',
+   img:`${BASE}/MF-INITIATE.png`,useMockup:false,
+   lore:'Official. Woven. Permanent. The Initiate badge is your first piece of hardware — attach it to your bag, your jacket, your kit. Your rank, on something real.'},
 ];
 
 // Locked rank previews — shown greyed out with "Rank Exclusive" lock
 const CONTENDER_PREVIEW = [
-  {name:'Contender Rank Sticker',type:'Die-Cut Sticker',price:'$5.00',icon:'MF-CONTENDER.png'},
-  {name:'Contender Insulated Water Bottle',type:'32oz Bottle',price:'$67.33',icon:'MF-CONTENDER.png'},
-  {name:'Contender Cap',type:'Cap',price:'$45.00',icon:'MF-CONTENDER.png'},
-  {name:'Initiate Long Sleeve Tee',type:'Long Sleeve Tee',price:'$44.48',icon:'MF-CONTENDER.png'},
+  {name:'Contender Rank Sticker',type:'Die-Cut Sticker',price:'$5.00',icon:'MF-CONTENDER.png',
+   productImg:'https://images-api.printify.com/mockup/69f97a58a47804d42e058d1e/45740/2187/the-official-matrix-fist-contender-rank-slap-martial-arts-fight-club-sticker.jpg?camera_label=front'},
+  {name:'Contender Insulated Water Bottle',type:'32oz Bottle',price:'$67.33',icon:'MF-CONTENDER.png',
+   productImg:'https://images-api.printify.com/mockup/69f979e3b34e4da47203f5b5/108059/3601/the-official-matrix-fist-contender-rank-water-bottle-martial-arts-fight-club-insulated-32oz.jpg?camera_label=front'},
+  {name:'Contender Cap',type:'Cap',price:'$45.00',icon:'MF-CONTENDER.png',
+   productImg:'https://images-api.printify.com/mockup/69f97966c3fc96aa52087c76/36100/1201/the-official-matrix-fist-contender-rank-cap-martial-arts-fight-club-cap.jpg?camera_label=front'},
+  {name:'Contender Long Sleeve Tee',type:'Long Sleeve Tee',price:'$44.48',icon:'MF-CONTENDER.png',
+   productImg:'https://images-api.printify.com/mockup/69f99c01e7168dce1803c225/104568/3401/the-official-matrix-fist-initiate-rank-long-sleeve-tee-martial-arts-fight-club-tshirt.jpg?camera_label=front'},
 ];
 
 const FIGHTER_PREVIEW = [
-  {name:'Fighter Tough Phone Case',type:'Protective Cover',price:'$30.99',icon:'MF-FIGHTER.png'},
-  {name:'Fighter Long Sleeve Tee',type:'Long Sleeve Tee',price:'$47.38',icon:'MF-FIGHTER.png'},
-  {name:'Fighter Sports Bottle',type:'Sports Bottle',price:'$29.88',icon:'MF-FIGHTER.png'},
-  {name:'Fighter Hoodie',type:'Pullover Hoodie',price:'$85.92',icon:'MF-FIGHTER.png'},
+  {name:'Fighter Tough Phone Case',type:'Protective Cover',price:'$30.99',icon:'MF-FIGHTER.png',
+   productImg:'https://images-api.printify.com/mockup/69f99c5ee5efba2bfb0680ae/79685/3101/the-official-matrix-fist-fighter-rank-tough-phone-case-martial-arts-fighting-club-protective-cover.jpg?camera_label=front'},
+  {name:'Fighter Long Sleeve Tee',type:'Long Sleeve Tee',price:'$47.38',icon:'MF-FIGHTER.png',
+   productImg:'https://images-api.printify.com/mockup/69f99c40a8c6f2a11a07f0d9/104568/3401/the-official-matrix-fist-fighter-rank-long-sleeve-tee-martial-arts-fight-club-tshirt.jpg?camera_label=front'},
+  {name:'Fighter Sports Bottle',type:'Sports Bottle',price:'$29.88',icon:'MF-FIGHTER.png',
+   productImg:'https://images-api.printify.com/mockup/69f72cbc1cbf8e0fc40b3d6b/108271/3601/the-official-matrix-fist-fighter-rank-sports-bottle-martial-arts-fight-club-neon-green.jpg?camera_label=front'},
+  {name:'Fighter Hoodie',type:'Pullover Hoodie',price:'$85.92',icon:'MF-FIGHTER.png',
+   productImg:'https://images-api.printify.com/mockup/69f72b7fd83614b5e508fb1d/104572/3401/the-official-matrix-fist-fighter-rank-hoodie-martial-arts-fight-club-hoodie.jpg?camera_label=front'},
 ];
 
 const WARRIOR_PREVIEW = [
-  {name:'Warrior 15oz Travel Mug',type:'Travel Mug / Tumbler',price:'$59.05',icon:'MF-WARRIOR.png'},
-  {name:'Warrior Tee',type:'T-Shirt',price:'$57.17',icon:'MF-WARRIOR.png'},
-  {name:'Warrior Tank Top',type:'Graphic Tank',price:'from $42',icon:'MF-WARRIOR.png'},
-  {name:'Warrior Polo Shirt',type:'Performance Polo',price:'$38.78',icon:'MF-WARRIOR.png'},
+  {name:'Warrior 15oz Travel Mug',type:'Travel Mug / Tumbler',price:'$59.05',icon:'MF-WARRIOR.png',
+   productImg:'https://images-api.printify.com/mockup/69f99e10bae5ef6e3b064e61/79685/3101/the-official-matrix-fist-warrior-rank-15oz-travel-mug-martial-arts-fight-club-tumbler.jpg?camera_label=front'},
+  {name:'Warrior Tee',type:'T-Shirt',price:'$57.17',icon:'MF-WARRIOR.png',
+   productImg:'https://images-api.printify.com/mockup/69f99df0e4c36b47aa05bd11/107780/3401/the-official-matrix-fist-warrior-rank-tee-martial-arts-fight-club-tshirt.jpg?camera_label=front'},
+  {name:'Warrior Tank Top',type:'Graphic Tank',price:'from $42',icon:'MF-WARRIOR.png',
+   productImg:'https://images-api.printify.com/mockup/69f99dc3e6fb0c96fd0a0a89/107776/3401/the-official-matrix-fist-warrior-rank-tank-top-martial-arts-fight-club-graphic-tank.jpg?camera_label=front'},
+  {name:'Warrior Polo Shirt',type:'Performance Polo',price:'$38.78',icon:'MF-WARRIOR.png',
+   productImg:'https://images-api.printify.com/mockup/69f99dabb434bc9d8c0cce55/107780/3401/the-official-matrix-fist-initiate-rank-purple-polo-shirt-martial-arts-fight-club-performance-golf-polo.jpg?camera_label=front'},
 ];
 
 const LADDER = [
@@ -346,10 +370,13 @@ function productCard(p) {
 }
 
 function lockedCard(p, color) {
+  const imgSrc = p.productImg || `${BASE}/${p.icon}`;
   return `
     <div class="locked-card" style="border-color:${color}44;">
       <div class="locked-img" style="border-color:${color}33;">
-        <img src="${BASE}/${p.icon}" alt="${p.name}" loading="lazy">
+        <img src="${imgSrc}" alt="${p.name}" loading="lazy"
+          style="width:100%;height:100%;object-fit:cover;"
+          onerror="this.src='${BASE}/${p.icon}'">
         <div class="lock-overlay">
           <span class="lock-icon">🔒</span>
           <span class="lock-badge" style="border-color:${color}66;color:${color};">Rank Exclusive</span>
