@@ -51,9 +51,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:12px 40px;display:fl
 .gm-header{display:grid;grid-template-columns:320px 1fr;gap:48px;align-items:start;margin-bottom:48px;}
 @media(max-width:900px){.gm-header{grid-template-columns:1fr;}}
 
-.gm-portrait{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:4px;overflow:hidden;aspect-ratio:3/4;position:relative;display:flex;align-items:flex-end;justify-content:center;min-height:280px;}
+.gm-portrait{background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.08);border-radius:4px;overflow:hidden;aspect-ratio:3/4;position:relative;display:flex;align-items:flex-end;justify-content:center;min-height:320px;}
 .gm-portrait-bg{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:120px;opacity:.08;}
-.gm-portrait-art{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:200px;opacity:.15;line-height:1;}
+.gm-portrait-art{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:160px;opacity:.2;line-height:1;filter:saturate(0.6);background:inherit;}
+.gm-portrait-art::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,200,0,.06) 0%,transparent 60%);}
 .gm-portrait-rank{position:absolute;top:16px;right:16px;width:56px;height:56px;}
 .gm-portrait-rank img{width:100%;height:100%;object-fit:contain;filter:drop-shadow(0 4px 12px rgba(0,0,0,.8));}
 .gm-portrait-info{position:relative;z-index:1;padding:20px;width:100%;background:linear-gradient(to top,rgba(10,10,10,.95) 0%,transparent 100%);}
@@ -167,6 +168,7 @@ footer a{color:rgba(255,255,255,.2);}footer a:hover{color:#fff;}
 
 <script>
 const BASE = 'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets';
+const AVTR = 'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars';
 
 const GMs = [
   {
@@ -375,8 +377,14 @@ GMs.forEach(gm => {
     <section class="gm-profile" id="gm-${gm.slug}">
       <div class="gm-header">
         <!-- Portrait -->
-        <div class="gm-portrait" style="background:${gm.bg};">
-          <div class="gm-portrait-art">${gm.art}</div>
+        <div class="gm-portrait" style="background:${gm.bg};" id="portrait-${gm.slug}">
+          <div class="gm-portrait-art" id="art-${gm.slug}">${gm.art}</div>
+          <img class="gm-portrait-photo" id="photo-${gm.slug}"
+            src="${AVTR}/${gm.slug}.jpg"
+            alt="${gm.name}"
+            style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:none;"
+            onload="this.style.display='block';document.getElementById('art-${gm.slug}').style.display='none';"
+            onerror="this.style.display='none';">
           <div class="gm-portrait-rank"><img src="${gm.rank_icon}" alt="Grand Master" loading="lazy"></div>
           <div class="gm-portrait-info">
             <div class="gm-portrait-num">Grand Master #${gm.id}</div>
