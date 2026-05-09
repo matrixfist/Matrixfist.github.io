@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Matrix Fist Store — Official Merch</title>
-<meta name="description" content="Official Matrix Fist merchandise. General collection available to all. Rank merch unlocks as you earn your place in the ladder.">
+<meta name="description" content="Official Matrix Fist merchandise. General collection open to all. Rank collections unlock as you earn your place on the ladder.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
 <style>
@@ -13,65 +13,101 @@
 html{scroll-behavior:smooth;}
 body{background:var(--cream);color:var(--black);font-family:"Barlow Condensed",sans-serif;overflow-x:hidden;}
 a{color:inherit;text-decoration:none;}
-img{display:block;}
+img{display:block;max-width:100%;}
 
+/* NAV */
 nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:12px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,242,237,.97);backdrop-filter:blur(12px);border-bottom:2px solid var(--black);}
 .nav-logo img{height:48px;width:auto;}
 .nav-links{display:flex;gap:22px;}
-.nav-links a{font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#777;}
+.nav-links a{font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#777;transition:color .15s;}
 .nav-links a:hover,.nav-links a.active{color:var(--black);}
-.nav-cta{background:var(--black);color:var(--white);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:9px 20px;border-radius:3px;border:2px solid var(--black);}
+.nav-cta{background:var(--black);color:var(--white);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:9px 20px;border-radius:3px;border:2px solid var(--black);transition:all .15s;}
 .nav-cta:hover{background:transparent;color:var(--black);}
+@media(max-width:768px){nav{padding:10px 16px;}.nav-logo img{height:38px;}.nav-links{display:none;}}
 
+/* HERO */
 .hero{margin-top:70px;padding:64px 40px 48px;border-bottom:3px solid var(--black);position:relative;overflow:hidden;}
-.hero::before{content:'STORE';position:absolute;bottom:-30px;right:-10px;font-family:"Bebas Neue",sans-serif;font-size:220px;color:rgba(10,10,10,.04);pointer-events:none;line-height:1;}
+.hero::before{content:'STORE';position:absolute;bottom:-20px;right:-10px;font-family:"Bebas Neue",sans-serif;font-size:200px;color:rgba(10,10,10,.04);pointer-events:none;line-height:1;}
 .hero-eyebrow{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.28em;color:#aaa;text-transform:uppercase;margin-bottom:14px;}
 .hero-title{font-family:"Bebas Neue",sans-serif;font-size:clamp(52px,7vw,96px);line-height:.92;margin-bottom:16px;}
 .hero-title em{color:var(--gold);font-style:normal;}
 .hero-sub{font-size:16px;color:#555;max-width:540px;line-height:1.55;margin-bottom:28px;}
-.hero-tabs{display:flex;gap:0;border:2px solid var(--black);border-radius:4px;overflow:hidden;max-width:400px;}
-.tab-btn{flex:1;font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:12px 16px;background:transparent;border:none;cursor:pointer;color:#777;transition:all .15s;}
-.tab-btn:not(:last-child){border-right:1px solid var(--black);}
+.hero-tabs{display:flex;gap:0;border:2px solid var(--black);border-radius:4px;overflow:hidden;max-width:500px;flex-wrap:wrap;}
+.tab-btn{font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:11px 16px;background:transparent;border:none;cursor:pointer;color:#777;transition:all .15s;border-right:1px solid var(--black);}
+.tab-btn:last-child{border-right:none;}
 .tab-btn.active{background:var(--black);color:var(--white);}
-.tab-btn:hover:not(.active){background:rgba(0,0,0,.04);}
+.tab-btn:hover:not(.active){background:rgba(0,0,0,.04);color:var(--black);}
+@media(max-width:768px){.hero{padding:48px 20px 36px;}.hero-tabs{max-width:100%;}}
 
-.section{padding:52px 40px;}
+/* SECTION */
+.store-section{padding:52px 40px;max-width:1280px;margin:0 auto;}
 .section-head{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:32px;padding-bottom:14px;border-bottom:2px solid var(--black);}
-.section-head h2{font-family:"Bebas Neue",sans-serif;font-size:40px;line-height:1;}
+.section-head h2{font-family:"Bebas Neue",sans-serif;font-size:38px;line-height:1;}
 .section-tag{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.18em;color:#aaa;text-transform:uppercase;}
+.section-desc{font-size:14px;color:#666;margin-bottom:24px;max-width:640px;line-height:1.55;}
+@media(max-width:768px){.store-section{padding:40px 20px;}}
 
-.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:2px;}
+/* PRODUCT GRID */
+.product-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:2px;}
 .product-card{background:var(--white);border:2px solid var(--black);display:flex;flex-direction:column;cursor:pointer;transition:transform .18s,box-shadow .18s;}
 .product-card:hover{transform:translate(-3px,-5px);box-shadow:5px 7px 0 var(--black);}
 .product-img{position:relative;aspect-ratio:1;background:var(--cream);border-bottom:2px solid var(--black);overflow:hidden;display:flex;align-items:center;justify-content:center;}
 .product-img img{width:100%;height:100%;object-fit:cover;transition:transform .22s;}
+.product-img.icon-img img{width:55%;height:55%;object-fit:contain;filter:drop-shadow(0 6px 18px rgba(0,0,0,.15));}
 .product-card:hover .product-img img{transform:scale(1.04);}
-.product-type-tag{position:absolute;top:10px;right:10px;background:var(--black);color:var(--white);font-family:"JetBrains Mono",monospace;font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 8px;border-radius:2px;}
-.product-type-tag.general{background:#555;}
+.product-tag{position:absolute;top:10px;right:10px;font-family:"JetBrains Mono",monospace;font-size:8px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;padding:4px 9px;border-radius:2px;background:var(--black);color:var(--white);}
+.product-tag.general{background:#555;}
+.product-tag.initiate{background:#888;}
+.product-tag.contender{background:#1A50CC;}
+.product-tag.fighter{background:#22AA44;}
+.product-tag.warrior{background:#9B30CC;}
 .product-body{padding:16px 18px;flex:1;display:flex;flex-direction:column;}
 .product-type{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.16em;color:#aaa;text-transform:uppercase;margin-bottom:4px;}
-.product-name{font-family:"Bebas Neue",sans-serif;font-size:24px;letter-spacing:.03em;line-height:1;margin-bottom:6px;}
-.product-lore{font-size:13px;color:#666;line-height:1.4;flex:1;margin-bottom:14px;}
+.product-name{font-family:"Bebas Neue",sans-serif;font-size:22px;letter-spacing:.03em;line-height:1;margin-bottom:6px;}
+.product-lore{font-size:13px;color:#666;line-height:1.4;flex:1;margin-bottom:12px;}
 .product-foot{display:flex;align-items:center;justify-content:space-between;gap:8px;}
-.product-price{font-family:"Bebas Neue",sans-serif;font-size:28px;line-height:1;}
-.btn-buy{background:var(--black);color:var(--white);border:2px solid var(--black);border-radius:3px;font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:9px 16px;cursor:pointer;white-space:nowrap;transition:all .15s;}
+.product-price{font-family:"Bebas Neue",sans-serif;font-size:26px;line-height:1;}
+.btn-buy{background:var(--black);color:var(--white);border:2px solid var(--black);border-radius:3px;font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;padding:8px 14px;cursor:pointer;transition:all .15s;white-space:nowrap;}
 .btn-buy:hover{background:transparent;color:var(--black);}
 
+/* LOCKED RANK PREVIEW CARDS */
+.locked-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:2px;}
+.locked-card{background:rgba(10,10,10,.92);border:2px solid;display:flex;flex-direction:column;position:relative;overflow:hidden;}
+.locked-card::before{content:'';position:absolute;inset:0;background:repeating-linear-gradient(45deg,rgba(255,255,255,.02) 0,rgba(255,255,255,.02) 1px,transparent 1px,transparent 8px);pointer-events:none;}
+.locked-img{position:relative;aspect-ratio:1;display:flex;align-items:center;justify-content:center;border-bottom:2px solid;opacity:.4;}
+.locked-img img{width:50%;height:50%;object-fit:contain;filter:grayscale(1);}
+.lock-overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;flex-direction:column;gap:6px;}
+.lock-icon{font-size:28px;opacity:.6;}
+.lock-badge{font-family:"JetBrains Mono",monospace;font-size:8px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 12px;border-radius:2px;border:1px solid;color:inherit;background:rgba(0,0,0,.6);}
+.locked-body{padding:14px 16px;}
+.locked-type{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.14em;color:rgba(255,255,255,.3);text-transform:uppercase;margin-bottom:3px;}
+.locked-name{font-family:"Bebas Neue",sans-serif;font-size:20px;letter-spacing:.03em;line-height:1;margin-bottom:6px;}
+.locked-price{font-family:"Bebas Neue",sans-serif;font-size:22px;line-height:1;margin-bottom:8px;}
+.locked-req{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.1em;text-transform:uppercase;padding:6px 10px;border-radius:2px;border:1px solid;display:inline-block;margin-top:4px;}
+
+/* RANK PREVIEW SECTION HEADER */
+.rank-section-head{display:grid;grid-template-columns:auto 1fr;gap:16px;align-items:center;margin-bottom:28px;padding-bottom:14px;border-bottom:2px solid;}
+.rank-icon-head{width:52px;height:52px;object-fit:contain;filter:drop-shadow(0 3px 10px rgba(0,0,0,.3));}
+.rank-head-text h2{font-family:"Bebas Neue",sans-serif;font-size:34px;line-height:1;margin-bottom:2px;}
+.rank-head-text p{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.5;}
+.rank-unlock-note{margin-top:20px;padding:12px 16px;border:1px solid;border-radius:3px;font-size:13px;line-height:1.5;}
+
 /* RANK LADDER */
-.ladder-section{background:var(--black);padding:56px 40px;color:var(--white);}
-.ladder-section h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(38px,5vw,68px);margin-bottom:8px;}
+.ladder-section{background:var(--black);padding:56px 40px;}
+.ladder-inner{max-width:1100px;margin:0 auto;}
+.ladder-section h2{font-family:"Bebas Neue",sans-serif;font-size:clamp(38px,5vw,68px);color:var(--white);margin-bottom:8px;}
 .ladder-sub{font-size:15px;color:rgba(255,255,255,.5);max-width:520px;margin-bottom:36px;line-height:1.5;}
 .ladder-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:2px;}
-.ladder-tile{border:1px solid rgba(255,255,255,.08);padding:24px 16px;display:flex;flex-direction:column;align-items:center;gap:8px;cursor:pointer;transition:background .15s;position:relative;text-align:center;}
-.ladder-tile:hover{background:rgba(255,255,255,.05);}
-.ladder-tile img{width:96px;height:96px;object-fit:contain;filter:drop-shadow(0 4px 16px rgba(0,0,0,.6));transition:transform .2s;}
-.ladder-tile:hover img{transform:scale(1.08);}
-.ladder-tile-name{font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:rgba(255,255,255,.5);}
+.ladder-tile{border:1px solid rgba(255,255,255,.08);padding:22px 14px;display:flex;flex-direction:column;align-items:center;gap:8px;text-align:center;position:relative;}
+.ladder-tile img{width:80px;height:80px;object-fit:contain;filter:drop-shadow(0 4px 14px rgba(0,0,0,.6));}
+.ladder-tile-name{font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.5);}
 .ladder-tile-wins{font-size:11px;color:rgba(255,255,255,.2);}
-.ladder-tile-cta{font-family:"JetBrains Mono",monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;margin-top:2px;}
-.ladder-tile.unlocked .ladder-tile-cta{color:var(--gold);}
-.ladder-tile.locked .ladder-tile-cta{color:rgba(255,255,255,.25);}
-.lock-badge{position:absolute;top:8px;right:8px;font-size:11px;opacity:.35;}
+.ladder-tile-status{font-family:"JetBrains Mono",monospace;font-size:8px;letter-spacing:.1em;text-transform:uppercase;margin-top:4px;padding:4px 8px;border-radius:2px;border:1px solid rgba(255,255,255,.15);color:rgba(255,255,255,.3);}
+.ladder-tile.open .ladder-tile-status{border-color:var(--gold);color:var(--gold);}
+.ladder-tile.coming .ladder-tile-status{border-color:rgba(255,255,255,.2);color:rgba(255,255,255,.3);}
+@media(max-width:900px){.ladder-grid{grid-template-columns:repeat(2,1fr);}}
+@media(max-width:768px){.ladder-section{padding:40px 20px;}}
+@media(max-width:480px){.ladder-grid{grid-template-columns:repeat(2,1fr);}}
 
 /* NOTIFY */
 .notify{background:var(--gold);border-top:3px solid var(--black);border-bottom:3px solid var(--black);padding:48px 40px;text-align:center;}
@@ -82,26 +118,18 @@ nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:12px 40px;display:fl
 .notify-form button{background:var(--black);color:var(--white);border:none;padding:13px 20px;font-family:"Barlow Condensed",sans-serif;font-size:13px;font-weight:800;letter-spacing:.07em;text-transform:uppercase;cursor:pointer;}
 .notify-form button:hover{background:#222;}
 #notifySuccess{margin-top:10px;font-family:"JetBrains Mono",monospace;font-size:11px;letter-spacing:.1em;color:var(--black);display:none;}
+@media(max-width:768px){.notify{padding:40px 20px;}}
 
 footer{background:var(--black);color:rgba(255,255,255,.4);padding:28px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;}
 footer a{color:rgba(255,255,255,.3);}footer a:hover{color:#fff;}
-.footer-links{display:flex;gap:20px;}
-
-@media(max-width:900px){.ladder-grid{grid-template-columns:repeat(2,1fr);}}
-@media(max-width:768px){
-  nav{padding:10px 16px;}.nav-logo img{height:38px;}
-  .nav-links{display:none;}
-  .hero,.section,.ladder-section,.notify{padding-left:20px;padding-right:20px;}
-  .product-grid{grid-template-columns:1fr 1fr;}
-  footer{flex-direction:column;text-align:center;}
-}
-@media(max-width:480px){.product-grid{grid-template-columns:1fr;}}
+.footer-links{display:flex;gap:18px;flex-wrap:wrap;}
+@media(max-width:768px){footer{flex-direction:column;text-align:center;padding:24px 20px;}}
 </style>
 </head>
 <body>
 
 <nav>
-  <a class="nav-logo" href="/"><img src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-BLACKLETTER.png" alt="Matrix Fist" style="height:52px;width:auto;"></a>
+  <a class="nav-logo" href="/"><img src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-BLACKLETTER.png" alt="Matrix Fist"></a>
   <div class="nav-links">
     <a href="/legend">Legend</a>
     <a href="/ranking">Rank</a>
@@ -116,39 +144,96 @@ footer a{color:rgba(255,255,255,.3);}footer a:hover{color:#fff;}
 <section class="hero">
   <div class="hero-eyebrow">Creative Dissonance — Official Merch 2026</div>
   <h1 class="hero-title">The Merch<br>You <em>Earned.</em></h1>
-  <p class="hero-sub">Two collections. General merch for everyone who knows the game. Rank merch for players who've proven themselves — unlocks with your rank.</p>
+  <p class="hero-sub">Two collections. General merch for anyone. Rank collections exclusive to players who've proven themselves — each rank unlocks its own store.</p>
   <div class="hero-tabs">
-    <button class="tab-btn active" onclick="showSection('all',this)">All Products</button>
-    <button class="tab-btn" onclick="showSection('general',this)">General</button>
-    <button class="tab-btn" onclick="showSection('rank',this)">Rank</button>
+    <button class="tab-btn active" onclick="showTab('all',this)">All</button>
+    <button class="tab-btn" onclick="showTab('general',this)">General</button>
+    <button class="tab-btn" onclick="showTab('initiate',this)">Initiate</button>
+    <button class="tab-btn" onclick="showTab('ranks',this)">Higher Ranks</button>
   </div>
 </section>
 
-<div id="generalSection" class="section">
+<!-- GENERAL COLLECTION -->
+<div class="store-section" id="sec-general">
   <div class="section-head">
     <h2>General Collection</h2>
     <span class="section-tag">Available to all</span>
   </div>
+  <p class="section-desc">No rank required. Available to any player, any challenger, anyone who knows what Matrix Fist is.</p>
   <div class="product-grid" id="generalGrid"></div>
 </div>
 
-<div id="rankSection" class="section" style="background:#fff;">
-  <div class="section-head">
-    <h2>Initiate Rank Collection</h2>
-    <span class="section-tag">Open to all — your first rank</span>
+<!-- INITIATE RANK -->
+<div class="store-section" id="sec-initiate" style="background:#fff;">
+  <div class="section-head" style="border-color:#888;">
+    <h2>Initiate Collection</h2>
+    <span class="section-tag" style="color:#888;">Open to all · First rank</span>
   </div>
-  <div class="product-grid" id="rankGrid"></div>
+  <p class="section-desc">Your record begins here. The Initiate collection is open to all players — this is where the ladder starts.</p>
+  <div class="product-grid" id="initiateGrid"></div>
 </div>
 
+<!-- CONTENDER RANK PREVIEW -->
+<div class="store-section" id="sec-contender" style="background:#f0f3ff;">
+  <div class="rank-section-head" style="border-color:#1A50CC33;">
+    <img class="rank-icon-head" src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-CONTENDER.png" alt="Contender">
+    <div class="rank-head-text">
+      <h2 style="color:#1A50CC;">Contender Collection</h2>
+      <p>10+ confirmed wins · Rank exclusive</p>
+    </div>
+  </div>
+  <p class="section-desc">10 confirmed wins unlocks this collection. When you reach Contender rank in the app, you'll receive a private link to the full store.</p>
+  <div class="locked-grid" id="contenderGrid"></div>
+  <div class="rank-unlock-note" style="color:#1A50CC;border-color:#1A50CC44;background:rgba(26,80,204,.05);">
+    🔒 <strong>How to unlock:</strong> Reach Contender rank in the Matrix Fist app (10 confirmed wins) and you'll receive an email with your private store link. Already there? Check your rank email.
+  </div>
+</div>
+
+<!-- FIGHTER RANK PREVIEW -->
+<div class="store-section" id="sec-fighter" style="background:#f0fff4;">
+  <div class="rank-section-head" style="border-color:#22AA4433;">
+    <img class="rank-icon-head" src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-FIGHTER.png" alt="Fighter">
+    <div class="rank-head-text">
+      <h2 style="color:#22AA44;">Fighter Collection</h2>
+      <p>50+ confirmed wins · Rank exclusive</p>
+    </div>
+  </div>
+  <p class="section-desc">50 confirmed wins. You're in the arena now. The Fighter collection reflects it.</p>
+  <div class="locked-grid" id="fighterGrid"></div>
+  <div class="rank-unlock-note" style="color:#22AA44;border-color:#22AA4444;background:rgba(34,170,68,.05);">
+    🔒 <strong>How to unlock:</strong> Reach Fighter rank (50 confirmed wins) to receive your private store link.
+  </div>
+</div>
+
+<!-- WARRIOR RANK PREVIEW -->
+<div class="store-section" id="sec-warrior" style="background:#faf0ff;">
+  <div class="rank-section-head" style="border-color:#9B30CC33;">
+    <img class="rank-icon-head" src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-WARRIOR.png" alt="Warrior">
+    <div class="rank-head-text">
+      <h2 style="color:#9B30CC;">Warrior Collection</h2>
+      <p>150+ confirmed wins · Rank exclusive</p>
+    </div>
+  </div>
+  <p class="section-desc">One hundred and fifty wins. The Warrior collection is for those who have proven themselves beyond doubt.</p>
+  <div class="locked-grid" id="warriorGrid"></div>
+  <div class="rank-unlock-note" style="color:#9B30CC;border-color:#9B30CC44;background:rgba(155,48,204,.05);">
+    🔒 <strong>How to unlock:</strong> Reach Warrior rank (150 confirmed wins) to receive your private store link.
+  </div>
+</div>
+
+<!-- FULL LADDER -->
 <section class="ladder-section" id="ladder">
-  <h2>The Full Ladder</h2>
-  <p class="ladder-sub">Earn your rank in the app — we send you a private link to the exclusive collection for that rank only.</p>
-  <div class="ladder-grid" id="ladderGrid"></div>
+  <div class="ladder-inner">
+    <h2>The Full Ladder</h2>
+    <p class="ladder-sub">Each rank unlocks its own exclusive collection. Earn your rank in the app — we'll send you a private link when you get there.</p>
+    <div class="ladder-grid" id="ladderGrid"></div>
+  </div>
 </section>
 
+<!-- NOTIFY -->
 <div class="notify">
   <h2>New Ranks. New Drops.</h2>
-  <p>Contender and Fighter storefronts are live. More ranks coming. Be first to know.</p>
+  <p>Pro, Elite, Master, and Grand Master collections coming. Be first to know.</p>
   <form class="notify-form" onsubmit="handleNotify(event)">
     <input type="email" id="notifyEmail" placeholder="your@email.com" required>
     <button type="submit">Notify Me</button>
@@ -157,94 +242,174 @@ footer a{color:rgba(255,255,255,.3);}footer a:hover{color:#fff;}
 </div>
 
 <footer>
+  <span>© 2026 Creative Dissonance · Matrix Fist</span>
   <div class="footer-links">
-    <a href="/">Home</a>
-    <a href="/legend">Legend</a>
-    <a href="/ranking">Rankings</a>
-    <a href="/sixth-sense">6th Sense</a>
-    <a href="/practice">Practice</a>
-    <a href="/player-card">Rules</a>
-    <a href="/health">Health</a>
-    <a href="/store">Store</a>
-    <a href="/eula">EULA</a>
+    <a href="/">Home</a><a href="/legend">Legend</a><a href="/ranking">Rank</a>
+    <a href="/sixth-sense">6th Sense</a><a href="/practice">Practice</a><a href="/#app">Get the App</a>
   </div>
-  <div class="footer-legal">© 2026 Creative Dissonance · Matrix Fist · TM Pending · Patent Pending</div>
 </footer>
 
 <script>
-const ANON='eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFuZXF5YnZrc3ViZ3hiZmx3b2ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY2MjUwNzgsImV4cCI6MjA5MjIwMTA3OH0.0o89k7HN9hr4e-7NTKQ00eSLF-sVG71r1uQtmDuZe88';
+const BASE = 'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets';
+const ANON = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFuZXF5YnZrc3ViZ3hiZmx3b2ZiIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NzY2MjUwNzgsImV4cCI6MjA5MjIwMTA3OH0.0o89k7HN9hr4e-7NTKQ00eSLF-sVG71r1uQtmDuZe88';
 
-const GENERAL=[
-  {id:'poster',name:'The Ranks Poster',type:'Poster · 18×24"',price:'$27.99',url:'https://matrixfist.printify.me/product/28412437/the-official-matrix-fist-rank-poster-martial-arts-fight-club-matte-poster',img:'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/matrix-fist-ranks-poster.jpg',tag:'General',lore:'The full hierarchy. All 8 Matrix Fist ranks on a single 18×24" matte poster. Hang it. Study it. Earn your way up it.'},
-  {id:'slap_family',name:'"Fight Your Family" Sticker',type:'Die-Cut Sticker',price:'$5.99',url:'https://matrixfist.printify.me/product/28415852/the-official-matrix-fist-fight-your-family-slap-martial-arts-fight-club-sticker',img:'https://images-api.printify.com/mockup/69f969ba5da263f75f05738e/45740/2187/the-official-matrix-fist-fight-your-family-slap-martial-arts-fight-club-sticker.jpg?camera_label=front&revision=1777954114231',tag:'General',lore:'The smallest challenge. The loudest statement. Let the game begin at the dinner table.'},
-  {id:'slap_friends',name:'"Fight Your Friends" Sticker',type:'Die-Cut Sticker',price:'$5.99',url:'https://matrixfist.printify.me/product/28415845/the-official-matrix-fist-fight-your-friends-slap-martial-arts-fight-club-sticker',img:'https://images-api.printify.com/mockup/69f96712ffbc831dea08e03b/45740/2187/the-official-matrix-fist-fight-your-friends-slap-martial-arts-fight-club-sticker.jpg?camera_label=front&revision=1777954102389',tag:'General',lore:'Issue a standing challenge to everyone around you. Stick it where they\'ll see it. Then back it up.'},
+// ── PRODUCT DATA ─────────────────────────────────────────────────────────────
+const GENERAL = [
+  {name:'The Ranks Poster',type:'Poster · 18×24"',price:'$27.99',tag:'general',tagLabel:'General',
+   url:'https://matrixfist.printify.me/product/28412437/the-official-matrix-fist-rank-poster-martial-arts-fight-club-matte-poster',
+   img:`${BASE}/matrix-fist-ranks-poster.jpg`,useMockup:true,
+   lore:'All 8 Matrix Fist ranks on a single 18×24" matte poster. Hang it. Study it. Earn your way up it.'},
+  {name:'"Fight Your Family" Sticker',type:'Die-Cut Sticker',price:'$5.99',tag:'general',tagLabel:'General',
+   url:'https://matrixfist.printify.me/product/28415852/the-official-matrix-fist-fight-your-family-slap-martial-arts-fight-club-sticker',
+   img:'https://images-api.printify.com/mockup/69f969ba5da263f75f05738e/45740/2187/the-official-matrix-fist-fight-your-family-slap-martial-arts-fight-club-sticker.jpg?camera_label=front&revision=1777954114231',
+   useMockup:true,lore:'The smallest challenge. The loudest statement. Let the game begin at the dinner table.'},
+  {name:'"Fight Your Friends" Sticker',type:'Die-Cut Sticker',price:'$5.99',tag:'general',tagLabel:'General',
+   url:'https://matrixfist.printify.me/product/28415845/the-official-matrix-fist-fight-your-friends-slap-martial-arts-fight-club-sticker',
+   img:'https://images-api.printify.com/mockup/69f96712ffbc831dea08e03b/45740/2187/the-official-matrix-fist-fight-your-friends-slap-martial-arts-fight-club-sticker.jpg?camera_label=front&revision=1777954102389',
+   useMockup:true,lore:'Issue a standing challenge. Stick it where they\'ll see it. Then back it up.'},
 ];
 
-const RANK=[
-  {id:'hoodie',name:'Initiate Hoodie',type:'Pullover Hoodie',price:'$96.42',url:'https://matrixfist.printify.me/product/28412198/the-official-matrix-fist-initiate-rank-hoodie-martial-arts-fight-club-hoodie',img:'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/matrix-fist-initiate-rank-hoodie.jpg',tag:'Rank',lore:"An Initiate doesn't know how far they'll go — but they know they're going. Heavyweight fleece. Embroidered rank."},
-  {id:'tee',name:'Initiate Tee',type:'T-Shirt',price:'$30.08',url:'https://matrixfist.printify.me/product/28412132/the-official-matrix-fist-initiate-rank-tee-martial-arts-fight-club-tshirt',img:'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/matrix-fist-initiate-rank-tee.jpg',tag:'Rank',lore:'Every legend began here. It says you\'re in the game — not afraid to be challenged anywhere.'},
-  {id:'cap',name:'Initiate Snapback',type:'Trucker Cap',price:'$21.48',url:'https://matrixfist.printify.me/product/28412316/the-official-matrix-fist-initiate-rank-trucker-cap-martial-arts-fight-club-snapback',img:'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/matrix-fist-initiate-rank-snapback-trucker-cap.jpg',tag:'Rank',lore:'The road ahead is long. This is how it starts — with a snap of the brim and a willingness to be tested.'},
-  {id:'mug',name:'Initiate Mug',type:'11oz Ceramic Mug',price:'$12.99',url:'https://matrixfist.printify.me/product/28412275/the-official-matrix-fist-initiate-rank-mug-martial-arts-fight-club-11oz-coffee-cup',img:'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/matrix-fist-initiate-rank-mug.jpg',tag:'Rank',lore:'Even fighters need fuel. Dishwasher-safe. Opponent-proof.'},
-  {id:'sticker',name:'Initiate Rank Sticker',type:'Die-Cut Sticker',price:'$5.00',url:'https://matrixfist.printify.me/product/28412495/the-official-matrix-fist-initiate-rank-slap-martial-arts-fight-club-sticker',img:'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/matrix-fist-initiate-rank-sticker.jpg',tag:'Rank',lore:'Small. Permanent. Unmistakable. The quietest flex — until someone recognises it.'},
+const INITIATE = [
+  {name:'Initiate Hoodie',type:'Pullover Hoodie',price:'$96.42',tag:'initiate',tagLabel:'Initiate',
+   url:'https://matrixfist.printify.me/product/28412198/the-official-matrix-fist-initiate-rank-hoodie-martial-arts-fight-club-hoodie',
+   img:`${BASE}/matrix-fist-initiate-rank-hoodie.jpg`,useMockup:true,
+   lore:"An Initiate doesn't know how far they'll go — but they know they're going. Heavyweight fleece."},
+  {name:'Initiate Tee',type:'T-Shirt',price:'$30.08',tag:'initiate',tagLabel:'Initiate',
+   url:'https://matrixfist.printify.me/product/28412132/the-official-matrix-fist-initiate-rank-tee-martial-arts-fight-club-tshirt',
+   img:`${BASE}/matrix-fist-initiate-rank-tee.jpg`,useMockup:true,
+   lore:"Every legend began here. It says you're in the game — not afraid to be challenged anywhere."},
+  {name:'Initiate Snapback',type:'Trucker Cap',price:'$21.48',tag:'initiate',tagLabel:'Initiate',
+   url:'https://matrixfist.printify.me/product/28412316/the-official-matrix-fist-initiate-rank-trucker-cap-martial-arts-fight-club-snapback',
+   img:`${BASE}/matrix-fist-initiate-rank-snapback-trucker-cap.jpg`,useMockup:true,
+   lore:"The road ahead is long. This is how it starts — with a snap of the brim."},
+  {name:'Initiate Mug',type:'11oz Ceramic Mug',price:'$12.99',tag:'initiate',tagLabel:'Initiate',
+   url:'https://matrixfist.printify.me/product/28412275/the-official-matrix-fist-initiate-rank-mug-martial-arts-fight-club-11oz-coffee-cup',
+   img:`${BASE}/matrix-fist-initiate-rank-mug.jpg`,useMockup:true,
+   lore:"Even fighters need fuel. Dishwasher-safe. Opponent-proof."},
+  {name:'Initiate Rank Sticker',type:'Die-Cut Sticker',price:'$5.00',tag:'initiate',tagLabel:'Initiate',
+   url:'https://matrixfist.printify.me/product/28412495/the-official-matrix-fist-initiate-rank-slap-martial-arts-fight-club-sticker',
+   img:`${BASE}/matrix-fist-initiate-rank-sticker.jpg`,useMockup:true,
+   lore:"Small. Permanent. Unmistakable. The quietest flex — until someone recognises it."},
 ];
 
-const LADDER=[
-  {id:1,name:'Initiate',   icon:'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-INITIATE.png',   wins:'Any player',  color:'#888888',url:'/store',            locked:false},
-  {id:2,name:'Contender',  icon:'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-CONTENDER.png',  wins:'10+ wins',    color:'#1A50CC',url:'https://matrixfistcontender.printify.me/', locked:false},
-  {id:3,name:'Fighter',    icon:'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-FIGHTER.png',    wins:'50+ wins',    color:'#22AA44',url:'https://matrixfistfighter.printify.me/',  locked:false},
-  {id:4,name:'Warrior',    icon:'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-WARRIOR.png',    wins:'150+ wins',   color:'#9B30CC',url:'/store-warrior',   locked:true},
-  {id:5,name:'Pro',        icon:'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-PRO.png',        wins:'300+ wins',   color:'#AA6600',url:'/store-pro',       locked:true},
-  {id:6,name:'Elite',      icon:'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-ELITE.png',      wins:'600+ wins',   color:'#CC0000',url:'/store-elite',     locked:true},
-  {id:7,name:'Master',     icon:'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-MASTER.png',     wins:'1,000+ wins', color:'#FFC800',url:'/store-master',    locked:true},
-  {id:8,name:'Grand Master',icon:'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-GRANDMASTER.png',wins:'2,500+ wins',color:'#FF8C00',url:'/store-grand-master',locked:true},
+// Locked rank previews — shown greyed out with "Rank Exclusive" lock
+const CONTENDER_PREVIEW = [
+  {name:'Contender Rank Sticker',type:'Die-Cut Sticker',price:'$5.00',icon:'MF-CONTENDER.png'},
+  {name:'Contender Insulated Water Bottle',type:'32oz Bottle',price:'$67.33',icon:'MF-CONTENDER.png'},
+  {name:'Contender Cap',type:'Cap',price:'$45.00',icon:'MF-CONTENDER.png'},
+  {name:'Initiate Long Sleeve Tee',type:'Long Sleeve Tee',price:'$44.48',icon:'MF-CONTENDER.png'},
 ];
 
-function card(p){
-  return `<div class="product-card" onclick="window.open('${p.url}','_blank')">
-    <div class="product-img"><img src="${p.img}" alt="${p.name}" loading="lazy"><div class="product-type-tag ${p.tag==='General'?'general':''}">${p.tag}</div></div>
-    <div class="product-body">
-      <div class="product-type">${p.type}</div>
-      <div class="product-name">${p.name}</div>
-      <div class="product-lore">${p.lore}</div>
-      <div class="product-foot">
-        <div class="product-price">${p.price}</div>
-        <button class="btn-buy">Buy Now</button>
+const FIGHTER_PREVIEW = [
+  {name:'Fighter Tough Phone Case',type:'Protective Cover',price:'$30.99',icon:'MF-FIGHTER.png'},
+  {name:'Fighter Long Sleeve Tee',type:'Long Sleeve Tee',price:'$47.38',icon:'MF-FIGHTER.png'},
+  {name:'Fighter Sports Bottle',type:'Sports Bottle',price:'$29.88',icon:'MF-FIGHTER.png'},
+  {name:'Fighter Hoodie',type:'Pullover Hoodie',price:'$85.92',icon:'MF-FIGHTER.png'},
+];
+
+const WARRIOR_PREVIEW = [
+  {name:'Warrior 15oz Travel Mug',type:'Travel Mug / Tumbler',price:'$59.05',icon:'MF-WARRIOR.png'},
+  {name:'Warrior Tee',type:'T-Shirt',price:'$57.17',icon:'MF-WARRIOR.png'},
+  {name:'Warrior Tank Top',type:'Graphic Tank',price:'from $42',icon:'MF-WARRIOR.png'},
+  {name:'Warrior Polo Shirt',type:'Performance Polo',price:'$38.78',icon:'MF-WARRIOR.png'},
+];
+
+const LADDER = [
+  {id:1,name:'Initiate',   icon:'MF-INITIATE.png',   wins:'Any player',   status:'open',   label:'Shop Now'},
+  {id:2,name:'Contender',  icon:'MF-CONTENDER.png',  wins:'10+ wins',     status:'open',   label:'View Below'},
+  {id:3,name:'Fighter',    icon:'MF-FIGHTER.png',     wins:'50+ wins',     status:'open',   label:'View Below'},
+  {id:4,name:'Warrior',    icon:'MF-WARRIOR.png',     wins:'150+ wins',    status:'open',   label:'View Below'},
+  {id:5,name:'Pro',        icon:'MF-PRO.png',         wins:'300+ wins',    status:'coming', label:'Invite Only'},
+  {id:6,name:'Elite',      icon:'MF-ELITE.png',       wins:'600+ wins',    status:'coming', label:'Invite Only'},
+  {id:7,name:'Master',     icon:'MF-MASTER.png',      wins:'1,000+ wins',  status:'coming', label:'Invite Only'},
+  {id:8,name:'Grand Master',icon:'MF-GRANDMASTER.png',wins:'2,500+ wins',  status:'coming', label:'Invite Only'},
+];
+
+// ── RENDER FUNCTIONS ─────────────────────────────────────────────────────────
+function productCard(p) {
+  return `
+    <div class="product-card" onclick="window.open('${p.url}','_blank')">
+      <div class="product-img${p.useMockup ? '' : ' icon-img'}">
+        <img src="${p.img}" alt="${p.name}" loading="lazy" onerror="this.parentElement.style.background='#e8e5e0'">
+        <div class="product-tag ${p.tag}">${p.tagLabel}</div>
       </div>
-    </div>
-  </div>`;}
-
-function buildLadder(){
-  document.getElementById('ladderGrid').innerHTML = LADDER.map(r=>`
-    <div class="ladder-tile ${r.locked?'locked':'unlocked'}" onclick="window.location='${r.url}'" style="border-color:${r.locked?'rgba(255,255,255,.08)':r.color+'44'}">
-      ${r.locked?'<span class="lock-badge">🔒</span>':''}
-      <img src="${r.icon}" alt="${r.name}" loading="lazy">
-      <div class="ladder-tile-name">${r.name}</div>
-      <div class="ladder-tile-wins">${r.wins}</div>
-      <div class="ladder-tile-cta">${r.locked?'Invite only →':'Shop now →'}</div>
-    </div>`).join('');
+      <div class="product-body">
+        <div class="product-type">${p.type}</div>
+        <div class="product-name">${p.name}</div>
+        <div class="product-lore">${p.lore}</div>
+        <div class="product-foot">
+          <div class="product-price">${p.price}</div>
+          <button class="btn-buy">Buy Now</button>
+        </div>
+      </div>
+    </div>`;
 }
 
-function showSection(which,btn){
-  document.querySelectorAll('.tab-btn').forEach(b=>b.classList.remove('active'));
+function lockedCard(p, color) {
+  return `
+    <div class="locked-card" style="border-color:${color}44;">
+      <div class="locked-img" style="border-color:${color}33;">
+        <img src="${BASE}/${p.icon}" alt="${p.name}" loading="lazy">
+        <div class="lock-overlay">
+          <span class="lock-icon">🔒</span>
+          <span class="lock-badge" style="border-color:${color}66;color:${color};">Rank Exclusive</span>
+        </div>
+      </div>
+      <div class="locked-body">
+        <div class="locked-type" style="color:${color}88;">${p.type}</div>
+        <div class="locked-name" style="color:rgba(255,255,255,.6);">${p.name}</div>
+        <div class="locked-price" style="color:${color};">${p.price}</div>
+        <div class="locked-req" style="border-color:${color}44;color:${color}66;">🔒 Earn rank to unlock</div>
+      </div>
+    </div>`;
+}
+
+// ── BUILD PAGE ────────────────────────────────────────────────────────────────
+document.getElementById('generalGrid').innerHTML   = GENERAL.map(productCard).join('');
+document.getElementById('initiateGrid').innerHTML  = INITIATE.map(productCard).join('');
+document.getElementById('contenderGrid').innerHTML = CONTENDER_PREVIEW.map(p => lockedCard(p,'#1A50CC')).join('');
+document.getElementById('fighterGrid').innerHTML   = FIGHTER_PREVIEW.map(p => lockedCard(p,'#22AA44')).join('');
+document.getElementById('warriorGrid').innerHTML   = WARRIOR_PREVIEW.map(p => lockedCard(p,'#9B30CC')).join('');
+
+// Ladder
+document.getElementById('ladderGrid').innerHTML = LADDER.map(r => `
+  <div class="ladder-tile ${r.status}">
+    <img src="${BASE}/${r.icon}" alt="${r.name}" loading="lazy">
+    <div class="ladder-tile-name">${r.name}</div>
+    <div class="ladder-tile-wins">${r.wins}</div>
+    <div class="ladder-tile-status">${r.status === 'open' ? r.label : '🔒 ' + r.label}</div>
+  </div>`).join('');
+
+// Tab filter
+function showTab(which, btn) {
+  document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
   btn.classList.add('active');
-  const g=document.getElementById('generalSection');
-  const r=document.getElementById('rankSection');
-  if(which==='general'){g.style.display='block';r.style.display='none';}
-  else if(which==='rank'){g.style.display='none';r.style.display='block';}
-  else{g.style.display='block';r.style.display='block';}
+  const secs = {
+    all:     ['sec-general','sec-initiate','sec-contender','sec-fighter','sec-warrior'],
+    general: ['sec-general'],
+    initiate:['sec-initiate'],
+    ranks:   ['sec-contender','sec-fighter','sec-warrior'],
+  };
+  ['sec-general','sec-initiate','sec-contender','sec-fighter','sec-warrior'].forEach(id => {
+    document.getElementById(id).style.display = 'none';
+  });
+  (secs[which] || secs.all).forEach(id => {
+    document.getElementById(id).style.display = 'block';
+  });
 }
 
-function handleNotify(e){
+// Notify
+function handleNotify(e) {
   e.preventDefault();
-  const email=document.getElementById('notifyEmail').value;
-  fetch('https://aneqybvksubgxbflwofb.supabase.co/rest/v1/store_waitlist',{method:'POST',headers:{'apikey':ANON,'Authorization':'Bearer '+ANON,'Content-Type':'application/json'},body:JSON.stringify({email})}).catch(()=>{});
-  document.getElementById('notifySuccess').style.display='block';
-  document.getElementById('notifyEmail').value='';
+  const email = document.getElementById('notifyEmail').value;
+  fetch('https://aneqybvksubgxbflwofb.supabase.co/rest/v1/store_waitlist', {
+    method:'POST',
+    headers:{'apikey':ANON,'Authorization':'Bearer '+ANON,'Content-Type':'application/json'},
+    body: JSON.stringify({email})
+  }).catch(()=>{});
+  document.getElementById('notifySuccess').style.display = 'block';
+  document.getElementById('notifyEmail').value = '';
 }
-
-document.getElementById('generalGrid').innerHTML=GENERAL.map(card).join('');
-document.getElementById('rankGrid').innerHTML=RANK.map(card).join('');
-buildLadder();
 </script>
 </body>
 </html>

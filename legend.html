@@ -168,11 +168,11 @@ footer a{color:rgba(255,255,255,.2);}footer a:hover{color:#fff;}
 
 <script>
 const BASE = 'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets';
-const AVTR = 'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars';
+const AVTR = 'https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets';
 
 const GMs = [
   {
-    id:1, slug:'soraya',
+    id:1, slug:'soraya', photoSlug:'gm-soraya.jpg',
     name:'Soraya al-Zafar', era:'821 AD · Persia',
     record:'3,200W · 0L', wins:3200, losses:0, streak:3200,
     title:'The Physician',
@@ -199,7 +199,7 @@ She called her practice Lamasah al-Ruh — the Touch of the Soul. She trained 8 
     sigBody:'A three-finger contact at the opponent\'s radial artery point that triggered immediate involuntary relaxation of their grip arm. Three court observers documented it as "the hand that knew the arm before the arm knew itself." Modern neuroscience suggests she was activating a specific mechanoreceptor pathway at the wrist that bypasses the motor cortex. She discovered this empirically in 821 AD.',
   },
   {
-    id:2, slug:'giriama',
+    id:2, slug:'giriama', photoSlug:'gm-giriama.jpg',
     name:'Giriama Kenga', era:'917 AD · Mombasa',
     record:'2,774W · 12L', wins:2774, losses:12, streak:312,
     title:'The Fisherman',
@@ -224,7 +224,7 @@ His 12 losses all came in the first decade of his competing. After age 45, with 
     sigBody:'A lateral forearm contact that redirected the opponent\'s grip force in a spiral motion, causing them to over-commit and lose structural integrity. Witnesses describe it as "pulling someone into a current that was already moving the way they were going to fall." He didn\'t fight the force — he became the path it was already taking.',
   },
   {
-    id:3, slug:'kofi',
+    id:3, slug:'kofi', photoSlug:'gm-kofi.jpg',
     name:'Kofi Diabaté', era:'1193 AD · Mali Empire',
     record:'2,900W · 4L', wins:2900, losses:4, streak:1200,
     title:'The Drummer',
@@ -249,7 +249,7 @@ After 30 years of drumming, he developed what contemporaries called "perfect tem
     sigBody:'Diabaté\'s grip always landed precisely as the opponent\'s grip began — not before, not after. Contemporaries described it as "touching someone at the exact moment they decided to touch you." The psychological effect was reported as deeply disorienting — like reaching for something and finding it was already reaching for you. In 2,900 documented matches, he was beaten 4 times. All 4 of his opponents were also accomplished percussionists.',
   },
   {
-    id:4, slug:'velu',
+    id:4, slug:'velu', photoSlug:'gm-velu.jpg',
     name:'Velu Nair', era:'1441 AD · Indian Ocean Trade Routes',
     record:'2,100W · 8L', wins:2100, losses:8, streak:780,
     title:'The Listener',
@@ -276,7 +276,7 @@ Modern neuroscience would call this pre-activation motor detection. Kalaripayatt
     sigBody:'A single fingertip contact at the opponent\'s wrist flexor marma point — located at the junction of the flexor retinaculum and the palmaris longus tendon — that caused complete temporary loss of grip force. This is clinically documented: precise pressure at this point triggers an inhibitory reflex in the flexor digitorum muscles. Velu discovered this empirically in 1441. Western medicine confirmed the mechanism in 1982.',
   },
   {
-    id:5, slug:'ben',
+    id:5, slug:'ben', photoSlug:'gm-littlebigben.jpg',
     name:'Little Big Ben', era:'1717 AD · London, England',
     record:'1,920W · 1L', wins:1920, losses:1, streak:1920,
     title:'The Clockmaker',
@@ -303,7 +303,7 @@ He lost once. To a man from Bristol who was also a clockmaker.`,
     sigBody:'A double-oscillation of the wrist at the moment of maximum opponent grip tension — named after the clock mechanism that regulates energy transfer. The motion was invisible to observers: a micro-rotation in two opposing directions, executed in under 50ms, that created a momentary loss of traction between skin surfaces. "It was like gripping smoke," said one opponent. Ben called it finding the dead point — the single instant in every grip cycle when force transfers to nothing. He found it, and walked through it.',
   },
   {
-    id:6, slug:'hanako',
+    id:6, slug:'hanako', photoSlug:'gm-hanako.jpg',
     name:'Hanako Mori', era:'1874 AD · Osaka, Japan',
     record:'3,100W · 6L', wins:3100, losses:6, streak:880,
     title:'The Arranger',
@@ -330,7 +330,7 @@ Her 6 losses all occurred at night, in candlelight, when she reportedly could no
     sigBody:'Hanako\'s grip was described as "inevitable" by multiple independent observers — not strong, not fast, but placed with absolute structural precision such that opposition was impossible. Contemporary witnesses: "She didn\'t grab where you were. She grabbed where you were already going." Modern biomechanics confirms this is achievable: by reading micro-postural signals 150–300ms before gross movement, a trained practitioner can position for the endpoint of a movement before it begins. She did it with flowers for 7 hours a day for 30 years.',
   },
   {
-    id:7, slug:'marcus',
+    id:7, slug:'marcus', photoSlug:'gm-marcus.jpg',
     name:'Marcus Cole', era:'1945 AD · New York City, USA',
     record:'2,600W · 9L', wins:2600, losses:9, streak:600,
     title:'The Musician',
@@ -380,7 +380,7 @@ GMs.forEach(gm => {
         <div class="gm-portrait" style="background:${gm.bg};" id="portrait-${gm.slug}">
           <div class="gm-portrait-art" id="art-${gm.slug}">${gm.art}</div>
           <img class="gm-portrait-photo" id="photo-${gm.slug}"
-            src="${AVTR}/${gm.slug}.jpg"
+            src="${AVTR}/${gm.photoSlug}"
             alt="${gm.name}"
             style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;display:none;"
             onload="this.style.display='block';document.getElementById('art-${gm.slug}').style.display='none';"

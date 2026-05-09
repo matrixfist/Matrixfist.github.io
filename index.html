@@ -230,6 +230,7 @@ footer{
   .rank-grid{grid-template-columns:repeat(2,1fr);}
 }
 @media(max-width:768px){
+  body{padding-bottom:80px;}
   nav{padding:10px 16px;}
   .nav-logo img{height:44px;}
   .nav-links{display:none;}
@@ -239,16 +240,16 @@ footer{
     position:fixed;bottom:0;left:0;right:0;z-index:200;
     background:rgba(255,255,255,.97);backdrop-filter:blur(12px);
     border-top:1px solid #e0e0e0;
-    padding:8px 0 calc(8px + env(safe-area-inset-bottom,0px));
+    padding:10px 0 calc(10px + env(safe-area-inset-bottom,0px));max-height:56px;
     justify-content:space-around;
   }
   .mobile-nav a{
-    display:flex;flex-direction:column;align-items:center;gap:3px;
-    font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.08em;
-    text-transform:uppercase;color:#888;padding:4px 8px;
+    display:flex;align-items:center;justify-content:center;
+    font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:700;letter-spacing:.1em;
+    text-transform:uppercase;color:#888;padding:6px 10px;
   }
   .mobile-nav a.active,.mobile-nav a:hover{color:#000;}
-  .mobile-nav-icon{font-size:18px;}
+  .mobile-nav-icon{font-size:16px;line-height:1;}
   .hero{padding:90px 20px 80px;min-height:100svh;}
   h1{font-size:clamp(52px,14vw,80px);}
   .hero-btns{gap:8px;}
@@ -302,11 +303,11 @@ footer{
 
 <!-- MOBILE BOTTOM NAV -->
 <nav class="mobile-nav">
-  <a href="/"><span class="mobile-nav-icon">🏠</span>Home</a>
-  <a href="/legend"><span class="mobile-nav-icon">👑</span>Legend</a>
-  <a href="/ranking"><span class="mobile-nav-icon">📊</span>Rank</a>
-  <a href="/player-card"><span class="mobile-nav-icon">📋</span>Rules</a>
-  <a href="/store" class="active"><span class="mobile-nav-icon">🛒</span>Store</a>
+  <a href="/">Home</a>
+  <a href="/legend">Legend</a>
+  <a href="/ranking">Rank</a>
+  <a href="/sixth-sense">6th Sense</a>
+  <a href="/store">Store</a>
 </nav>
 
 <!-- HERO -->
@@ -394,7 +395,7 @@ footer{
     <a class="gm-mini" href="/legend">
       <div class="gm-mini-img-wrap">
         <img class="gm-mini-img" 
-          src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars/gm-soraya.jpg" 
+          src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/gm-soraya.jpg" 
           alt="Soraya al-Zafar" 
           loading="lazy"
           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;"
@@ -412,7 +413,7 @@ footer{
     <a class="gm-mini" href="/legend">
       <div class="gm-mini-img-wrap">
         <img class="gm-mini-img" 
-          src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars/gm-giriama.jpg" 
+          src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/gm-giriama.jpg" 
           alt="Giriama Kenga" 
           loading="lazy"
           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;"
@@ -430,7 +431,7 @@ footer{
     <a class="gm-mini" href="/legend">
       <div class="gm-mini-img-wrap">
         <img class="gm-mini-img" 
-          src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars/gm-kofi.jpg" 
+          src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/gm-kofi.jpg" 
           alt="Kofi Diabaté" 
           loading="lazy"
           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;"
@@ -448,7 +449,7 @@ footer{
     <a class="gm-mini" href="/legend">
       <div class="gm-mini-img-wrap">
         <img class="gm-mini-img" 
-          src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars/gm-velu.jpg" 
+          src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/gm-velu.jpg" 
           alt="Velu Nair" 
           loading="lazy"
           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;"
@@ -466,7 +467,7 @@ footer{
     <a class="gm-mini" href="/legend">
       <div class="gm-mini-img-wrap">
         <img class="gm-mini-img" 
-          src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars/gm-littlebigben.jpg" 
+          src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/gm-littlebigben.jpg" 
           alt="Little Big Ben" 
           loading="lazy"
           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;"
@@ -484,7 +485,7 @@ footer{
     <a class="gm-mini" href="/legend">
       <div class="gm-mini-img-wrap">
         <img class="gm-mini-img" 
-          src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars/gm-hanako.jpg" 
+          src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/gm-hanako.jpg" 
           alt="Hanako Mori" 
           loading="lazy"
           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;"
@@ -502,7 +503,7 @@ footer{
     <a class="gm-mini" href="/legend">
       <div class="gm-mini-img-wrap">
         <img class="gm-mini-img" 
-          src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/avatars/gm-marcus.jpg" 
+          src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/gm-marcus.jpg" 
           alt="Marcus Cole" 
           loading="lazy"
           style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center top;"
