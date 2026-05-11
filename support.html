@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matrix Fist — Support</title>
+<meta name="description" content="Get help with the Matrix Fist app. Find answers about accounts, matches, rankings, and how to contact the team.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--black:#0a0a0a;--white:#fff;--cream:#f5f2ed;--gold:#ffc800;--mid:#e8e5e0;--red:#cc2200;}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--black);font-family:"Barlow Condensed",sans-serif;overflow-x:hidden;}
+a{color:inherit;text-decoration:none;}
+img{display:block;max-width:100%;}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:200;padding:12px 40px;display:flex;align-items:center;justify-content:space-between;background:rgba(245,242,237,.97);backdrop-filter:blur(12px);border-bottom:2px solid var(--black);}
+.nav-logo img{height:48px;width:auto;}
+.nav-links{display:flex;gap:22px;}
+.nav-links a{font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#777;transition:color .15s;}
+.nav-links a:hover,.nav-links a.active{color:var(--black);}
+.nav-cta{background:var(--black);color:var(--white);font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;padding:9px 20px;border-radius:3px;border:2px solid var(--black);transition:all .15s;}
+.nav-cta:hover{background:transparent;color:var(--black);}
+@media(max-width:768px){nav{padding:10px 16px;}.nav-logo img{height:38px;}.nav-links{display:none;}}
+
+/* HERO */
+.hero{margin-top:70px;padding:64px 40px 48px;border-bottom:3px solid var(--black);position:relative;overflow:hidden;}
+.hero::before{content:'SUPPORT';position:absolute;bottom:-20px;right:-10px;font-family:"Bebas Neue",sans-serif;font-size:200px;color:rgba(10,10,10,.04);pointer-events:none;line-height:1;}
+.hero-eyebrow{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.28em;color:#aaa;text-transform:uppercase;margin-bottom:14px;}
+.hero-title{font-family:"Bebas Neue",sans-serif;font-size:clamp(52px,7vw,96px);line-height:.92;margin-bottom:16px;}
+.hero-sub{font-size:16px;color:#555;max-width:560px;line-height:1.55;}
+@media(max-width:768px){.hero{padding:48px 20px 36px;}}
+
+/* MAIN LAYOUT */
+.support-wrap{max-width:1100px;margin:0 auto;padding:64px 40px;display:grid;grid-template-columns:2fr 1fr;gap:60px;}
+@media(max-width:900px){.support-wrap{grid-template-columns:1fr;padding:48px 20px;gap:40px;}}
+
+/* FAQ */
+.section-label{font-family:"JetBrains Mono",monospace;font-size:10px;letter-spacing:.28em;color:#aaa;text-transform:uppercase;margin-bottom:20px;}
+.faq-item{border-top:1px solid var(--mid);padding:20px 0;}
+.faq-item:last-child{border-bottom:1px solid var(--mid);}
+.faq-q{font-family:"Bebas Neue",sans-serif;font-size:22px;letter-spacing:.03em;line-height:1.1;margin-bottom:8px;cursor:pointer;display:flex;align-items:flex-start;justify-content:space-between;gap:12px;}
+.faq-q span{font-size:18px;color:#aaa;flex-shrink:0;transition:transform .2s;}
+.faq-q.open span{transform:rotate(45deg);}
+.faq-a{font-size:15px;color:#555;line-height:1.6;max-height:0;overflow:hidden;transition:max-height .3s ease,padding .2s;}
+.faq-a.open{max-height:400px;padding-top:4px;}
+.faq-a a{color:var(--black);border-bottom:1px solid var(--black);}
+
+/* CONTACT SIDEBAR */
+.sidebar{}
+.contact-card{background:var(--black);color:var(--white);padding:28px;border-radius:4px;margin-bottom:16px;}
+.contact-card h3{font-family:"Bebas Neue",sans-serif;font-size:28px;letter-spacing:.03em;line-height:1;margin-bottom:8px;}
+.contact-card p{font-size:14px;color:rgba(255,255,255,.6);line-height:1.55;margin-bottom:20px;}
+.contact-btn{display:block;text-align:center;background:var(--gold);color:var(--black);font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:12px 20px;border-radius:3px;transition:opacity .15s;}
+.contact-btn:hover{opacity:.85;}
+
+.info-card{border:2px solid var(--black);padding:24px;border-radius:4px;margin-bottom:16px;}
+.info-card h4{font-family:"Bebas Neue",sans-serif;font-size:20px;letter-spacing:.03em;margin-bottom:10px;}
+.info-card p,.info-card li{font-size:14px;color:#555;line-height:1.65;}
+.info-card ul{padding-left:16px;}
+.info-card li{margin-bottom:4px;}
+.info-card a{border-bottom:1px solid #aaa;color:var(--black);}
+
+.response-tag{display:inline-block;font-family:"JetBrains Mono",monospace;font-size:9px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;padding:4px 10px;background:#f0ede8;border:1px solid var(--mid);border-radius:2px;color:#777;margin-bottom:14px;}
+
+/* LINKS STRIP */
+.links-strip{border-top:3px solid var(--black);padding:36px 40px;display:flex;gap:32px;flex-wrap:wrap;}
+.links-strip a{font-family:"JetBrains Mono",monospace;font-size:10px;font-weight:600;letter-spacing:.15em;text-transform:uppercase;color:#777;transition:color .15s;}
+.links-strip a:hover{color:var(--black);}
+@media(max-width:768px){.links-strip{padding:28px 20px;gap:20px;}}
+
+/* FOOTER */
+footer{border-top:2px solid var(--black);padding:32px 40px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px;}
+.footer-copy{font-family:"JetBrains Mono",monospace;font-size:9px;letter-spacing:.16em;text-transform:uppercase;color:#aaa;}
+@media(max-width:768px){footer{padding:24px 20px;flex-direction:column;align-items:flex-start;}}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-logo" href="/"><img src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/mf-bl-app.png" alt="Matrix Fist"></a>
+  <div class="nav-links">
+    <a href="/legend">Legend</a>
+    <a href="/ranking">Rank</a>
+    <a href="/sixth-sense">6th Sense</a>
+    <a href="/player-card">Rules</a>
+    <a href="/health">Health</a>
+    <a href="/store">Store</a>
+  </div>
+  <a class="nav-cta" href="https://apps.apple.com/app/matrix-fist" target="_blank">Get the App</a>
+</nav>
+
+<section class="hero">
+  <div class="hero-eyebrow">Matrix Fist — Help & Support</div>
+  <h1 class="hero-title">Support</h1>
+  <p class="hero-sub">Answers to common questions about the app, matches, and rankings. Can't find what you need? Email us directly.</p>
+</section>
+
+<div class="support-wrap">
+
+  <!-- FAQ -->
+  <div class="faq-col">
+    <div class="section-label">Frequently Asked Questions</div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">How does match verification work? <span>+</span></div>
+      <div class="faq-a">When you log a win against another player, they receive an alert in the app to confirm or reject the result. A win only counts toward your record once your opponent confirms it. If they reject, the match is flagged as disputed and no record is updated.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">My opponent confirmed the win but my record didn't update. <span>+</span></div>
+      <div class="faq-a">Try closing and reopening the app — your profile loads fresh on each session. If the issue persists after a restart, email us at <a href="mailto:matrixfist.official@gmail.com">matrixfist.official@gmail.com</a> with your username and the approximate time of the match.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">How do I reach the next rank? <span>+</span></div>
+      <div class="faq-a">Rank is based on your confirmed win count. The thresholds are: Initiate (0+), Contender (10+), Fighter (25+), Warrior (50+), Pro (100+), Elite (200+), Master (400+), Grand Master (2,500+). Wins must be confirmed by your opponent to count. Visit the <a href="/practice">Practice Guide</a> for rank-specific training tips.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">How do I unlock the rank store? <span>+</span></div>
+      <div class="faq-a">When you reach a new rank, the app sends you a notification with a link to your exclusive store. Initiate through Warrior stores are open automatically. Pro, Elite, Master, and Grand Master stores are invite-only — email <a href="mailto:matrixfist.official@gmail.com?subject=Rank Store Webcode">matrixfist.official@gmail.com</a> with your rank and username to request your webcode.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">I can't find another player to challenge. <span>+</span></div>
+      <div class="faq-a">Players must have an account to appear in search. Use their exact username (handle) — search is case-sensitive. If you're playing someone in person, they can create a free account in under a minute at the Get the App link above.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">How do I turn off daily practice notifications? <span>+</span></div>
+      <div class="faq-a">Open the app and go to your Profile (bottom right). Scroll down to find the "Daily Practice Reminders" toggle and switch it off. The setting saves automatically and stops all scheduled reminders immediately.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">I forgot my password or can't log in. <span>+</span></div>
+      <div class="faq-a">On the login screen, tap "Forgot password" to receive a reset link by email. If you no longer have access to your email, contact us at <a href="mailto:matrixfist.official@gmail.com">matrixfist.official@gmail.com</a> and we'll help verify your account manually.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">How do I delete my account? <span>+</span></div>
+      <div class="faq-a">Go to Profile → scroll to the bottom → tap "Delete Account." This permanently removes your profile, win/loss record, and all associated data. This action cannot be undone. Alternatively, email us and we can process the deletion on our end.</div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q" onclick="toggle(this)">Where can I read the full rules? <span>+</span></div>
+      <div class="faq-a">The complete rules and player card are available at <a href="/player-card">matrixfist.com/player-card</a>. The app also has a How to Play section in the Play tab with swipeable rule cards.</div>
+    </div>
+
+  </div>
+
+  <!-- SIDEBAR -->
+  <div class="sidebar">
+
+    <div class="contact-card">
+      <h3>Contact Us</h3>
+      <p>Can't find your answer above? The team responds to every message, usually within 24 hours.</p>
+      <a class="contact-btn" href="mailto:matrixfist.official@gmail.com?subject=Matrix Fist Support">Email Support</a>
+    </div>
+
+    <div class="info-card">
+      <div class="response-tag">Typical Response: 24 hrs</div>
+      <h4>Before You Write</h4>
+      <p style="margin-bottom:10px;">It helps to include:</p>
+      <ul>
+        <li>Your in-app username (handle)</li>
+        <li>iOS version and device model</li>
+        <li>A brief description of the issue</li>
+        <li>Approximate date and time it occurred</li>
+      </ul>
+    </div>
+
+    <div class="info-card">
+      <h4>Useful Links</h4>
+      <ul style="list-style:none;padding:0;">
+        <li style="margin-bottom:8px;"><a href="/player-card">Rules & Player Card</a></li>
+        <li style="margin-bottom:8px;"><a href="/practice">Practice Guide</a></li>
+        <li style="margin-bottom:8px;"><a href="/ranking">Rank System</a></li>
+        <li style="margin-bottom:8px;"><a href="/health">Health Benefits</a></li>
+        <li style="margin-bottom:8px;"><a href="/eula">Terms & EULA</a></li>
+        <li><a href="/store">Official Store</a></li>
+      </ul>
+    </div>
+
+  </div>
+</div>
+
+<div class="links-strip">
+  <a href="/">Home</a>
+  <a href="/legend">Legend</a>
+  <a href="/ranking">Rank</a>
+  <a href="/store">Store</a>
+  <a href="/eula">EULA</a>
+  <a href="/support" class="active" style="color:var(--black)">Support</a>
+</div>
+
+<footer>
+  <span class="footer-copy">© 2026 Creative Dissonance — Matrix Fist</span>
+  <span class="footer-copy">matrixfist.official@gmail.com</span>
+</footer>
+
+<script>
+function toggle(el) {
+  el.classList.toggle('open');
+  const ans = el.nextElementSibling;
+  ans.classList.toggle('open');
+}
+</script>
+</body>
+</html>
