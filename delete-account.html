@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Matrix Fist — Delete Account & Data</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Barlow+Condensed:wght@400;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --black:#0A0A0A;
+  --white:#F8F6F2;
+  --gold:#FFC800;
+  --red:#CC2200;
+  --muted:#666;
+  --border:#1a1a1a;
+}
+html,body{background:var(--black);color:var(--white);font-family:"Barlow Condensed",sans-serif;min-height:100vh;}
+a{color:inherit;text-decoration:none;}
+
+/* NAV */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:100;
+  background:rgba(10,10,10,0.96);backdrop-filter:blur(12px);
+  border-bottom:1px solid var(--border);
+  padding:14px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+}
+.nav-logo img{height:36px;width:auto;}
+.nav-link{
+  font-family:"JetBrains Mono",monospace;
+  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
+  color:var(--muted);
+  transition:color .2s;
+}
+.nav-link:hover{color:var(--white);}
+
+/* HERO */
+.hero{
+  padding:140px 40px 60px;
+  max-width:760px;margin:0 auto;
+}
+.hero-tag{
+  font-family:"JetBrains Mono",monospace;
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--red);margin-bottom:16px;display:block;
+}
+.hero h1{
+  font-family:"Bebas Neue",sans-serif;
+  font-size:clamp(48px,8vw,80px);
+  letter-spacing:.04em;line-height:.95;
+  margin-bottom:20px;
+}
+.hero h1 span{color:var(--gold);}
+.hero-sub{
+  font-size:18px;color:var(--muted);line-height:1.6;
+  max-width:560px;
+}
+
+/* CONTENT */
+.content{max-width:760px;margin:0 auto;padding:0 40px 80px;}
+
+/* SECTION */
+.section{
+  border-top:1px solid var(--border);
+  padding:40px 0;
+}
+.section-num{
+  font-family:"JetBrains Mono",monospace;
+  font-size:10px;letter-spacing:.2em;text-transform:uppercase;
+  color:var(--gold);margin-bottom:12px;display:block;
+}
+.section h2{
+  font-family:"Bebas Neue",sans-serif;
+  font-size:32px;letter-spacing:.04em;
+  margin-bottom:16px;
+}
+.section p{
+  font-size:16px;color:var(--muted);line-height:1.7;
+  margin-bottom:12px;
+}
+.section p:last-child{margin-bottom:0;}
+.section strong{color:var(--white);}
+
+/* STEPS */
+.steps{
+  list-style:none;counter-reset:steps;
+  margin:20px 0;
+}
+.steps li{
+  counter-increment:steps;
+  display:flex;gap:16px;
+  padding:16px 0;
+  border-bottom:1px solid var(--border);
+}
+.steps li:last-child{border-bottom:none;}
+.steps li::before{
+  content:counter(steps,"0"counter(steps));
+  font-family:"JetBrains Mono",monospace;
+  font-size:11px;color:var(--gold);letter-spacing:.1em;
+  min-width:32px;margin-top:2px;flex-shrink:0;
+}
+.steps li .step-text{
+  font-size:16px;color:var(--white);line-height:1.6;
+}
+.steps li .step-text em{
+  display:block;font-style:normal;
+  font-size:13px;color:var(--muted);margin-top:4px;
+  font-family:"JetBrains Mono",monospace;
+}
+
+/* DATA TABLE */
+.data-table{
+  width:100%;border-collapse:collapse;
+  margin:20px 0;font-size:14px;
+}
+.data-table th{
+  font-family:"JetBrains Mono",monospace;
+  font-size:9px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);padding:10px 16px;
+  border-bottom:1px solid var(--border);
+  text-align:left;
+}
+.data-table td{
+  padding:12px 16px;
+  border-bottom:1px solid #111;
+  vertical-align:top;
+  line-height:1.5;
+}
+.data-table td:first-child{color:var(--white);font-weight:700;}
+.data-table td:not(:first-child){color:var(--muted);}
+.badge{
+  display:inline-block;
+  font-family:"JetBrains Mono",monospace;
+  font-size:9px;letter-spacing:.1em;text-transform:uppercase;
+  padding:3px 8px;border-radius:3px;
+}
+.badge-red{background:rgba(204,34,0,.15);color:#ff6644;border:1px solid rgba(204,34,0,.3);}
+.badge-green{background:rgba(34,170,68,.12);color:#22aa44;border:1px solid rgba(34,170,68,.25);}
+.badge-gold{background:rgba(255,200,0,.1);color:var(--gold);border:1px solid rgba(255,200,0,.2);}
+
+/* CTA */
+.cta-box{
+  background:#111;
+  border:1px solid var(--border);
+  border-left:3px solid var(--red);
+  border-radius:6px;
+  padding:28px 32px;
+  margin:32px 0;
+}
+.cta-box h3{
+  font-family:"Bebas Neue",sans-serif;
+  font-size:24px;letter-spacing:.04em;
+  margin-bottom:8px;color:var(--white);
+}
+.cta-box p{font-size:15px;color:var(--muted);margin-bottom:16px;line-height:1.6;}
+.cta-btn{
+  display:inline-block;
+  background:var(--red);color:var(--white);
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:14px;font-weight:900;letter-spacing:.08em;text-transform:uppercase;
+  padding:12px 24px;border-radius:4px;
+  transition:opacity .2s;
+}
+.cta-btn:hover{opacity:.85;}
+.cta-btn-outline{
+  display:inline-block;
+  background:transparent;color:var(--muted);
+  font-family:"Barlow Condensed",sans-serif;
+  font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;
+  padding:12px 24px;border-radius:4px;
+  border:1px solid var(--border);
+  margin-left:12px;
+  transition:all .2s;
+}
+.cta-btn-outline:hover{border-color:#444;color:var(--white);}
+
+/* CONTACT */
+.contact-row{
+  display:flex;align-items:center;gap:12px;
+  padding:14px 0;border-bottom:1px solid var(--border);
+}
+.contact-row:first-child{border-top:1px solid var(--border);}
+.contact-label{
+  font-family:"JetBrains Mono",monospace;
+  font-size:10px;letter-spacing:.15em;text-transform:uppercase;
+  color:var(--muted);min-width:80px;
+}
+.contact-val{font-size:15px;color:var(--white);}
+
+/* FOOTER */
+footer{
+  border-top:1px solid var(--border);
+  padding:32px 40px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:16px;
+}
+footer p{
+  font-family:"JetBrains Mono",monospace;
+  font-size:10px;color:#333;letter-spacing:.08em;
+}
+.footer-links{display:flex;gap:24px;}
+.footer-links a{
+  font-family:"JetBrains Mono",monospace;
+  font-size:10px;color:#444;letter-spacing:.08em;text-transform:uppercase;
+  transition:color .2s;
+}
+.footer-links a:hover{color:var(--white);}
+
+@media(max-width:600px){
+  nav{padding:14px 20px;}
+  .hero,.content{padding-left:20px;padding-right:20px;}
+  .cta-btn-outline{margin-left:0;margin-top:8px;}
+  footer{padding:24px 20px;flex-direction:column;}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="/" class="nav-logo">
+    <img src="https://aneqybvksubgxbflwofb.supabase.co/storage/v1/object/public/assets/MF-BLACKLETTER.png" alt="Matrix Fist">
+  </a>
+  <a href="/" class="nav-link">← Back to Matrix Fist</a>
+</nav>
+
+<div class="hero">
+  <span class="hero-tag">Account Management</span>
+  <h1>Delete Your <span>Account</span></h1>
+  <p class="hero-sub">You have the right to delete your Matrix Fist account and all associated data at any time. This page explains how, what gets deleted, and what (if anything) is retained.</p>
+</div>
+
+<div class="content">
+
+  <!-- HOW TO DELETE -->
+  <div class="section">
+    <span class="section-num">01 — In-App Deletion</span>
+    <h2>Delete From the App</h2>
+    <p>The fastest way to delete your account is directly inside the Matrix Fist app. No email required.</p>
+    <ol class="steps">
+      <li>
+        <div class="step-text">
+          Open the Matrix Fist app and sign in to your account
+        </div>
+      </li>
+      <li>
+        <div class="step-text">
+          Tap the <strong>Profile</strong> tab at the bottom of the screen
+          <em>The person icon, bottom right</em>
+        </div>
+      </li>
+      <li>
+        <div class="step-text">
+          Scroll to the bottom of your profile page
+        </div>
+      </li>
+      <li>
+        <div class="step-text">
+          Tap <strong>Delete Account</strong>
+          <em>Shown in red at the bottom of the settings section</em>
+        </div>
+      </li>
+      <li>
+        <div class="step-text">
+          Confirm deletion when prompted
+          <em>This action is immediate and cannot be undone</em>
+        </div>
+      </li>
+    </ol>
+    <p>Your account and all associated data will be permanently deleted immediately. You will be signed out and will not be able to sign in again with the same email unless you create a new account.</p>
+  </div>
+
+  <!-- EMAIL REQUEST -->
+  <div class="section">
+    <span class="section-num">02 — Request by Email</span>
+    <h2>Can't Access the App?</h2>
+    <p>If you are unable to access your account or the app, you can request deletion by contacting us directly.</p>
+    <div class="cta-box">
+      <h3>Send a Deletion Request</h3>
+      <p>Email us from the address associated with your Matrix Fist account. Include your <strong>@handle</strong> if you know it. We will process your request within <strong>7 business days</strong>.</p>
+      <a class="cta-btn" href="mailto:matrixfist.official@gmail.com?subject=Account%20Deletion%20Request&body=Please%20delete%20my%20Matrix%20Fist%20account.%0A%0AEmail%3A%20%5Byour%20email%5D%0AHandle%3A%20%40%5Byour%20handle%5D">Email Deletion Request</a>
+      <a class="cta-btn-outline" href="mailto:matrixfist.official@gmail.com">matrixfist.official@gmail.com</a>
+    </div>
+  </div>
+
+  <!-- WHAT GETS DELETED -->
+  <div class="section">
+    <span class="section-num">03 — Data Deletion</span>
+    <h2>What Gets Deleted</h2>
+    <p>When you delete your account, the following data is <strong>permanently and immediately deleted</strong> from our systems:</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Data Type</th>
+          <th>Description</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Account credentials</td>
+          <td>Email address, password hash, authentication tokens</td>
+          <td><span class="badge badge-red">Deleted immediately</span></td>
+        </tr>
+        <tr>
+          <td>Profile data</td>
+          <td>Handle, display name, bio, location, age group, country</td>
+          <td><span class="badge badge-red">Deleted immediately</span></td>
+        </tr>
+        <tr>
+          <td>Profile photo</td>
+          <td>Avatar image uploaded to your profile</td>
+          <td><span class="badge badge-red">Deleted immediately</span></td>
+        </tr>
+        <tr>
+          <td>Match records</td>
+          <td>All wins, losses, and match history involving your account</td>
+          <td><span class="badge badge-red">Deleted immediately</span></td>
+        </tr>
+        <tr>
+          <td>Challenges</td>
+          <td>All sent and received challenge records</td>
+          <td><span class="badge badge-red">Deleted immediately</span></td>
+        </tr>
+        <tr>
+          <td>Notifications</td>
+          <td>All in-app alerts and notification history</td>
+          <td><span class="badge badge-red">Deleted immediately</span></td>
+        </tr>
+        <tr>
+          <td>Push token</td>
+          <td>Device push notification token</td>
+          <td><span class="badge badge-red">Deleted immediately</span></td>
+        </tr>
+        <tr>
+          <td>EULA acceptance</td>
+          <td>Record of terms acceptance</td>
+          <td><span class="badge badge-red">Deleted immediately</span></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- WHAT IS RETAINED -->
+  <div class="section">
+    <span class="section-num">04 — Data Retention</span>
+    <h2>What Is Retained</h2>
+    <p>Matrix Fist does <strong>not</strong> retain any personal data after account deletion. There is no backup retention period for personal information.</p>
+    <p>The only exception is <strong>anonymised, aggregated statistics</strong> (e.g. total number of matches played across all users) that contain no personally identifiable information and cannot be linked back to your account.</p>
+    <p>Standard server access logs (IP addresses, timestamps) held by our infrastructure provider (Supabase) may be retained for up to <strong>30 days</strong> for security purposes before automatic deletion. These are not shared with third parties.</p>
+  </div>
+
+  <!-- DATA COLLECTED -->
+  <div class="section">
+    <span class="section-num">05 — Data We Collect</span>
+    <h2>What Matrix Fist Collects</h2>
+    <p>For full transparency, here is every category of data Matrix Fist collects during normal use:</p>
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th>Category</th>
+          <th>Data</th>
+          <th>Purpose</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Account</td>
+          <td>Email address, password (hashed)</td>
+          <td>Authentication only</td>
+        </tr>
+        <tr>
+          <td>Public profile</td>
+          <td>Handle, display name, country, city, age group</td>
+          <td>Displayed on leaderboard and trade card</td>
+        </tr>
+        <tr>
+          <td>Photo</td>
+          <td>Profile picture (optional)</td>
+          <td>Displayed on profile and trade card</td>
+        </tr>
+        <tr>
+          <td>Match data</td>
+          <td>Win/loss records, match timestamps, opponent handles</td>
+          <td>Core app functionality and ranking</td>
+        </tr>
+        <tr>
+          <td>Device</td>
+          <td>Push notification token</td>
+          <td>In-app alerts (win confirmations, challenges)</td>
+        </tr>
+        <tr>
+          <td>Location</td>
+          <td>City, country (user-entered, not GPS)</td>
+          <td>Profile display only</td>
+        </tr>
+      </tbody>
+    </table>
+    <p>Matrix Fist does <strong>not</strong> collect GPS location, contacts, browsing history, financial information, or any data not listed above. Data is <strong>never sold</strong> to third parties.</p>
+    <p>All data is transmitted over encrypted HTTPS connections and stored on <a href="https://supabase.com/security" style="color:var(--gold);">Supabase</a> infrastructure with encryption at rest.</p>
+  </div>
+
+  <!-- CONTACT -->
+  <div class="section">
+    <span class="section-num">06 — Contact</span>
+    <h2>Questions or Concerns</h2>
+    <p>For any questions about your data or this policy, contact the developer directly:</p>
+    <div style="margin-top:16px;">
+      <div class="contact-row">
+        <span class="contact-label">Developer</span>
+        <span class="contact-val">Creative Dissonance</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">App</span>
+        <span class="contact-val">Matrix Fist</span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Email</span>
+        <span class="contact-val"><a href="mailto:matrixfist.official@gmail.com" style="color:var(--gold);">matrixfist.official@gmail.com</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Website</span>
+        <span class="contact-val"><a href="https://matrixfist.com" style="color:var(--gold);">matrixfist.com</a></span>
+      </div>
+      <div class="contact-row">
+        <span class="contact-label">Response</span>
+        <span class="contact-val">Within 7 business days</span>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <p>&copy; 2026 Creative Dissonance &middot; Matrix Fist &middot; TM Pending</p>
+  <div class="footer-links">
+    <a href="/">Home</a>
+    <a href="/eula">Privacy & EULA</a>
+    <a href="mailto:matrixfist.official@gmail.com">Contact</a>
+  </div>
+</footer>
+
+</body>
+</html>
