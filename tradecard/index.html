@@ -202,6 +202,14 @@ html,body{background:#F0EDE8;font-family:"Barlow Condensed",sans-serif;color:#0A
 .create-cta{background:#fff;border:2px solid #0A0A0A;border-radius:10px;padding:20px;text-align:center;margin-bottom:32px;}
 .create-cta p{font-size:14px;color:#888;margin-bottom:10px;}
 .create-cta a{display:inline-block;background:#0A0A0A;color:#fff;font-size:14px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;padding:10px 24px;border-radius:6px;text-decoration:none;}
+.search-cta{background:#fff;border:2px solid #0A0A0A;border-radius:10px;padding:20px;text-align:center;margin-bottom:32px;}
+.search-cta p{font-size:14px;color:#888;margin-bottom:12px;}
+.search-row{display:flex;gap:8px;}
+.search-row input{flex:1;background:#f5f5f5;border:2px solid #0A0A0A;border-radius:6px;padding:10px 14px;font-family:"Barlow Condensed",sans-serif;font-size:16px;font-weight:600;color:#0A0A0A;outline:none;}
+.search-row input:focus{border-color:#444;}
+.search-row button{background:#0A0A0A;color:#fff;border:2px solid #0A0A0A;border-radius:6px;padding:10px 18px;font-family:"Barlow Condensed",sans-serif;font-size:14px;font-weight:900;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;}
+.search-row button:hover{background:#333;}
+#search-msg{margin-top:10px;font-size:13px;color:#cc2200;min-height:18px;}
 </style>
 </head>
 <body>
@@ -335,6 +343,13 @@ const queryHandle = new URLSearchParams(window.location.search).get('h');
 const pathParts = window.location.pathname.split('/').filter(Boolean);
 const pathHandle = pathParts[pathParts.length-1]?.replace('.html','')?.toLowerCase();
 const handle = queryHandle || (pathHandle && pathHandle !== 'tradecard' ? pathHandle : null);
+function searchPlayer() {
+  const raw = document.getElementById('search-handle').value.trim().replace(/^@/,'').toLowerCase();
+  const msg = document.getElementById('search-msg');
+  if (!raw) { msg.textContent = 'Please enter a handle.'; return; }
+  msg.textContent = '';
+  window.location.href = `/tradecard/?h=${encodeURIComponent(raw)}`;
+}
 async function load() {
   const root = document.getElementById('root');
   if (!handle || handle === 'tradecard') {
@@ -368,9 +383,14 @@ async function load() {
         <button class="share-btn dark" onclick="doShare('${cardUrl}','${p.display_name||p.handle}','${rd.emoji} ${rd.name} · ${wins} Wins')">&#128279; Share Card</button>
         <button class="share-btn light" onclick="copyLink('${cardUrl}')">&#128203; Copy Link</button>
       </div>
-      <div class="create-cta">
-        <p>Create your own Matrix Fist trade card</p>
-        <a href="/tradecard">Make My Card &rarr;</a>
+      <div class="search-cta">
+        <p>Look up another player</p>
+        <div class="search-row">
+          <input type="text" id="search-handle" placeholder="@handle" autocomplete="off" autocapitalize="none"
+            onkeydown="if(event.key==='Enter')searchPlayer()">
+          <button onclick="searchPlayer()">Search</button>
+        </div>
+        <div id="search-msg"></div>
       </div>
     </div>
   `;
